@@ -25,7 +25,7 @@
         <div class="container">
 
             <div id="top" >
-                <a href="/"><img alt="Politickr" src="/img/politickr.gif"/></a>
+                <a href="/"><img alt="Politickr" src="/img/main.svg"/></a>
             </div>
 
             <div id="middle">

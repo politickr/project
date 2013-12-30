@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="446px"
+	 height="367px" viewBox="0 0 446 367" enable-background="new 0 0 446 367" xml:space="preserve">
+<g id="Layer_4">
+	<path fill="#FF0000" stroke="#FFFFFF" stroke-width="2" stroke-miterlimit="10" d="M224,9c-1.37,0-2.734,0.037-4.096,0.092
+		c0.23,70.974,1.988,141.93,2.939,212.896c0.569,0.01,1.139,0.022,1.71,0.022c57.44,0,108.724-46.564,108.724-104.005
+		S281.44,9,224,9z"/>
+</g>
+<g id="Layer_6">
+	<path fill="#0600FF" stroke="#FFFFFF" stroke-width="4" stroke-miterlimit="10" d="M224.075,9.408
+		c2.042,0.013,4.074,0.095,6.095,0.23c-0.687,70.919-2.896,141.812-4.298,212.719c-1.234,0.037-2.471,0.061-3.712,0.053
+		c-57.439-0.367-108.424-47.259-108.057-104.698C114.471,60.273,166.636,9.041,224.075,9.408z"/>
+</g>
+<g id="Layer_8">
+	<polygon fill="#FFFFFF" points="207,46 196.459,45.648 190.193,54.132 187.271,43.999 177.266,40.661 186,34.75 186.082,24.204 
+		194.403,30.684 204.459,27.503 200.867,37.419 	"/>
+	<polygon fill="#FFFFFF" points="178,76 167.459,75.648 161.193,84.132 158.271,73.999 148.266,70.661 157,64.75 157.082,54.204 
+		165.403,60.684 175.459,57.503 171.867,67.419 	"/>
+	<polygon fill="#FFFFFF" points="158,116 147.459,115.648 141.193,124.132 138.271,113.999 128.266,110.661 137,104.75 
+		137.082,94.204 145.403,100.684 155.459,97.503 151.867,107.419 	"/>
+	<polygon fill="#FFFFFF" points="173,162 162.459,163.648 156.193,170.132 153.271,159.999 143.266,156.661 152,150.75 
+		152.082,140.204 160.403,146.684 170.459,143.503 166.867,153.419 	"/>
+	<polygon fill="#FFFFFF" points="206,196 195.459,195.648 189.193,204.133 186.271,193.999 176.266,190.661 185,184.75 
+		185.082,174.204 193.403,180.684 203.459,177.503 199.867,187.419 	"/>
+	<rect x="5" y="265" fill="none" width="429" height="120"/>
+	<text transform="matrix(1 0 0 1 5 355.1689)" fill="#999999" font-family="'MyriadPro-Regular'" font-size="127">Politickr</text>
+</g>
+<g id="Layer_7">
+	<line fill="none" stroke="#FFFFFF" stroke-width="9" stroke-miterlimit="10" x1="227" y1="29.5" x2="311" y2="29.5"/>
+	<line fill="none" stroke="#FFFFFF" stroke-width="10" stroke-miterlimit="10" x1="328" y1="52" x2="227" y2="52"/>
+	<line fill="none" stroke="#FFFFFF" stroke-width="10" stroke-miterlimit="10" x1="227" y1="75" x2="345" y2="75"/>
+	<line fill="none" stroke="#FFFFFF" stroke-width="10" stroke-miterlimit="10" x1="229" y1="100" x2="347" y2="100"/>
+	<line fill="none" stroke="#FFFFFF" stroke-width="10" stroke-miterlimit="10" x1="229" y1="125" x2="347" y2="125"/>
+	<line fill="none" stroke="#FFFFFF" stroke-width="10" stroke-miterlimit="10" x1="228" y1="150" x2="346" y2="150"/>
+	<line fill="none" stroke="#FFFFFF" stroke-width="10" stroke-miterlimit="10" x1="227" y1="174" x2="345" y2="174"/>
+	<line fill="none" stroke="#FFFFFF" stroke-width="10" stroke-miterlimit="10" x1="227" y1="200" x2="345" y2="200"/>
+	<line fill="none" stroke="#FFFFFF" stroke-width="10" stroke-miterlimit="10" x1="228" y1="0" x2="226.904" y2="249"/>
+</g>
+<g id="stars" display="none">
+	<g id="Layer_1" display="inline">
+		<g id="ESmtdR.tif">
+			
+				<image overflow="visible" width="210" height="239" id="Layer_0" xlink:href="7E6C0272AFAEEAF1.png"  transform="matrix(2.2899 0 0 2.2899 -35.0356 -77.1934)">
+			</image>
+		</g>
+	</g>
+	<path display="inline" fill="#FFFFFF" d="M-25,9v208c0,0-91.149,3.145-98.125-104C-123.125,113-123.773,16.796-25,9z"/>
+</g>
+</svg>
