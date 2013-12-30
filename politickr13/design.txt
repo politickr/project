@@ -1,0 +1,28 @@
+
+We modeled our front end of pset7, with forms linking to files that render forms.
+We used bootstrap to style our representatives page into three horizontal divs because it looked
+clean. 
+As for the backend, we took into consideration what we wanted our website to do.
+The goal of the website is to lower the effort barrier for constituents to keep track of
+ how their representatives vote. As such, we wanted to get them to the voting record in 
+ a very easy and intuitive way. We decided to use the Google Civics API and the govtrack API 
+ for this purpose. The Google API lets us get from address to representatives, and the govtrack
+ API lets us get from representatives to voting records and bills. A lot of the effort was spent
+ figuring out how to use the apis and how to get them to line up. For example, a key part
+ of the project was matching up first names and last names of representatives in each 
+ API. Thus a lot of checks were needed to ensure that the right representatives were found
+ Unfortunately they were not formattted in exactly the same way so we had to take
+ that into account. We decided against trying to make a myseql table for the representatives
+ even though the running time might be faster because we wanted to spend more time on other
+ aspects of the project like figuring out how to  get the voting record and bill information fucntiosnworking
+ . We decided we could try and improve the runnning time of everything later.
+ 	Another aspect of our design was to try and minimize API calls and not call them excessively
+ in one method. We considered not even calling Govtrack API of representatives every time
+ and instead just saving a json file locally  that would update every so often. 
+ 	We purposely left some unused key value pairs in arrays such as email because we are interested in using
+ 	them in the future to implement new features, like sending an email straight to a representative or 
+ 	representing our information in a different manner. 
+ 	
+ 	Also, if a picture is not available for a representative a cat shows up. This was an 
+ 	arbitrary design decision. If the link to a picture was bad from the API, it shows up as blank.
+ 	

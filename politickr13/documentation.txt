@@ -1,0 +1,33 @@
+Documentation for Politickr.us
+
+This code is the code behind politickr.us. It is very similar to pset7 
+in that it is written in PHP consists of multiple pages that get passed values by forms
+and renders pages.As such, you can probably run it in the appliance in the same manner
+in which pset7 was run. I am personally running the website on MAMP outside of the appliance
+and it is also being run on the Dreamhosts servers, accessible at politickr.us . 
+
+The first page you will see will be the homepage of the website. index.php is the homepage,
+it renders homepage_form.php. Homephage_form.php contains a button that is a link to search.php.
+search.php renders search_form.php which has a field for an address. Search_form.php sends this 
+address to indexform3.php. Here the first function, getReps() which is contained in functions.php
+in the includes folder is called. getReps takes in a string address and sends post request containing
+ the address in the request body to the Google Civics Representatives API. The Google Civics API then returns a 
+ json file that contains, among other things, the names of the person's representatives. I convert
+ this json file into an array of arrays and track down the names of the two senators and representative.
+After getting the names of the representatives, I make a get call to the Govtrack Representatives API and
+find where those representatives are located in the Govtrack API. I search by comparing first names and last
+names and the state they represent, taking into account discrepencies of nicknames and suffixes. Once located,
+I add a few more key value pairs to the representative array. After all the representatives have been found
+I create an array of representative arrays and load the senators into keys 0 and 1 and load the representative into
+key 2. I return this array.
+
+Index then displays this data by printing it out, so that you see your representatives pictures and 
+other biographical information. When printing out this information, index makes the pictures and the names
+of the representatives link to display.php. Display.php calls getVotes(). getVotes takes in the Govtrack id
+of the representative that was clicked on and sends a get request to the Govtrack vote_Votes
+API for the last 600 votes in the representatives voting record. This json file is converted into 
+an array object. display.php then renders display_form and passes this objct to display_form.
+Display_form.php prints the bill title(question) and yes/no value for each vote into a table. The bill title
+links to bill.php and passes a bill id and the amount of yes/no votes by others via a get method to
+bill.php. Bill.php calls getBillInfo, and renders bill-form.php, passing in bill information. Bill_form.php
+prints out this passed information.
