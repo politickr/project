@@ -8,6 +8,52 @@
   ga('send', 'pageview');
 
 </script>
-<div>
-    <a href="search.php"><button type="button" class="btn btn-danger">Find My Representatives</button></a>
+<div style="float:left; position:relative; margin:auto; display: inline-block;">
+<div class="search" width="360">
+    <form action="search.php" method="post">
+    <fieldset>
+        <div class="form-group">
+            <input autofocus class="form-control" name="address" placeholder="Address, City, State" type="text"/>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-default">Retrieve</button>
+        </div>
+    </fieldset>
+</form>
+</div>
+</div>
+<div style="float:left; position:relative; margin:auto; display: inline-block;">
+<div class="search" width="360">
+<form action="register.php" method="post">
+    <fieldset>
+        <div class="form-group" style="color:blue;">
+            <br>
+            <input autofocus class="form-control" name="username" placeholder="Username" type="text"/>
+        </div>
+        <div class="form-group" style="color:blue;">
+            <br>
+            <input class="form-control" name="email" placeholder="Email" type="email"/>
+        </div>
+        <div class="form-group" style="color:blue;">
+            
+            <input class="form-control" name="address" placeholder="Full Address" type="text"/>
+        </div>
+		<div class="form-group" style="color:blue;">
+            <br>
+            <input class="form-control" name="updatefreq" placeholder="Number of Votes" type="text"/>
+        </div>
+        <div class="form-group" style="color:blue;">
+            <br>
+            <input class="form-control" name="password" placeholder="Password" type="password"/>
+        </div>
+        <div class="form-group" style="color:blue;">
+            <br>
+            <input class="form-control" name="confirmation" placeholder="Confirm Password" type="password"/>
+        </div>
+        <div class="form-group" style="color:blue;">
+            <button type="submit" class="btn btn-success btn-lg">Register</button>
+        </div>
+    </fieldset>
+</form>
+</div>
 </div>

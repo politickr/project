@@ -1,10 +1,47 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Untitled Document</title>
-</head>
+<?php
 
-<body>
-</body>
-</html>
+class Vote {
+	public $time, $chamber, $rep, $question;
+	public $vote;
+	public $up, $down;
+	
+	function __construct() {
+		__construct(0, "", "", "", "", "");
+	}
+	
+	function __construct($v, $r, $ch, $cat, $t, $q) {
+		$vote = $v;
+		$rep = $r;
+		$chamber = $c;
+		$question = $q;
+		$category = $c;
+		$time = $t;
+		$up = new SplObjectStorage();
+		$down = new SplObjectStorage();
+	}
+	
+	function upvote($user) {
+		if ($down->contains($user)) {
+			$down->detach($user);
+		}
+		
+		$up->attach($user);
+	}
+	
+	function downvote($user) {
+		if ($up->contains($user)) {
+			$up->detach($user);
+		}
+		
+		$down->attach($user);
+	}
+}
+
+
+
+
+
+
+
+
+?>
