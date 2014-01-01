@@ -35,6 +35,14 @@ class Vote {
 		
 		$down->attach($user);
 	}
+	
+	function countUpvotes() {
+		return count($up);
+	}
+	
+	function countDownvotes() {
+		return count($down);
+	}
 }
 
 
