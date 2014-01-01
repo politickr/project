@@ -2,7 +2,9 @@
 require("../includes/config.php"); 
 //$rows = query("SELECT firstname FROM representatives WHERE id = ?", 1);
 //dump($rows);
-billNews("Test");
+$test = new User('name','heiscody@gmail.com', new Legislator(1); new Legislator(2), new Legislator(3), 2);
+dump($test);
+//billNews("Test");
 
 //load();
 ?>
