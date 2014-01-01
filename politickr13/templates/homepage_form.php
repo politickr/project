@@ -48,9 +48,21 @@
         </div>
         <div class="col-md-6 col-sm-5" id="a-right">
             <div class="container a-formcon col-centered">
+            
         		 <div style="font-family:Arial, Helvetica, sans-serif; font-size:96px; color: #FFFFFF;  margin-top: 75px; margin-right: 400px; line-height: 96px;">Stay informed,<br /> get involved.</div>
+                 
+                 <div style="margin-top: 53px; padding-left: 15px; margin-left: 200px;">
+                 <form action="search.php" method="post" class="navbar-form navbar-left" role="search">
+      
+      <div class="form-group">
+        <input type="text" name="address" class="form-control" placeholder="Address">
+      </div>
+      <button type="submit" class="btn btn-default btn-red">Find Reps</button>
+    </form>
+    </div>
+        
+        </div>
+        </div>
         </div>
         </div>
         
-    </div>
-</div>

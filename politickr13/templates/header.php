@@ -37,17 +37,7 @@
 
   <!-- Collect the nav links, forms, and other content for toggling -->
   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-    <ul class="nav navbar-nav navbar-left">
-    <li>
-      <form action="search.php" method="post" class="navbar-form navbar-left" role="search">
-      
-      <div class="form-group">
-        <input type="text" name="address" class="form-control" placeholder="Address">
-      </div>
-      <button type="submit" class="btn btn-default">Find Reps</button>
-    </form>
-    </li>
-    </ul>
+    
     
     <ul class="nav navbar-nav navbar-right">
     <li>
