@@ -2,7 +2,7 @@
 <!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 width="242.987px" height="224.088px" viewBox="104.097 4 242.987 224.088" enable-background="new 104.097 4 242.987 224.088"
+	 width="1072.446px" height="224.088px" viewBox="104.097 4 1072.446 224.088" enable-background="new 104.097 4 1072.446 224.088"
 	 xml:space="preserve">
 <g id="Layer_1">
 	<g id="Layer_4">
@@ -27,30 +27,30 @@
 			</clipPath>
 			<g clip-path="url(#SVGID_2_)">
 				
-					<image overflow="visible" width="350" height="38" xlink:href="AED391AD14897534.jpg"  transform="matrix(0.24 0 0 0.24 227 25)">
+					<image overflow="visible" width="350" height="38" xlink:href="AED391AD14897486.jpg"  transform="matrix(0.24 0 0 0.24 227 25)">
 				</image>
 			</g>
 		</g>
 		
-			<image display="inline" overflow="visible" width="421" height="42" xlink:href="AED391AD14897535.jpg"  transform="matrix(0.24 0 0 0.24 227 48.9463)">
+			<image display="inline" overflow="visible" width="421" height="42" xlink:href="AED391AD14897487.jpg"  transform="matrix(0.24 0 0 0.24 227 48.9463)">
 		</image>
 		
-			<image display="inline" overflow="visible" width="437" height="42" xlink:href="AED391AD1489753E.jpg"  transform="matrix(0.24 0 0 0.24 227 71.9463)">
+			<image display="inline" overflow="visible" width="437" height="42" xlink:href="AED391AD14897488.jpg"  transform="matrix(0.24 0 0 0.24 227 71.9463)">
 		</image>
 		
-			<image display="inline" overflow="visible" width="457" height="42" xlink:href="AED391AD1489753F.jpg"  transform="matrix(0.2271 0 0 0.24 227.9668 96.9463)">
+			<image display="inline" overflow="visible" width="457" height="42" xlink:href="AED391AD14897489.jpg"  transform="matrix(0.2271 0 0 0.24 227.9668 96.9463)">
 		</image>
 		
-			<image display="inline" overflow="visible" width="430" height="42" xlink:href="AED391AD14897532.jpg"  transform="matrix(0.24 0 0 0.24 229 121.9463)">
+			<image display="inline" overflow="visible" width="430" height="42" xlink:href="AED391AD1489748A.jpg"  transform="matrix(0.24 0 0 0.24 229 121.9463)">
 		</image>
 		
-			<image display="inline" overflow="visible" width="437" height="42" xlink:href="AED391AD14897533.jpg"  transform="matrix(0.24 0 0 0.24 228 146.9463)">
+			<image display="inline" overflow="visible" width="437" height="42" xlink:href="AED391AD1489748B.jpg"  transform="matrix(0.24 0 0 0.24 228 146.9463)">
 		</image>
 		
-			<image display="inline" overflow="visible" width="437" height="42" xlink:href="AED391AD14897530.jpg"  transform="matrix(0.24 0 0 0.24 227 170.9463)">
+			<image display="inline" overflow="visible" width="437" height="42" xlink:href="AED391AD1489748C.jpg"  transform="matrix(0.24 0 0 0.24 227 170.9463)">
 		</image>
 		
-			<image display="inline" overflow="visible" width="430" height="42" xlink:href="AED391AD14897531.jpg"  transform="matrix(0.24 0 0 0.24 227 196.9463)">
+			<image display="inline" overflow="visible" width="430" height="42" xlink:href="AED391AD1489748D.jpg"  transform="matrix(0.24 0 0 0.24 227 196.9463)">
 		</image>
 		<path display="inline" fill="#FFFFFF" d="M227.967,9.456c-0.191,29.357-0.305,58.463-0.379,87.489
 			c-0.108,41.659-0.139,83.154-0.212,124.994"/>
@@ -70,6 +70,7 @@
 </g>
 <g id="Layer_3">
 	<line fill="none" stroke="#FFFFFF" stroke-width="11" stroke-miterlimit="10" x1="226.075" y1="9.408" x2="225.792" y2="220.281"/>
+	<text transform="matrix(1 0 0 1 331.0293 205.4307)" fill="#0000FC" font-family="'Helvetica'" font-size="234">Politickr</text>
 </g>
 <g id="Layer_2">
 	<polyline fill="#FFFFFF" points="273.974,25.204 289.045,34.12 230.172,34.12 230.172,25 	"/>

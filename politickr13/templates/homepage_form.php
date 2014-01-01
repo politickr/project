@@ -6,54 +6,51 @@
 
   ga('create', 'UA-46444257-1', 'politickr.us');
   ga('send', 'pageview');
+	
+</script> 
+<img style="position:absolute; display:block; width: 100%; margin-top:10px;" src="img/main-split.svg" />
 
-</script>
-<div style="float:left; position:relative; margin:auto; display: inline-block;">
-<div class="search" width="360">
-    <form action="search.php" method="post">
-    <fieldset>
-        <div class="form-group">
-            <input autofocus class="form-control" name="address" placeholder="Address, City, State" type="text"/>
-        </div>
-        <div class="form-group">
-            <button type="submit" class="btn btn-default">Retrieve</button>
-        </div>
-    </fieldset>
-</form>
-</div>
-</div>
-<div style="float:left; position:relative; margin:auto; display: inline-block;">
-<div class="search" width="360">
-<form action="register.php" method="post">
+<div class="container" id="a-content">
+
+    <div class="row target" id="a-row">
+        <div class="col-md-6 col-sm-5" id="a-left">
+            <div class="container a-formcon col-centered">
+           
+       	     <form action="register.php" method="post">
     <fieldset>
         <div class="form-group" style="color:blue;">
             <br>
             <input autofocus class="form-control" name="username" placeholder="Username" type="text"/>
         </div>
         <div class="form-group" style="color:blue;">
-            <br>
+            <br />
             <input class="form-control" name="email" placeholder="Email" type="email"/>
         </div>
         <div class="form-group" style="color:blue;">
-            
+            <br />
             <input class="form-control" name="address" placeholder="Full Address" type="text"/>
         </div>
-		<div class="form-group" style="color:blue;">
-            <br>
-            <input class="form-control" name="updatefreq" placeholder="Number of Votes" type="text"/>
-        </div>
         <div class="form-group" style="color:blue;">
-            <br>
+            <br />
             <input class="form-control" name="password" placeholder="Password" type="password"/>
         </div>
         <div class="form-group" style="color:blue;">
-            <br>
+            <br />
             <input class="form-control" name="confirmation" placeholder="Confirm Password" type="password"/>
         </div>
         <div class="form-group" style="color:blue;">
-            <button type="submit" class="btn btn-success btn-lg">Register</button>
+        	<br />
+            <button type="submit" class="btn btn-default">Register</button>
         </div>
     </fieldset>
 </form>
-</div>
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-5" id="a-right">
+            <div class="container a-formcon col-centered">
+        		 <div style="font-family:Arial, Helvetica, sans-serif; font-size:96px; color: #FFFFFF;  margin-top: 75px; margin-right: 400px; line-height: 96px;">Stay informed,<br /> get involved.</div>
+        </div>
+        </div>
+        
+    </div>
 </div>
