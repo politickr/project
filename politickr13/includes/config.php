@@ -16,6 +16,10 @@
     // requirements
     require("constants.php");
     require("functions.php");
+	require("user.php");
+	require("legislator.php");
+	require("vote.php");
+	
 
     // enable sessions
     session_start();

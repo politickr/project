@@ -20,6 +20,7 @@
         }        
         else
         {
+			
            //stores username into variable result
            if(empty($_POST["username"]))
            {
@@ -41,13 +42,17 @@
 					apologize("Invalid Address");
 				}
 				 //inserts username, hash, email, representative ids into database
-				if(empty($_POST['updatefreq']))
-				{
-					$x = query("INSERT INTO users (username, hash, email, senator1id, senator2id, repid) VALUES(?, ?, ?, ?, ?, ?)", $_POST["username"], crypt($_POST["password"]), $_POST["email"], $RepProfiles[0]['person']["id"], $RepProfiles[1]['person']["id"], $RepProfiles[2]['person']["id"]);
+				if(empty($_POST['updatefreq'])) {
+				
+					$temp = new User($_POST['username'], $_POST['email'], $RepProfiles[0]['person']['id'], $RepProfiles[1]['person']['id'], $RepProfiles[2]['person']['id'], 0);
+					
+					$x = query("INSERT INTO users (username, hash, email, senator1id, senator2id, repid, updatefreq, object) VALUES(?, ?, ?, ?, ?, ?, ?)", $temp->getName(), crypt($_POST["password"]), $temp->getEmail(), $RepProfiles[0]['person']['id'], $RepProfiles[1]['person']['id'], $RepProfiles[2]['person']['id'], 0, serialize($temp));
 				}
 				else
 				{
-					$x = query("INSERT INTO users (username, hash, email, senator1id, senator2id, repid, updatefreq) VALUES(?, ?, ?, ?, ?, ?, ?)", $_POST["username"], crypt($_POST["password"]), $_POST["email"], $RepProfiles[0]['person']["id"], $RepProfiles[1]['person']["id"], $RepProfiles[2]['person']["id"],$_POST['updatefreq'] );
+					$temp = new User($_POST['username'], $_POST['email'], $RepProfiles[0]['person']['id'], $RepProfiles[1]['person']['id'], $RepProfiles[2]['person']['id'], $_POST['updatefreq']);
+					
+					$x = query("INSERT INTO users (username, hash, email, senator1id, senator2id, repid, updatefreq, object) VALUES(?, ?, ?, ?, ?, ?, ?)", $temp->getName(), crypt($_POST['password']), $temp->getEmail(), $RepProfiles[0]['person']['id'], $RepProfiles[1]['person']['id'], $RepProfiles[2]['person']['id'], $temp->getVoteThreshold(), serialize($temp));
 				}
 			}
 			else
@@ -55,11 +60,15 @@
 				if(empty($_POST['updatefreq']))
 				{
 				//inserts username, hash, email, into database
-				$x = query("INSERT INTO users (username, hash, email) VALUES(?, ?, ?)", $_POST["username"], crypt($_POST["password"]), $_POST["email"]);
+				$temp = new User($_POST['username'], $_POST['email'], "", "", "", 0);
+				
+				$x = query("INSERT INTO users (username, hash, email, updatefreq, object) VALUES(?, ?, ?, ?, ?)", $temp->getName(),crypt($_POST["password"]), $_POST["email"], serialize($temp));
+				
 				}
 				else
 				{
-					$x = query("INSERT INTO users (username, hash, email,updatefreq) VALUES(?, ?, ?, ?)", $_POST["username"], crypt($_POST["password"]), $_POST["email"], $_POST['updatefreq']);
+					$temp = new User($_POST['username'], $_POST['email'], "", "", "", $_POST['updatefreq']);
+					$x = query("INSERT INTO users (username, hash, email, updatefreq, object) VALUES(?, ?, ?, ?, ?)", $temp->getName(),crypt($_POST["password"]), $_POST["email"], serialize($temp));
 
 				}
 			}

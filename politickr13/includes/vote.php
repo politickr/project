@@ -5,10 +5,6 @@ class Vote {
 	public $vote;
 	public $up, $down;
 	
-	function __construct() {
-		__construct(0, "", "", "", "", "");
-	}
-	
 	function __construct($v, $r, $ch, $cat, $t, $q) {
 		$vote = $v;
 		$rep = $r;
