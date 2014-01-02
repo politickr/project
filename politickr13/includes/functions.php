@@ -194,10 +194,36 @@
 		$gtrackRep = json_decode($gtrackRepjson,true); 
 		// keeping track of index could be handy if we make users and don't want to search again.
 		$index = 0;
-		$s1index=0;
-		$s2index=0;
-		$repindex=0;
 		// iterate through govtrack representative arrays
+		$order = array( 0 => array ( 0 => $s1firstname, 1 => $s1lastname, 2 => $sen1pos),
+						1 => array ( 0 => $s2firstname, 1 => $s2lastname, 2 => $sen2pos),
+						2 => array ( 0 => $repfirstname, 1 => $replastname, 2 => $reppos),
+						);
+		foreach($order as $placeholder)
+		{
+			$row= query("SELECT govtrackid FROM representatives WHERE (firstname = ? OR nickname = ?) AND (lastname = ? OR namemod= ?) AND state = ?", $placeholder[0], $placeholder[0], $placeholder[1], $placeholder[1], $gcivics['normalizedInput']['state'] );
+			if(isset($gcivics['officials'][$placeholder[2]]['photoUrl']))
+			{
+					//$reparray[$index]['photoUrl'] = $gcivics['officials'][$placeholder[2]]['photoUrl'];
+					query("UPDATE representatives SET photourl = ? WHERE govtrackid = ?", $gcivics['officials'][$placeholder[2]]['photoUrl'], $row[0]['govtrackid']);
+
+			}
+			else
+			{
+				//if there isn't a photoUrl given, show a picture of cat instead
+				//$reparray[0]['photoUrl'] = "img/cat.jpg";
+				query("UPDATE representatives SET photourl = ? WHERE govtrackid = ?", "img/cat.jpg", $row[0]['govtrackid']);
+			}
+			$reparray[$index] = $row[0]['govtrackid'];
+			$index++;
+		}
+		
+		/*$reparray[0] = $s1[0]['govtrackid'];
+		$s2= query("SELECT govtrackid FROM representatives WHERE (firstname = ? OR nickname = ?) AND (lastname = ? OR namemod= ?) AND state = ?", $s2firstname, $s2firstname, $s2lastname, $s2lastname, $gcivics['normalizedInput']['state'] );
+		$reparray[1] = $s2[0]['govtrackid'];
+		$rep= query("SELECT govtrackid FROM representatives WHERE (firstname = ? OR nickname = ?) AND (lastname = ? OR namemod= ?) AND state = ?", $repfirstname, $repfirstname, $replastname, $replastname, $gcivics['normalizedInput']['state'] );
+		$reparray[2] = $rep[0]['govtrackid'];
+		
 		foreach($gtrackRep['objects'] as $reps)
 		{
 			
@@ -262,6 +288,7 @@
 			}
 			$index++;
 		}
+		*/
 			
 		//dump($reparray); for troubleshooting
 		
