@@ -9,7 +9,8 @@
         //if the username or password or confirm password fields are empty
 		if (!empty($_POST["email1"]))
 		{
-			render("register_form.php", ["title" => "Register","email" => $_POST["email1"]]);
+			dump($_POST["email1"]);
+			render("register_form.php", ["title" => "Register","email1" => $_POST["email1"]]);
 
 		}
         if (empty($_POST["password"]) || empty($_POST["confirmation"])) 

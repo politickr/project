@@ -14,7 +14,7 @@
                       <div class="form-group" style="color:blue;">
                           <label for="email">Email</label>
                           <br>
-                          <input class="form-control" name="email" placeholder=<?php $email1 ?> type="email"/>
+                          <input class="form-control" name="email" placeholder="<?php echo {$email1}?>" type="email"/>
                       </div>
                       <div class="form-group" style="color:blue;">
                           <label for="address">Address</label>
