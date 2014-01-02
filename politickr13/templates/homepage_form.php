@@ -17,13 +17,26 @@
           <p></p>
           
           <br><br><br>
+          <div class="col-lg-12" text-center v-center">
           
+          <div class="col-md-6 v-center">
           <form class="col-lg-12" action="search.php" method="post" role="search">
             <div class="input-group" style="width:340px;text-align:center;margin:0 auto;">
-            <input type="text" class="form-control input-lg" title="Don't worry. We hate spam, and will not share your email with anyone." placeholder="Enter your address">
-              <span class="input-group-btn"><button class="btn btn-lg btn-primary" type="button">Find Reps</button></span>
+            <input type="text" name="address" class="form-control input-lg" placeholder="Enter your address">
+              <span class="input-group-btn"><button class="btn btn-lg btn-primary" type="submit">Find Reps</button></span>
             </div>
           </form>
+        </div>
+        
+         <div class="col-md-6 v-center">
+          <form class="col-lg-12" action="register.php" method="post" role="register">
+            <div class="input-group" style="width:340px;text-align:center;margin:0 auto;">
+            <input type="text" name="email" class="form-control input-lg" placeholder="Enter your email">
+              <span class="input-group-btn"><button class="btn btn-lg btn-primary" type="submit">Register</button></span>
+            </div>
+          </form>
+        </div>
+        </div>
         </div>
         
       </div> <!-- /row -->
