@@ -29,7 +29,7 @@
         </div>
         
          <div class="col-md-6 v-center">
-          <form class="col-lg-12" action="register.php" method="post" role="register_form">
+          <form class="col-lg-12" action="register.php" method="post" role="register">
             <div class="input-group" style="width:340px;text-align:center;margin:0 auto;">
             <input type="text" name="email" class="form-control input-lg" placeholder="Enter your email">
               <span class="input-group-btn"><button class="btn btn-lg btn-primary" type="submit">Register</button></span>
