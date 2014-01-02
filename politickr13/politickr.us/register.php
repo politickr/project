@@ -51,7 +51,7 @@
 				}
 					
 				$temp = new User($_POST['username'], $_POST['email'], $repobjects[0],$repobjects[1], $repobjects[2], 0);
-				$x = query("INSERT INTO users (username, hash, email, senator1id, senator2id, repid, votethreshold, object) VALUES(?, ?, ?, ?, ?, ?, ?, ?)", $temp->getName(), crypt($_POST["password"]), $temp->getEmail(), $RepProfiles[0]['person']['id'], $RepProfiles[1]['person']['id'], $RepProfiles[2]['person']['id'], 0, serialize($temp));
+				$x = query("INSERT INTO users (username, hash, email, senator1id, senator2id, repid, votethreshold, object) VALUES(?, ?, ?, ?, ?, ?, ?, ?)", $temp->getName(), crypt($_POST["password"]), $temp->getEmail(), $RepProfiles[0], $RepProfiles[1], $RepProfiles[2], 0, serialize($temp));
 						
 			}
 			
