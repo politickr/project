@@ -29,7 +29,7 @@
            //stores username into variable result
            if(empty($_POST["username"]))
            {
-           		$_POST["username"] = $_SESSION["email"];
+           		$_POST["username"] = $_POST["email"];
            }
            
            $result = query("SELECT * FROM users WHERE username = ?", $_POST["username"]);
@@ -55,7 +55,7 @@
 					$index++;
 				}
 					
-				$temp = new User($_POST['username'], $_SESSION['email'], $repobjects[0],$repobjects[1], $repobjects[2], 0);
+				$temp = new User($_POST['username'], $_POST['email'], $repobjects[0],$repobjects[1], $repobjects[2], 0);
 				$x = query("INSERT INTO users (username, hash, email, senator1id, senator2id, repid, votethreshold, object) VALUES(?, ?, ?, ?, ?, ?, ?, ?)", $temp->getName(), crypt($_POST["password"]), $temp->getEmail(), $RepProfiles[0], $RepProfiles[1], $RepProfiles[2], 0, serialize($temp));
 						
 			}

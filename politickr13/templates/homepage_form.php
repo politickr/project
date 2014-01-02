@@ -30,21 +30,28 @@
         
          <div class="col-md-6 v-center">
           <form class="col-lg-12" action="register.php" method="SESSION" role="register">
-            <div class="input-group" style="width:340px;text-align:center;margin:0 auto;">
-            <input type="text" name="email" class="form-control input-lg" placeholder="Enter your email">
-              <span class="input-group-btn"><button class="btn btn-lg btn-primary" type="submit">Register</button></span>
-            </div>
+            			<div class="form-group">
+                          <input autofocus class="form-control" name="username" placeholder="Enter Username" type="text"/>
+                     </div>
+                     <div class="form-group" >
+                         <input class="form-control" name="email" placeholder='Enter email address' type="email"/>
+                     </div>
+                     <div class="form-group">
+                         <input class="form-control" name="address" placeholder="Enter street address" type="text"/>                      </div>
+                      <div class="form-group">
+                          <input class="form-control" name="password" placeholder="Enter a password" type="text"/>
+            			</div>
+              <span class="input-group-btn"><button class="btn btn-lg" type="submit">Register</button></span>
+            
           </form>
         </div>
-        </div>
-        </div>
-        
-      </div> <!-- /row -->
   
   
   	<br><br><br><br><br>
-
-</div> <!-- /container full -->
+    </div>
+    </div>
+    </div>
+    </div>
 
 
 <div class="container">
