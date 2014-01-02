@@ -25,15 +25,20 @@
             apologize("You must provide an address.");
         }
 
-        $Congressmen = getReps($_POST["address"]);
+        $ids = getReps($_POST["address"]);
 
-        if($Congressmen === NULL)
+        if($ids === NULL)
         {
             apologize("Congressmen NOT FOUND");
         }
         else
         {
-            render("index_form.php", ["Congressmen" => $Congressmen]);
+			$repinformation;
+			foreach($ids as $id)
+			{
+				$repinformation[$id] = query("SELECT * FROM representatives WHERE govtrackid = ?", $id);
+			}
+            render("index_form.php", ["repinformation" => $repinformation]);
         }            
     }
     else
