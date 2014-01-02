@@ -156,7 +156,6 @@
 			apologize('Please reenter your address');
 		}
 		// Find where the representatives are indexed, assign to position variable
-		// use dump($gcivics) to troubleshoot.
 		foreach( $gcivics['offices'] as $offices)
 		{
 			$isitrep = explode(" ", $offices['name']);
@@ -172,6 +171,7 @@
 				$reppos=$offices["officialIds"][0];
 			}
 		}
+
 		//Get representative arrays from position variable index
 		$sen1 = $gcivics['officials'][$sen1pos];
 		$sen2 = $gcivics['officials'][$sen2pos];
