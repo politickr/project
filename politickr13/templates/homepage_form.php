@@ -29,21 +29,23 @@
         </div>
         
          <div class="col-md-6 v-center">
-          <form class="col-lg-12" action="register.php" method="SESSION" role="register">
+         	<div class="col-md-2">
+            </div>
+            
+          <form class="col-md-8" action="register.php" method="post" role="register">
             			<div class="form-group">
                           <input autofocus class="form-control" name="username" placeholder="Enter Username" type="text"/>
-                     </div>
-                     <div class="form-group" >
-                         <input class="form-control" name="email" placeholder='Enter email address' type="email"/>
                      </div>
                      <div class="form-group">
                          <input class="form-control" name="address" placeholder="Enter street address" type="text"/>                      </div>
                       <div class="form-group">
-                          <input class="form-control" name="password" placeholder="Enter a password" type="text"/>
+                          <input class="form-control" name="password" placeholder="Enter a password" type="password"/>
             			</div>
-              <span class="input-group-btn"><button class="btn btn-lg" type="submit">Register</button></span>
+              <div><button class="btn btn-lg" type="submit">Register</button></div>
             
           </form>
+          	<div class="col-md-2">
+            </div>
         </div>
   
   
