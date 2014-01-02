@@ -43,16 +43,16 @@
 			<li>
 			 <?php if(isset($_SESSION["user"])):?>
 			 <!-- Single button -->
-			 <div class="btn-group">
-				<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"> <?php echo $_SESSION["user"]['username']?> <span class="caret"></span></button>
-				<ul class="dropdown-menu" role="menu">
-				<li><a href="#">Action</a></li>
-				<li><a href="#">Another action</a></li>
-				<li><a href="#">Something else here</a></li>
-				<li class="divider"></li>
-				<li><a href="logout.php">Logout</a></li>
+			 <li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown"> <?php echo $_SESSION["user"]['username']?> <b class="caret"></b></a>
+				<ul class="dropdown-menu">
+					<li><a href="#">Action</a></li>
+					<li><a href="#">Another action</a></li>
+					<li><a href="#">Something else here</a></li>
+					<li class="divider"></li>
+					<li><a href="logout.php">Logout</a></li>
 				</ul>
-			</div>
+			</li>
 			<?php else:?>
 				<form action="login.php" method="post" class="navbar-form navbar-left" role="search">
       
@@ -64,8 +64,6 @@
 					</div>
 					<button type="submit" class="btn btn-default">Log In</button>
 				</form>
-	
-
 			<?php endif ?>
 			</li>
 			</ul>
