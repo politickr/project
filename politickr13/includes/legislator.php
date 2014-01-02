@@ -6,10 +6,9 @@ class Legislator {
 	private $votes, $users;
 	
 	public function __construct($i) {
-		global $id;
+		global $id, $votes, $users;
 		$id = $i;
-		global $votes;
-		global $users;
+		
 		$votes = new SplObjectStorage();
 		$users = new SplObjectStorage();
 	}
