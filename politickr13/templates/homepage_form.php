@@ -6,63 +6,69 @@
 
   ga('create', 'UA-46444257-1', 'politickr.us');
   ga('send', 'pageview');
-	
 </script> 
-<img src="img/main-split.svg" style="position:absolute; display:block; width: 100%; height: auto; margin-top:10px;" />
+<div class="container-full">
 
-<div class="container" id="a-content">
-
-    <div class="row target" id="a-row">
-        <div class="col-md-6 col-sm-5" id="a-left">
-            <div class="container a-formcon col-centered">
-           
-       	     <form action="register.php" method="post">
-    <fieldset>
-        <div class="form-group" style="color:blue;">
-            <br>
-            <input autofocus class="form-control" name="username" placeholder="Username" type="text"/>
-        </div>
-        <div class="form-group" style="color:blue;">
-            <br />
-            <input class="form-control" name="email" placeholder="Email" type="email"/>
-        </div>
-        <div class="form-group" style="color:blue;">
-            <br />
-            <input class="form-control" name="address" placeholder="Full Address" type="text"/>
-        </div>
-        <div class="form-group" style="color:blue;">
-            <br />
-            <input class="form-control" name="password" placeholder="Password" type="password"/>
-        </div>
-        <div class="form-group" style="color:blue;">
-            <br />
-            <input class="form-control" name="confirmation" placeholder="Confirm Password" type="password"/>
-        </div>
-        <div class="form-group" style="color:blue;">
-        	<br />
-            <button type="submit" class="btn btn-default">Register</button>
-        </div>
-    </fieldset>
-</form>
+      <div class="row">
+       
+        <div class="col-lg-12 text-center v-center">
+          
+          <h1>Stay informed, get involved.</h1>
+          <p></p>
+          
+          <br><br><br>
+          
+          <form class="col-lg-12" action="search.php" method="post" role="search">
+            <div class="input-group" style="width:340px;text-align:center;margin:0 auto;">
+            <input type="text" class="form-control input-lg" title="Don't worry. We hate spam, and will not share your email with anyone." placeholder="Enter your address">
+              <span class="input-group-btn"><button class="btn btn-lg btn-primary" type="button">Find Reps</button></span>
             </div>
+          </form>
         </div>
-        <div class="col-md-6 col-sm-5" id="a-right">
-            <div class="container a-formcon col-centered">
-            
-        		 <div style="font-family:Arial, Helvetica, sans-serif; font-size:96px; color: #FFFFFF;  margin-top: 75px; margin-right: 400px; line-height: 96px;">Stay informed,<br /> get involved.</div>
-                 
-                 <div style="margin-top: 53px; padding-left: 15px; margin-left: 200px;">
-                 <form action="search.php" method="post" class="navbar-form navbar-left" role="search">
-      
-      <div class="form-group">
-        <input type="text" name="address" class="form-control" placeholder="Address">
-      </div>
-      <button type="submit" class="btn btn-default btn-red">Find Reps</button>
-    </form>
+        
+      </div> <!-- /row -->
+  
+  
+  	<br><br><br><br><br>
+
+</div> <!-- /container full -->
+
+<div class="container">
+  
+  	<hr>
+  
+  	<div class="row">
+        <div class="col-md-4">
+          <div class="panel panel-default">
+            <div class="panel-heading"><h3>Hello.</h3></div>
+            <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate. 
+            Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis 
+            dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan. 
+            Aliquam in felis sit amet augue.
+            </div>
+          </div>
+        </div>
+      	<div class="col-md-4">
+        	<div class="panel panel-default">
+            <div class="panel-heading"><h3>Hello.</h3></div>
+            <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate. 
+            Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis 
+            dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan. 
+            Aliquam in felis sit amet augue.
+            </div>
+          </div>
+        </div>
+      	<div class="col-md-4">
+        	<div class="panel panel-default">
+            <div class="panel-heading"><h3>Hello.</h3></div>
+            <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate. 
+            Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis 
+            dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan. 
+            Aliquam in felis sit amet augue.
+            </div>
+          </div>
+        </div>
     </div>
-        
-        </div>
-        </div>
-        </div>
-        </div>
-        
+  
+</div>
+
