@@ -26,7 +26,7 @@
     
     }
  */
-	if(isset($_SESSION["user"])
+	if(isset($_SESSION["user"]))
 	{
 		redirect("/search.php");
 	}
