@@ -138,13 +138,12 @@
     	
 
 
-		$opts = array('http' =>
-    	array(
-        'method'  => 'POST',
-        'header'  => 'Content-type: application/json',
-        'content' => json_encode($postdata)
-    	)
-		);
+		$opts = array('http' =>array(
+								'method'  => 'POST',
+								'header'  => 'Content-type: application/json',
+								'content' => json_encode($postdata)
+								)
+					);
 
 		$context  = stream_context_create($opts);
 		$gcivicsjson= file_get_contents('https://www.googleapis.com/civicinfo/us_v1/representatives/lookup?key=AIzaSyAHYsujZGNYp0JWhDbyJn5Fol7tuEHNZUg', 'false', $context);
@@ -218,79 +217,6 @@
 			$index++;
 		}
 		
-		/*$reparray[0] = $s1[0]['govtrackid'];
-		$s2= query("SELECT govtrackid FROM representatives WHERE (firstname = ? OR nickname = ?) AND (lastname = ? OR namemod= ?) AND state = ?", $s2firstname, $s2firstname, $s2lastname, $s2lastname, $gcivics['normalizedInput']['state'] );
-		$reparray[1] = $s2[0]['govtrackid'];
-		$rep= query("SELECT govtrackid FROM representatives WHERE (firstname = ? OR nickname = ?) AND (lastname = ? OR namemod= ?) AND state = ?", $repfirstname, $repfirstname, $replastname, $replastname, $gcivics['normalizedInput']['state'] );
-		$reparray[2] = $rep[0]['govtrackid'];
-		
-		foreach($gtrackRep['objects'] as $reps)
-		{
-			
-			if ((((strcasecmp($s1firstname, $reps['person']['firstname']) == 0)) || (strcasecmp($s1firstname, $reps['person']['nickname'])== 0)) && ((strcasecmp($s1lastname,$reps['person']['lastname']) == 0)||(strcasecmp($s1lastname, $reps['person']['namemod']) == 0)) && (strcasecmp($gcivics['normalizedInput']['state'], $reps['state']) == 0))
-			{
-				// add representative array to $reparray which will be returned at end
-				$reparray[0] = $reps;
-				$reparray[0]['index'] = $index;
-				//add photourl to array if it exists
-				if(isset($gcivics['officials'][$sen1pos]['photoUrl']))
-				{
-					$reparray[0]['photoUrl'] = $gcivics['officials'][$sen1pos]['photoUrl'];
-				}
-				else
-				{
-					//if there isn't a photoUrl given, show a picture of cat instead
-					$reparray[0]['photoUrl'] = "img/cat.jpg";
-				}
-				//add email to array if it exists
-				if( isset($gcivics['officials'][$sen1pos]['emails']))
-				{
-					$reparray[0]['emails'] = $gcivics['officials'][$sen1pos]['emails'];
-				}
-			}
-			else if ((((strcasecmp($s2firstname, $reps['person']['firstname']) == 0)) || (strcasecmp($s2firstname, $reps['person']['nickname'])== 0)) && ((strcasecmp($s2lastname,$reps['person']['lastname']) == 0)||(strcasecmp($s2lastname, $reps['person']['namemod']) == 0)) && (strcasecmp($gcivics['normalizedInput']['state'], $reps['state']) == 0))
-			{
-				
-				$reparray[1] = $reps;
-				$reparray[1]['index'] = $index;
-				if( isset($gcivics['officials'][$sen2pos]['photoUrl']))
-				{
-					$reparray[1]['photoUrl'] = $gcivics['officials'][$sen2pos]['photoUrl'];
-				}
-				else
-				{
-					$reparray[1]['photoUrl'] = "img/cat.jpg";
-				}
-				
-				
-				if( isset($gcivics['officials'][$sen2pos]['emails']))
-				{
-					$reparray[1]['emails'] = $gcivics['officials'][$sen2pos]['emails'];
-				}
-			}
-			else if ((((strcasecmp($repfirstname, $reps['person']['firstname']) == 0)) || (strcasecmp($repfirstname, $reps['person']['nickname'])== 0)) && ((strcasecmp($replastname,$reps['person']['lastname']) == 0)||(strcasecmp($replastname, $reps['person']['namemod']) == 0)) && (strcasecmp($gcivics['normalizedInput']['state'], $reps['state']) == 0))
-			{
-				
-				$reparray[2] = $reps;
-				$reparray[2]['index'] = $index;
-				if( isset($gcivics['officials'][$reppos]['photoUrl']))
-				{
-					$reparray[2]['photoUrl'] = $gcivics['officials'][$reppos]['photoUrl'];
-				}
-				else
-				{
-					$reparray[2]['photoUrl'] = "img/cat.jpg";
-				}
-				if( isset($gcivics['officials'][$reppos]['emails']))
-				{
-					$reparray[2]['emails'] = $gcivics['officials'][$reppos]['emails'];
-				}
-			}
-			$index++;
-		}
-		*/
-			
-		//dump($reparray); for troubleshooting
 		
 		return $reparray;
         exit;
