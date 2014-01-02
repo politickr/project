@@ -41,18 +41,17 @@
 				{
 					apologize("Invalid Address");
 				}
+				$repobjects;
+				$index= 0;
+				foreach($RepProfiles as $govtrackid)
+				{
+					$result = query("SELECT object FROM representatives WHERE govtrackid = ?", $govtrackid);
+					$repobjects[$index] = unserialize($result[0]['object']);
+					$index++;
+				}
 					
-					$s1 = query("SELECT object FROM representatives WHERE govtrackid = ?", $RepProfiles[0]['person']['id']);
-					$senOne = unserialize($s1[0]['object']);
-					$s2 = query("SELECT object FROM representatives WHERE govtrackid = ?", $RepProfiles[1]['person']['id']);
-					$senTwo = unserialize($s2[0]['object']);
-					$s3 = query("SELECT object FROM representatives WHERE govtrackid = ?", $RepProfiles[2]['person']['id']);
-					$rep = unserialize($s3[0]['object']);
-					
-					$temp = new User($_POST['username'], $_POST['email'], $senOne, $senTwo, $rep, 0);
-					
-					
-					$x = query("INSERT INTO users (username, hash, email, senator1id, senator2id, repid, votethreshold, object) VALUES(?, ?, ?, ?, ?, ?, ?, ?)", $temp->getName(), crypt($_POST["password"]), $temp->getEmail(), $RepProfiles[0]['person']['id'], $RepProfiles[1]['person']['id'], $RepProfiles[2]['person']['id'], 0, serialize($temp));
+				$temp = new User($_POST['username'], $_POST['email'], $repobjects[0],$repobjects[1], $repobjects[2], 0);
+				$x = query("INSERT INTO users (username, hash, email, senator1id, senator2id, repid, votethreshold, object) VALUES(?, ?, ?, ?, ?, ?, ?, ?)", $temp->getName(), crypt($_POST["password"]), $temp->getEmail(), $RepProfiles[0]['person']['id'], $RepProfiles[1]['person']['id'], $RepProfiles[2]['person']['id'], 0, serialize($temp));
 						
 			}
 			
@@ -66,9 +65,8 @@
                
              $id = $rows[0]["id"];
              $_SESSION["id"] = $id;
-               
-           
-             redirect("/");                                  
+             notify('Registrations successful! You are now logged in!');
+             //redirect("/");                                  
            
                       
         }

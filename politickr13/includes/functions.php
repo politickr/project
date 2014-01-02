@@ -370,7 +370,15 @@
         require("../templates/dump.php");
         exit;
     }
-
+	 /**
+     * Renders a form to give a notification.
+     *
+     */
+	function notify($message)
+    {
+        render("notify.php", ["message" => $message]);
+        exit;
+    }
     /**
      * Logs out current user, if any.  Based on Example #1 at
      * http://us.php.net/manual/en/function.session-destroy.php.
