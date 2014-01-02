@@ -6,6 +6,7 @@
     // if form was submitted
     if ($_SERVER["REQUEST_METHOD"] == "POST")
     {
+		if (empty($_POST['email']) && !empty($_POST['username'])) {	
         //if the username or password or confirm password fields are empty
         if (empty($_POST["password"]) || empty($_POST["confirmation"])) 
         {
@@ -68,9 +69,15 @@
              notify('Registration successful! You are now logged in!');
              //redirect("/");                                  
                
-        }
-          
-	} 
+        
+		}
+		}
+		 else {
+			$_SESSION['email'] = $_POST['email'];
+			dump($_SESSION['email']);
+			render("register_form.php", ["title" => "Register"]);
+		}
+	}
     else
     {
         // else render form
