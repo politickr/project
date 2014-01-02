@@ -8,7 +8,7 @@
   ga('send', 'pageview');
 	
 </script> 
-<img style="position:absolute; display:block; width: 100%; margin-top:10px;" src="img/main-split.svg" />
+<img src="img/main-split.svg" style="position:absolute; display:block; width: 100%; height: auto; margin-top:10px;" />
 
 <div class="container" id="a-content">
 

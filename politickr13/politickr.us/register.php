@@ -1,7 +1,7 @@
 <?php
 
     // configuration
-    require("../includes/config2.php");
+    require("../includes/config.php");
 
     // if form was submitted
     if ($_SERVER["REQUEST_METHOD"] == "POST")
@@ -35,6 +35,7 @@
            }
            //retrieves IDs of the representatives of user
 		   if(! empty($_POST['address']))
+		   $senOne = query("SELECT * FROM");
 			{
 				$RepProfiles = getReps($_POST["address"]);
 				if ($RepProfiles === NULL)
