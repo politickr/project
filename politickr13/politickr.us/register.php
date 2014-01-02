@@ -7,6 +7,11 @@
     if ($_SERVER["REQUEST_METHOD"] == "POST")
     {
         //if the username or password or confirm password fields are empty
+		if (!empty($_POST["email1"]))
+		{
+			render("register_form.php", ["title" => "Register","email" => $_POST["email1"]]);
+
+		}
         if (empty($_POST["password"]) || empty($_POST["confirmation"])) 
         {
            //rejects input 

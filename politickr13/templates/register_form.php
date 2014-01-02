@@ -1,9 +1,3 @@
-<?php
-	if ($_SERVER['REQUEST_METHOD']=='POST') {
-		$_SESSION['email']=$_POST['email'];
-	}
-?>
-
 <div class="container">
 	<div class="row">
         <div class="col-lg-12 text-center v-center">
@@ -20,7 +14,7 @@
                       <div class="form-group" style="color:blue;">
                           <label for="email">Email</label>
                           <br>
-                          <input class="form-control" name="email" placeholder=<?php echo $_POST['email'] ?> type="email"/>
+                          <input class="form-control" name="email" placeholder=<?php $email1 ?> type="email"/>
                       </div>
                       <div class="form-group" style="color:blue;">
                           <label for="address">Address</label>
