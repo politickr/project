@@ -33,4 +33,9 @@ h1 {
 .v-center {
   margin-top:7%;
 }
+
+.main-header-text {
+	font-family:Helvetica, Arial, sans-serif;
+	font-size: 64px;
+}
   

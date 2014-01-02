@@ -11,18 +11,22 @@
 
       
 	<div class="row">
-		<div class="col-sm-6 text-center">
-			<h1>Stay informed.</h1>
+    	<div class="col-sm-1"></div>
+		<div class="col-sm-4 text-center">
+			<h1 class="main-header-text">Stay informed.</h1>
 		</div>
-		<div class="col-sm-6 text-center">
-			<h1>Get involved.</h1>
+        <div class="col-sm-2"></div>
+		<div class="col-sm-4 text-center">
+			<h1 class="main-header-text">Get involved.</h1>
 		</div>
+        <div class="col-sm-1"></div>
 	</div>
        
 	<br /><br /><br /><br />
     
 	<div class="row">
 		<div class="col-md-4 text-center v-center">
+        	<div class="col-md-4"></div>
 			<form class="col-md-8" action="search.php" method="post" role="search">
 				<div class="form-group">
 					<input type="text" name="address" class="form-control input-lg" placeholder="Enter your address">
@@ -41,19 +45,20 @@
         	<form class="col-md-8" action="register.php" method="post" role="register">
          	<br /><br />
             	<div class="form-group">
-                	<input autofocus class="form-control" name="username" placeholder="Enter Username" type="text"/>
+                	<input autofocus class="form-control" name="username" placeholder="Username" type="text"/>
                 </div>
                 <div class="form-group" style="color:blue;">
-            		<input class="form-control" name="email" placeholder="Email" type="email"/>
+            		<input class="form-control" name="email" placeholder="Email" type="Email Address"/>
         		</div>
                 <div class="form-group">
-                	<input class="form-control" name="address" placeholder="Enter street address" type="text"/>
+                	<input class="form-control" name="address" placeholder="Street Address" type="text"/>
                 </div>
                 <div class="form-group">
-                	<input class="form-control" name="password" placeholder="Enter a password" type="password"/>
+                	<input class="form-control" name="password" placeholder="Password" type="password"/>
             	</div>
               		<button class="btn btn-lg" type="submit">Register</button>
           	</form>
+            <div class="col-md-4"></div>
         </div>
   		<br><br><br><br><br>
         
