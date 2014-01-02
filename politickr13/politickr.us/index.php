@@ -26,8 +26,14 @@
     
     }
  */
- 
-    // render homepage
-    render("homepage_form.php", ["title" => "Politickr"]);
+	if(isset($_SESSION["user"])
+	{
+		redirect("/search.php");
+	}
+	else
+	{
+		// render homepage
+		render("homepage_form.php", ["title" => "Politickr"]);
+	}
 
 ?>
