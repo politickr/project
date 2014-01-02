@@ -3,26 +3,18 @@
     // configuration
     require("../includes/config.php");
 	
-	if ($_SERVER['REQUEST_METHOD'] == 'SESSION') {
-		render("register_form.php", ["title" => "Register"]);
-	}
-
     // if form was submitted
     if ($_SERVER["REQUEST_METHOD"] == "POST")
     {
 		
         //if the username or password or confirm password fields are empty
-        if (empty($_POST["password"]) || empty($_POST["confirmation"])) 
+        if (empty($_POST["password"])) 
         {
            //rejects input 
            apologize("You must provide a username, an email, an address, and a password"); 
         }
         //if password and confirm password DO NOT match
-        else if ($_POST["password"] != $_POST["confirmation"])
-        {
-           //rejects input
-           apologize("Oops, re-confirm your password!"); 
-        }        
+              
         else
         {
 			

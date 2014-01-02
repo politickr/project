@@ -9,52 +9,56 @@
 </script> 
 <div class="container-full">
 
-      <div class="row">
+      
+	<div class="row">
+		<div class="col-sm-6 text-center">
+			<h1>Stay informed.</h1>
+		</div>
+		<div class="col-sm-6 text-center">
+			<h1>Get involved.</h1>
+		</div>
+	</div>
        
-        <div class="col-lg-12 text-center v-center">
-          
-          <h1>Stay informed, get involved.</h1>
-          <p></p>
-          
-          <br><br><br>
-          <div class="col-lg-12" text-center v-center>
-          
-          <div class="col-md-6 v-center">
-          <form class="col-lg-12" action="search.php" method="post" role="search">
-            <div class="input-group" style="width:340px;text-align:center;margin:0 auto;">
-            <input type="text" name="address" class="form-control input-lg" placeholder="Enter your address">
-              <span class="input-group-btn"><button class="btn btn-lg btn-primary" type="submit">Find Reps</button></span>
-            </div>
-          </form>
+	<br /><br /><br /><br />
+    
+	<div class="row">
+		<div class="col-md-4 text-center v-center">
+			<form class="col-md-8" action="search.php" method="post" role="search">
+				<div class="form-group">
+					<input type="text" name="address" class="form-control input-lg" placeholder="Enter your address">
+				</div>
+				<br />
+				<button class="btn btn-lg btn-primary" type="submit">Find Reps</button>
+			</form>
+		</div>
+
+
+        <div class="col-md-4 text-center">
+        	<img src="img/main-or.svg" />
         </div>
         
-         <div class="col-md-6 v-center">
-         	<div class="col-md-2">
-            </div>
-            
-          <form class="col-md-8" action="register.php" method="post" role="register">
-            			<div class="form-group">
-                          <input autofocus class="form-control" name="username" placeholder="Enter Username" type="text"/>
-                     </div>
-                     <div class="form-group">
-                         <input class="form-control" name="address" placeholder="Enter street address" type="text"/>                      </div>
-                      <div class="form-group">
-                          <input class="form-control" name="password" placeholder="Enter a password" type="password"/>
-            			</div>
-              <div><button class="btn btn-lg" type="submit">Register</button></div>
-            
-          </form>
-          	<div class="col-md-2">
-            </div>
+        <div class="col-md-4 text-center">
+        	<form class="col-md-8" action="register.php" method="post" role="register">
+         	<br /><br />
+            	<div class="form-group">
+                	<input autofocus class="form-control" name="username" placeholder="Enter Username" type="text"/>
+                </div>
+                <div class="form-group" style="color:blue;">
+            		<input class="form-control" name="email" placeholder="Email" type="email"/>
+        		</div>
+                <div class="form-group">
+                	<input class="form-control" name="address" placeholder="Enter street address" type="text"/>
+                </div>
+                <div class="form-group">
+                	<input class="form-control" name="password" placeholder="Enter a password" type="password"/>
+            	</div>
+              		<button class="btn btn-lg" type="submit">Register</button>
+          	</form>
         </div>
-  
-  
-  	<br><br><br><br><br>
+  		<br><br><br><br><br>
+        
     </div>
-    </div>
-    </div>
-    </div>
-
+</div>
 
 <div class="container">
   
