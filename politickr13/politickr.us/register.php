@@ -46,6 +46,10 @@
 				if(empty($_POST['updatefreq'])) {
 				
 					$temp = new User($_POST['username'], $_POST['email'], $RepProfiles[0]['person']['id'], $RepProfiles[1]['person']['id'], $RepProfiles[2]['person']['id'], 0);
+					
+					$s1 = query("SELECT object FROM representatives WHERE govtrackid = ?", $RepProfiles[0]['person']['id']);
+					dump($s1);
+					
 					$x = query("INSERT INTO users (username, hash, email, senator1id, senator2id, repid, updatefreq, object) VALUES(?, ?, ?, ?, ?, ?, ?)", $temp->getName(), crypt($_POST["password"]), $temp->getEmail(), $RepProfiles[0]['person']['id'], $RepProfiles[1]['person']['id'], $RepProfiles[2]['person']['id'], 0, serialize($temp));
 				}
 				else
