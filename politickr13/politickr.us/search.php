@@ -6,14 +6,18 @@
     // if form was submitted
 	if( !empty($_SESSION["user"]["senator1id"]) || !empty($_SESSION["user"]["senator2id"]) || !empty($_SESSION["user"]["repid"]))
 	{
-		 $Congressmen = getSavedReps($_SESSION["user"]["senator1id"],$_SESSION["user"]["senator2id"],$_SESSION["user"]["repid"]);
-		 if($Congressmen === NULL)
+		 $order = array( 0 => $_SESSION["user"]["senator1id"],
+						1 => $_SESSION["user"]["senator2id"],
+						2 => $_SESSION["user"]["repid"],
+						);
+		 $repinformation = getSavedReps($order);
+		 if($repinformation === NULL)
         {
             apologize("There was an error in retrieving your representatives.");
         }
         else
         {
-            render("index_form.php", ["Congressmen" => $Congressmen]);
+            render("index_form.php",  ["repinformation" => $repinformation]);
         }            
 		
 	}

@@ -321,15 +321,15 @@
 	Takes in the person ids of each of the representatives.
 	Makes 3 get requests to Govtrack API and returns an array of the three person objects.
 	*/
-	function getSavedReps( $sen1id , $sen2id, $repid)
+	function getSavedReps( $ids)
 	{
 		//get JSON from govtrack of all reps (max limit is 600)
-        $sen1json = file_get_contents('http://www.govtrack.us/api/v2/person/'.$sen1id);
-		$reparray[0] = json_decode($sen1json,true); 
-		$sen2json = file_get_contents('http://www.govtrack.us/api/v2/person/'.$sen2id);
-		$reparray[1] = json_decode($sen2json,true); 
-		$repjson = file_get_contents('http://www.govtrack.us/api/v2/person/'.$repid);
-		$reparray[2] = json_decode($repjson,true); 
+		//dump($ids);
+		$reparray;
+        foreach($ids as $id)
+			{
+				$reparray[$id] = query("SELECT * FROM representatives WHERE govtrackid = ?", $id);
+			}
 		//dump($reparray);
 		return $reparray; 
 		
