@@ -76,59 +76,7 @@
     }
     
      /**
-     * Takes in address and returns array of Representative arrays, 0,1 index are senators, 2 index is representative. 
-     How to use:
-     Where x is the index of the wanted representative in the Representative array
-     Different keys in associative array:
-     [congress_numbers] => Array
-                        (
-                            [0] => 112
-                            [1] => 113
-                            [2] => 114
-                        )
-
-                    [current] => 1
-                    [description] => Junior Senator from Missouri
-                    [district] => 
-                    [enddate] => 2017-01-03
-                    [id] => 268
-                    [party] => Republican
-                    [person] => Array
-                        (
-                            [bioguideid] => B000575
-                            [birthday] => 1950-01-10
-                            [cspanid] => 45465
-                            [firstname] => Roy
-                            [gender] => male
-                            [gender_label] => Male
-                            [id] => 400034
-                            [lastname] => Blunt
-                            [link] => https://www.govtrack.us/congress/members/roy_blunt/400034
-                            [middlename] => 
-                            [name] => Sen. Roy Blunt [R-MO]
-                            [namemod] => 
-                            [nickname] => 
-                            [osid] => N00005195
-                            [pvsid] => 418
-                            [sortname] => Blunt, Roy (Sen.) [R-MO]
-                            [twitterid] => RoyBlunt
-                            [youtubeid] => SenatorBlunt
-                        )
-
-                    [phone] => 202-224-5721
-                    [role_type] => senator
-                    [role_type_label] => Senator
-                    [senator_class] => class3
-                    [senator_class_label] => Class 3
-                    [senator_rank] => junior
-                    [senator_rank_label] => Junior
-                    [startdate] => 2011-01-05
-                    [state] => MO
-                    [title] => Sen.
-                    [title_long] => Senator
-                    [website] => http://www.blunt.senate.gov
-     so for ex: $firstname = $data['objects'][x]['person']['firstname'];
-     or for website $data['objects'][x]['website']
+     * Takes in address and returns array the govtrack ids of the representatives at that address.
      */
     function getReps($address)
     {
