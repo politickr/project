@@ -454,7 +454,44 @@
         // exit immediately since we're redirecting anyway
         exit;
     }
-
+	 /**
+     * Loads all of the representative info from the govtrack person API to the representatives
+     * mySQL table. Empty fields are entered as 0. 
+     */
+    function load()
+    {
+    	$gtrackRepjson = file_get_contents('https://www.govtrack.us/api/v2/role?current=true&limit=600');
+    	$gtrackRep = json_decode($gtrackRepjson,true); 
+		// iterate through govtrack representative arrays
+		foreach($gtrackRep['objects'] as $reps)
+		{
+			foreach($reps as &$elements)
+			{
+				if(!isset($elements))
+				{
+					//dump($elements);
+					$elements = 0;
+				}
+			}
+			//dump($reps);
+			foreach($reps['person'] as &$elements)
+			{
+				if(empty($elements))
+				{
+					$elements = 0;
+				}
+			}
+			//dump($reps);
+			//if( !empty($reps['person']['namemod']) && !empty($reps['person']['nickname']) && !empty($reps['district']))
+			//{
+			$x = query("INSERT INTO representatives (lastname, firstname, namemod, nickname, description, party, startdate, enddate, phone, website, title, birthday, link, govtrackid, bioguideid, cspanid, osid,pvsid,twitterid,youtubeid, district, state, object) VALUES(?, ?, ?, ?, ?, ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", $reps['person']['lastname'], $reps['person']['firstname'], $reps['person']['namemod'], $reps['person']['nickname'], $reps['description'], $reps['party'], $reps['startdate'], $reps['enddate'], $reps['phone'], $reps['website'], $reps['title'], $reps['person']['birthday'], $reps['person']['link'], $reps['person']['id'], $reps['person']['bioguideid'],$reps['person']['cspanid'],$reps['person']['osid'],$reps['person']['pvsid'],$reps['person']['twitterid'],$reps['person']['youtubeid'],$reps['district'],$reps['state'], serialize(new Legislator($reps['person']['id']));
+			if($x === false)
+			{
+				apologize("There was an error loading representatives");
+				//dump($reps);
+			}
+		}
+    }
     /**
      * Renders template, passing in values.
      */
