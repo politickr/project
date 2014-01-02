@@ -74,6 +74,27 @@
         render("apology.php", ["message" => $message]);
         exit;
     }
+	
+	
+	/**
+     * Emails someone. 
+     */
+    function email($email, $subject, $body)
+    {
+        //$to = "recipient@example.com";
+		//$subject = "Hi!";
+		//$body = "Hi,\n\nHow are you?";
+		if (mail($to, $subject, $body)) 
+		{
+			return("<p>Email successfully sent!</p>");
+		} 
+		else 
+		{
+			return("<p>Email delivery failed…</p>");
+		}
+        exit;
+    }
+	
     
      /**
      * Takes in address and returns array the govtrack ids of the representatives at that address.
