@@ -19,6 +19,15 @@
     print("<div class=\"row\">");
     print("$totalotherbill Other");
     print("</div>");
+	
+	print("<div class=\"row\">");
+    print("Current Status: <br> {$billinfo["current_status_date"]}:{$billinfo["current_status_label"]}:{$billinfo["current_status_description"]}");
+    print("</div>");
+	
+	print("<div class=\"row\">");
+    print("Alive?: <br> {$billinfo["is_alive"]}");
+    print("</div>");
+
     
     print("<div class=\"row\">");
     print("<a href = {$billinfo["thomas_link"]}>Link</a>");
