@@ -44,7 +44,7 @@
 			 <?php if(isset($_SESSION["user"])):?>
 			 <!-- Single button -->
 			 <div class="btn-group">
-				<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Action <span class="caret"></span></button>
+				<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"> <?php echo $_SESSION["user"]['username']?> <span class="caret"></span></button>
 				<ul class="dropdown-menu" role="menu">
 				<li><a href="#">Action</a></li>
 				<li><a href="#">Another action</a></li>
