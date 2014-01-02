@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> aa1887e518af695f262210d809a997e497f82c3a
 <div class="container">
 	<div class="row">
         <div class="col-lg-12 text-center v-center">
@@ -15,7 +18,11 @@
                       <div class="form-group" style="color:blue;">
                           <label for="email">Email</label>
                           <br>
+<<<<<<< HEAD
                           <input class="form-control" name="email" placeholder=<?php echo $_SESSION['email'] ?> type="email"/>
+=======
+                          <input class="form-control" name="email" placeholder="<?php echo {$email1}?>" type="email"/>
+>>>>>>> aa1887e518af695f262210d809a997e497f82c3a
                       </div>
                       <div class="form-group" style="color:blue;">
                           <label for="address">Address</label>

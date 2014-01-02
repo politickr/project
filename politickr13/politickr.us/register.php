@@ -2,11 +2,15 @@
 
     // configuration
     require("../includes/config.php");
+	
+	if ($_SERVER['REQUEST_METHOD'] == 'SESSION') {
+		render("register_form.php", ["title" => "Register"]);
+	}
 
     // if form was submitted
     if ($_SERVER["REQUEST_METHOD"] == "POST")
     {
-		if (empty($_POST['email']) && !empty($_POST['username'])) {	
+		
         //if the username or password or confirm password fields are empty
         if (empty($_POST["password"]) || empty($_POST["confirmation"])) 
         {
@@ -71,12 +75,7 @@
                
         
 		}
-		}
-		 else {
-			$_SESSION['email'] = $_POST['email'];
-			dump($_SESSION['email']);
-			render("register_form.php", ["title" => "Register"]);
-		}
+		
 	}
     else
     {
