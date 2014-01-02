@@ -17,7 +17,7 @@
           <p></p>
           
           <br><br><br>
-          <div class="col-lg-12" text-center v-center">
+          <div class="col-lg-12" text-center v-center>
           
           <div class="col-md-6 v-center">
           <form class="col-lg-12" action="search.php" method="post" role="search">
@@ -32,7 +32,7 @@
           <form class="col-lg-12" action="register.php" method="post" role="register">
             <div class="input-group" style="width:340px;text-align:center;margin:0 auto;">
             <input type="text" name="email" class="form-control input-lg" placeholder="Enter your email">
-              <span class="input-group-btn"><button class="btn btn-lg btn-primary" type="submit">Register</button></span>
+              <span class="input-group-btn"><button class="btn btn-lg btn-primary" type="submit" href="register_form.php">Register</button></span>
             </div>
           </form>
         </div>
@@ -45,6 +45,7 @@
   	<br><br><br><br><br>
 
 </div> <!-- /container full -->
+
 
 <div class="container">
   
