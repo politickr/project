@@ -10,7 +10,6 @@
 		<stop  offset="0.2362" style="stop-color:#0000EF"/>
 		<stop  offset="0.3142" style="stop-color:#0000CE"/>
 		<stop  offset="0.4864" style="stop-color:#00007C"/>
-		<stop  offset="0.7189" style="stop-color:#000003"/>
 		<stop  offset="1" style="stop-color:#000000"/>
 	</radialGradient>
 	<rect x="-15.116" y="-1.5" fill="url(#SVGID_1_)" width="975.116" height="477.25"/>

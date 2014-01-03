@@ -5,7 +5,7 @@ html,body {
 }
 
 h1 {
-  font-family: 'Antic Slab', sans-serif;
+  font-family: 'Helvetica', Arial, sans-serif;
   font-size:80px;
   color:#DDCCEE;
 }
@@ -36,6 +36,5 @@ h1 {
 
 .main-header-text {
 	font-family:Helvetica, Arial, sans-serif;
-	font-size: 64px;
+	font-size: 50px;
 }
-  
