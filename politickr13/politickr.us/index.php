@@ -28,7 +28,7 @@
  */
 	if(isset($_SESSION["user"]))
 	{
-		redirect("/search.php");
+		redirect("/my_reps.php");
 	}
 	else
 	{

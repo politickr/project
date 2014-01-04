@@ -20,7 +20,7 @@
         }
         else
         {
-            render("index_form.php", ["Congressmen" => $Congressmen]);
+            render("my_reps.php", ["Congressmen" => $Congressmen]);
         }            
     }
     else

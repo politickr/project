@@ -19,7 +19,8 @@
         <script src="/js/jquery-1.10.2.min.js"></script>
         <script src="/js/bootstrap.min.js"></script>
         <script src="/js/scripts.js"></script>
-
+		<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+        
     </head>
 
     <header>

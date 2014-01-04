@@ -1,11 +1,26 @@
 <?php
+require("../includes/config.php"); 
 
-    // configuration
-    require("../includes/config.php"); 
-
-    // if form was submitted
+if( !empty($_SESSION["user"]["senator1id"]) || !empty($_SESSION["user"]["senator2id"]) || !empty($_SESSION["user"]["repid"]))
+	{
+		 $order = array( 0 => $_SESSION["user"]["senator1id"],
+						1 => $_SESSION["user"]["senator2id"],
+						2 => $_SESSION["user"]["repid"],
+						);
+		 $repinformation = getSavedReps($order);
+		 
+		 if($repinformation === NULL)
+        {
+            apologize("There was an error in retrieving your representatives.");
+        }
+        else
+        {
+            render("index_form.php",  ["repinformation" => $repinformation]);
+        }            
+		
+	}
 	
-   if ($_SERVER["REQUEST_METHOD"] == "POST")
+	else  if ($_SERVER["REQUEST_METHOD"] == "POST")
     {
         // validate submission
         if (empty($_POST["address"]))
