@@ -59,23 +59,34 @@
 	months["11"] = "Nov";
 	months["12"] = "Dec";
 	
-	var rectContainers = d3.select("body").selectAll("svg")
-				.data(moddata)
-				.enter()
-				.append("svg")
-				.attr("class", "vote")
-				.attr("width", 720)
-				.attr("height", 100)
-				.attr("viewBox", "0 0 720 100")
-				.style("background-color", "BBBBBB")
-				.style("margin-left", "20%")
-				.style("margin-top", 5);
+	var svg = d3.select("body").append("svg")
+				.attr("height", 3000)
+				.attr("width", 800)
+				.attr("viewBox", "0 0 2000 2000")
+				.style("margin-left", 200);
 				
+	var g = svg.selectAll("g")
+    .data(data)
+  .enter().append("g")
+    .attr("transform", function(d) { return "translate(0," + i * 10 + ")"; });
+
+	
+	g.append("rect")
+				.attr("width", 1500)
+				.attr("height", 300)
+				.attr("y", function(d, i) {
+					return i * 305;
+				})
+				.attr("x", 20)
+				.attr("fill", "#BBBBBB");
 				
-				
-	rectContainers.append("rect")
-				.attr("width", 80)
-				.attr("height", 100)
+	g.append("rect")
+				.attr("width", 200)
+				.attr("height", 300)
+				.attr("x", 20)
+				.attr("y", function(d, i) {
+					return i * 305;
+				})
 				.attr("fill", function(d, i) {
 					if (d.option.value == "Yea") {
 						return "#00F100";
@@ -83,9 +94,18 @@
 					return "#F10000";
 					});
 					
-				
-	rectContainers.append("text")
-				.attr("fill", "#FFFFFF")
+	/*
+	svg.selectAll(".date")
+				.data(moddata)
+				.enter()
+				.attr("width", 200)
+				.attr("height", 300)
+				.attr("x", 20)
+				.attr("y", function(d, i) {
+					return i * 305;
+				})
+				.append("foreignObject")
+				.style("color", "#FFFFFF")
 				.attr("transform", "matrix(1 0 0 1 16 72.1484)")
 				.text(function(d, i) {
 					var date = d.created;
@@ -98,7 +118,9 @@
 					});	
 					
 	rectContainers.append("foreignObject")
-				//.attr("href","bill.php?bill="+d.vote.related_bill) 
+				.attr("href", function(d, i) {
+					return "bill.php?bill=" + d.vote.related_bill;
+				})
 				.attr("x", 100) 
 				.attr("y", 20)
 				.attr("width", 600)
@@ -107,7 +129,8 @@
 				.text(function(d, i) {
 					var q = d.vote.question;
 					return q;
-					});	
+					});	*/
+					
 	</script>
 </body>
 

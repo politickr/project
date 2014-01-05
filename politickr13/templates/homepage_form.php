@@ -26,8 +26,8 @@
       						</form>
                              <form action="register.php" method="post" class="form-signin" id="main3" style="position:absolute; display:none">
         						<input type="text" name="username" class="input-block-level" placeholder="Username">
-        						<input type="password" name="email" class="input-block-level" placeholder="Email address">
-                                <input type="password" name="address" class="input-block-level" placeholder="Street address">
+        						<input type="text" name="email" class="input-block-level" placeholder="Email address">
+                                <input type="text" name="address" class="input-block-level" placeholder="Street address">
                                 <input type="password" name="password" class="input-block-level" placeholder="Password">
         						<button class="btn btn-large btn-primary" type="submit">S</button>
       						</form>
