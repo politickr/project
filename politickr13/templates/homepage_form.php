@@ -16,19 +16,19 @@
         		<div class="something text-center v-center" style="position:relative; min-height:300px; width:40%">
         					<img id="main0" src="img/main.svg" style="position:absolute;"/>
                             <form action="search.php" method="post" class="form-signin" id="main1" style="position:absolute; display:none">
-        						<input type="text" class="input-block-level" placeholder="Street Address">
+        						<input type="text" name="address" class="input-block-level" placeholder="Street Address">
         						<button class="btn btn-large btn-primary" type="submit">S</button>
       						</form>
                             <form action="login.php" method="post" class="form-signin" id="main2" style="position:absolute; display:none">
-        						<input type="text" class="input-block-level" placeholder="Username">
-        						<input type="password" class="input-block-level" placeholder="Password">
+        						<input type="text" name="username" class="input-block-level" placeholder="Username">
+        						<input type="password" name="password" class="input-block-level" placeholder="Password">
         						<button class="btn btn-large btn-primary" type="submit">S</button>
       						</form>
                              <form action="register.php" method="post" class="form-signin" id="main3" style="position:absolute; display:none">
-        						<input type="text" class="input-block-level" placeholder="Username">
-        						<input type="password" class="input-block-level" placeholder="Email address">
-                                <input type="password" class="input-block-level" placeholder="Street address">
-                                <input type="password" class="input-block-level" placeholder="Password">
+        						<input type="text" name="username" class="input-block-level" placeholder="Username">
+        						<input type="password" name="email" class="input-block-level" placeholder="Email address">
+                                <input type="password" name="address" class="input-block-level" placeholder="Street address">
+                                <input type="password" name="password" class="input-block-level" placeholder="Password">
         						<button class="btn btn-large btn-primary" type="submit">S</button>
       						</form>
                 </div>
