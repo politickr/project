@@ -10,9 +10,9 @@
 
 	/****
 
-* Simple PHP application for using the Bing Search API
+	* Using the Bing News Search API to take in a bill title and return a json of search results.
 
-*/
+	/
     function billNews($billtitle)
     {
 		$acctKey = 'TgKuTsoXDPETmVKSZj/SO/UIQtLWyulJmh8Kj2FPBXU=';
@@ -75,7 +75,7 @@
 	
 	
 	/**
-     * Emails someone. 
+     * Emails someone using php mail(). 
      */
     function email($email, $subject, $body)
     {
@@ -102,9 +102,6 @@
     	//use google civics api post request for address , get first and last name of reps
     	
     	$postdata = array('address' => $address);
-    	
-
-
 		$opts = array('http' =>array(
 								'method'  => 'POST',
 								'header'  => 'Content-type: application/json',
