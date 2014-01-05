@@ -8,7 +8,7 @@ require("../includes/config.php");
 //$x=load();
 //dump($x);
 //billNews("Test");
-$addRep(400034,22);
+addRep(400034,22);
 
 //load();
 ?>
