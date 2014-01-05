@@ -52,8 +52,11 @@
 				.attr("width", 720)
 				.attr("height", 100)
 				.attr("viewBox", "0 0 720 100")
-				.style("border", "solid")
-				.style("border-radius", "5px");
+				.style("background-color", "BBBBBB")
+				.style("margin-left", "20%")
+				.style("margin-top", 5);
+				
+				
 				
 	rectContainers.append("rect")
 				.attr("width", 80)
@@ -80,10 +83,11 @@
 					});	
 					
 	rectContainers.append("foreignObject")
-				.attr("x", 300) 
+				.attr("x", 100) 
 				.attr("y", 20)
-				.attr("width", 400)
+				.attr("width", 600)
 				.attr("height", 80)
+				.style("font-weight", "thick")
 				.text(function(d, i) {
 					var q = d.vote.question;
 					return q;
