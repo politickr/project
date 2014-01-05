@@ -57,11 +57,8 @@
 				//reject input
                 apologize("Sorry, input failed.");
            	}
- 
-             $rows = query("SELECT LAST_INSERT_ID() AS id");
-               
-             $id = $rows[0]["id"];
-             $_SESSION["id"] = $id;
+			 $rows = query("SELECT * FROM users WHERE username = ?", $_POST["username"]);
+             $_SESSION["user"] = $rows[0];
              notify('Registration successful! You are now logged in!');
              //redirect("/");                                  
                

@@ -1,5 +1,5 @@
 <p class="lead text-danger">
-    Sorry!
+    Hi There!
 </p>
 <p class="text-danger">
     <?= htmlspecialchars($message) ?>
