@@ -47,8 +47,7 @@
 
 		$response = file_get_contents($requestUri, 0, $context);
 		// Decode the response. 
-		$jsonObj = json_decode($response); 
-		dump($jsonObj);
+		return $response;
 		/*
 		$resultStr = ''; 
 		// Parse each result according to its metadata type. 
