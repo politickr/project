@@ -18,8 +18,8 @@
     function billNews($billtitle)
     {
 		$acctKey = 'VLSQh+gVDSYUu/wT9rHY+yyIa54l8F2mqvguXNR26gU=';
-
-		$requestUri = 'https://api.datamarket.azure.com/Bing/Search/News?$format=json&Query='.$billtitle;
+		$query = urlencode($billtitle);
+		$requestUri = 'https://api.datamarket.azure.com/Bing/Search/News?$format=json&Query='.$query;
 
 		// Read the contents of the .html file into a string.
 
