@@ -1,7 +1,3 @@
-<div>
-<table>
-
-
 
 <?php
 	
@@ -25,15 +21,20 @@
         	print("</tr>");
     	}
     }
-    
+    */
 ?>
-</table>
-*/
-
-<script>
-
-d3.selectAll("circle").data($votes);
-</script>
 
 
-</div>
+<body>
+<script type="text/javascript">
+	var data = <?php echo $votes ?>;
+	var dataset = data.objects;
+			d3.select("body").selectAll("p")
+				.data(dataset)
+				.enter()
+				.append("p")
+				.text(function(d) { return d; });
+			
+	</script>
+</body>
+
