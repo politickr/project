@@ -1,7 +1,12 @@
 <div>
 <table>
+
+
+
 <?php
+	
     //prints headers
+	/*
     print("<tr>");
 	print("<th>Date</th>");
     print("<th>Question</th>");
@@ -21,14 +26,14 @@
     	}
     }
     
-
-
 ?>
-
-
-
 </table>
+*/
 
+<script>
+
+d3.selectAll("circle").data($votes);
+</script>
 
 
 </div>
