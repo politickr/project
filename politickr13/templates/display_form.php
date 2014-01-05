@@ -52,15 +52,15 @@ $modvotes;
 		}
 	}
 	months = [];
-	months["1"] = "Jan";
-	months["2"] = "Feb";
-	months["3"] = "Mar";
-	months["4"] = "Apr";
-	months["5"] = "May";
-	months["6"] = "Jun";
-	months["7"] = "Jul";
-	months["8"] = "Aug";
-	months["9"] = "Sep";
+	months["01"] = "Jan";
+	months["02"] = "Feb";
+	months["03"] = "Mar";
+	months["04"] = "Apr";
+	months["05"] = "May";
+	months["06"] = "Jun";
+	months["07"] = "Jul";
+	months["08"] = "Aug";
+	months["09"] = "Sep";
 	months["10"] = "Oct";
 	months["11"] = "Nov";
 	months["12"] = "Dec";
