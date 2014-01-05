@@ -10,7 +10,7 @@
 <body>
 <div class="container" style="min-height:90%">
 	<div class="row">
-		<div class="col-lg-3"></div>
+		<div class="col-lg-3 something"></div>
         
 		<div class="col-lg-6 text-center">
         		<div class="something text-center v-center" style="position:relative; min-height:300px; width:40%">
