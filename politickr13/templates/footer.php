@@ -5,6 +5,4 @@
 
         </div>
 
-    </body>
-
 </html>
