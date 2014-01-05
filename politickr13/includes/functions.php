@@ -7,6 +7,16 @@
      *
      * Helper functions.
      */
+	 
+	 
+    /**
+     * Apologizes to user with message.
+     */
+    function apologize($message)
+    {
+        render("apology.php", ["message" => $message]);
+        exit;
+    }
 
 	/****
 
@@ -52,16 +62,16 @@
 		}
 		*/
 	}
-
-    /**
-     * Apologizes to user with message.
+	
+	 /**
+     * Facilitates debugging by dumping contents of variable
+     * to browser.
      */
-    function apologize($message)
+    function dump($variable)
     {
-        render("apology.php", ["message" => $message]);
+        require("../templates/dump.php");
         exit;
     }
-	
 	
 	/**
      * Emails someone using php mail(). 
@@ -218,19 +228,7 @@
  		return $billdata;
  		exit;
 	}
-    /**
-     * Facilitates debugging by dumping contents of variable
-     * to browser.
-     */
-    function dump($variable)
-    {
-        require("../templates/dump.php");
-        exit;
-    }
-	 /**
-     * Renders a form to give a notification.
-     *
-     */
+   
 	function notify($message)
     {
         render("notify.php", ["message" => $message]);
