@@ -20,8 +20,7 @@ h1 {
   margin: 0 auto;
   width: 100%;
   min-height:50%;
-  background: url('../img/main-split.svg');
-  color:#eee;
+  color:#FFFFFF;
   overflow:hidden;
 }
 
@@ -43,4 +42,10 @@ h1 {
 	font-family:Helvetica, Arial, sans-serif;
 	margin-left:200px;
 	background-color: #C2C2C2;
+}
+
+.main-btn {
+	background-color: transparent;
+	border:none;
+	
 }

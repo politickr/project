@@ -27,9 +27,10 @@
 		<polygon fill="#FFFFFF" points="206,196 195.459,195.648 189.193,204.133 186.271,193.999 176.266,190.661 185,184.75 
 			185.082,174.204 193.403,180.684 203.459,177.503 199.867,187.419 		"/>
 	</g>
-	<text transform="matrix(1 0 0 1 60.0908 315.1689)" fill="#999999" font-family="'MyriadPro-Regular'" font-size="100">Politickr</text>
-	<polygon fill="#FFFFFF" stroke="#FFFFFF" stroke-width="2" stroke-miterlimit="10" points="212.792,10.333 226.834,10.352 
-		226.666,221.31 212.792,221.31 	"/>
+	
+		<text transform="matrix(1 0 0 1 60.0908 315.1689)" display="none" fill="#999999" enable-background="new    " font-family="'MyriadPro-Regular'" font-size="100">Politickr</text>
+	<polygon fill="#FFFFFF" stroke="#FFFFFF" stroke-width="2" stroke-miterlimit="10" points="214.792,10.333 226.834,10.352 
+		226.666,221.31 214.792,221.31 	"/>
 	<polygon fill="#FFFFFF" stroke="#FFFFFF" stroke-width="2" stroke-miterlimit="10" points="226.834,23.204 273.591,23.371 
 		287.124,33.604 226.834,33.604 	"/>
 	<polygon fill="#FFFFFF" stroke="#FFFFFF" stroke-width="2" stroke-miterlimit="10" points="228.168,49.741 304.63,49.741 

@@ -12,7 +12,21 @@
 		<div class="col-lg-3"></div>
         
 		<div class="col-lg-6 text-center v-center">
-        	<img src="img/main.svg" style="width:200px; height:200px"/>
+        		<img src="img/main.svg" style="width:40%; height:auto"/>
+                <div class="row">
+                	<div class="col-sm-3"></div>
+                	<div class="col-sm-2">
+                    	<button class="main-btn">Search</button>
+                    </div>
+                    <div class="col-sm-2">
+                    	<button class="main-btn">Log In</button>
+                    </div>
+                    <div class="col-sm-2">
+                    	<button class="main-btn">Register</button>
+                    </div>
+                    <div class="col-sm-3"></div>
+            	</div>
+            
         </div>
         
         <div class="col-lg-3"></div>

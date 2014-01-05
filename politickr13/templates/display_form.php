@@ -29,7 +29,9 @@
 <script type="text/javascript">
 	var data = <?php echo $votes ?>;
 	var datatwo = data.objects;
-	dataset = datatwo.slice(0, 300);
+	
+	var dataset = datatwo.slice(0, 25); 
+	
 	months = [];
 	months["01"] = "Jan";
 	months["02"] = "Feb";
