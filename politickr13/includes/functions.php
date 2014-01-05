@@ -17,8 +17,8 @@
 */
     function billNews($billtitle)
     {
-		$acctKey = 'VLSQh+gVDSYUu/wT9rHY+yyIa54l8F2mqvguXNR26gU=';
-		$query = urlencode($billtitle);
+		$acctKey = 'TgKuTsoXDPETmVKSZj/SO/UIQtLWyulJmh8Kj2FPBXU=';
+		$query = urlencode("'{$billtitle}'");
 		$requestUri = 'https://api.datamarket.azure.com/Bing/Search/News?$format=json&Query='.$query;
 
 		// Read the contents of the .html file into a string.
@@ -41,6 +41,7 @@
 			'header' => "Authorization: Basic $auth")
 
 			);
+		//dump($data['http']['header']);
 
 		$context = stream_context_create($data);
 
