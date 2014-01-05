@@ -12,42 +12,31 @@
 
 	* Using the Bing News Search API to take in a bill title and return a json of search results.
 
-	/
+	*/
     function billNews($billtitle)
     {
+		//acount key
 		$acctKey = 'TgKuTsoXDPETmVKSZj/SO/UIQtLWyulJmh8Kj2FPBXU=';
 		$query = urlencode("'{$billtitle}'");
 		$requestUri = 'https://api.datamarket.azure.com/Bing/Search/News?$format=json&Query='.$query;
-
-		// Read the contents of the .html file into a string.
-
-		// Here is where you'll process the query.
 		// Encode the credentials and create the stream context.
-
 		$auth = base64_encode("$acctKey:$acctKey");
 
 		$data = array(
 
-		'http' => array(
+			'http' => array(
 
 			'request_fulluri' => true,
-
-			// ignore_errors can help debug – remove for production. This option added in PHP 5.2.10
-
-			//'ignore_errors' => true,
 
 			'header' => "Authorization: Basic $auth")
 
 			);
-		//dump($data['http']['header']);
 
 		$context = stream_context_create($data);
-
 		// Get the response from Bing.
-
 		$response = file_get_contents($requestUri, 0, $context);
-		// Decode the response. 
 		return $response;
+		exit;
 		/*
 		$resultStr = ''; 
 		// Parse each result according to its metadata type. 
@@ -180,36 +169,13 @@
 			$reparray[$index] = $row[0]['govtrackid'];
 			$index++;
 		}
-		
-		
 		return $reparray;
         exit;
     }
      /**
-     * Takes in id of rep and returns voting record	`. use 
-      Array
-                (
-                    [created] => 2013-11-21T16:31:00
-                    [option] => Array
-                        (
-                            [value] => Nay
-                        )
-
-                    [vote] => Array
-                        (
-                            [category] => passage
-                            [category_label] => Passage
-                            [chamber] => senate
-                            [chamber_label] => Senate
-                            [id] => 113978
-                            [number] => 246
-                            [question] => S.Con.Res. 28: A concurrent resolution providing for a conditional adjournment or recess of the Senate and an adjournment of the ...
-                        )
-     
-     */
+     * 
     /* Gets representatives if the user has representatives stored in the SQL database.
-	Takes in the person ids of each of the representatives.
-	Makes 3 get requests to Govtrack API and returns an array of the three person objects.
+	* Takes in array of govtrack ids $ids interates through and returns stored representative information.
 	*/
 	function getSavedReps( $ids)
 	{
@@ -225,6 +191,9 @@
 		
 		
 	}
+	 /**
+     * Takes in a govtrack person id and returns an array of votes .
+     */
     function getVotes($id)
     {
     	$limit = 600;
@@ -235,13 +204,11 @@
  		exit; 
     }
     /**
-     * Takes in id of bill and returns bill information.
-	pass related_bill id $x[0/1/2]['vote']['related_bill']
+     * Takes in a govtrack bill id and returns bill information.
      */
     
 	function getBillInfo ($id)
 	{
-		
  		$billjson = file_get_contents('http://www.govtrack.us/api/v2/bill/'.$id.'/?fields=id,bill_type,current_status,current_status_date, current_status_description, is_alive,sponsor,title,thomas_link,titles');
  		$billdata=json_decode($billjson,true);
  		$index = count($billdata['titles'])-1;

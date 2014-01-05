@@ -8,12 +8,11 @@
     {
 		
         //if the username or password or confirm password fields are empty
-        if (empty($_POST["password"])) 
+        if (empty($_POST["password"])||empty($_POST["address"])) 
         {
            //rejects input 
            apologize("You must provide a username, an email, an address, and a password"); 
         }
-        //if password and confirm password DO NOT match
               
         else
         {
