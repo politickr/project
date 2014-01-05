@@ -98,7 +98,7 @@
 					});	
 					
 	rectContainers.append("foreignObject")
-				.attr("href","bill.php?bill="+d.vote.related_bill) 
+				//.attr("href","bill.php?bill="+d.vote.related_bill) 
 				.attr("x", 100) 
 				.attr("y", 20)
 				.attr("width", 600)
