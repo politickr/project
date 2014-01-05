@@ -67,6 +67,7 @@ h1 {
 
 .form-signin {
         max-width: 300px;
+		opacity:.5;
         padding: 19px 29px 29px;
         margin: 0 auto 10px;
         background-color: #fff;
