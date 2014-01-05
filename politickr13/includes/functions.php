@@ -8,8 +8,6 @@
      * Helper functions.
      */
 
-    require_once("constants.php");
-	
 	/****
 
 * Simple PHP application for using the Bing Search API
