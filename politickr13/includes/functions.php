@@ -8,6 +8,31 @@
      * Helper functions.
      */
 	 
+	 /**
+     * Adds a rep. 
+     */
+    function addRep($repid , $userid)
+    {
+		//Access user and rep objects stored as blob in seql database
+		$repblob = query("SELECT object FROM representatives WHERE govtrackid = ?", $repid);
+		$userblob = query("SELECT object FROM users WHERE id = ?", $userid);
+		if($repblob == FALSE||$userblob == FALSE)
+		{
+			apologize("Sorry, an error occurred");
+		}
+		else
+		{
+			$rep = unserialize($repblob);
+			$user = unserialize($userblob);
+			$rep -> addUser($user);
+			$user -> follow($rep);
+			$updatedrep = serialize($rep);
+			$updateduser = serialize($user);
+			query("UPDATE representatives SET object = ? WHERE govtrackid = ?", $updatedrep, $repid);
+			query("UPDATE users SET object = ? WHERE id = ?", $updateduser, $userid);
+		}
+       exit;
+    } 
 	 
     /**
      * Apologizes to user with message.
@@ -166,14 +191,13 @@
 			$row= query("SELECT govtrackid FROM representatives WHERE (firstname = ? OR nickname = ?) AND (lastname = ? OR namemod= ?) AND state = ?", $placeholder[0], $placeholder[0], $placeholder[1], $placeholder[1], $gcivics['normalizedInput']['state'] );
 			if(isset($gcivics['officials'][$placeholder[2]]['photoUrl']))
 			{
-					//$reparray[$index]['photoUrl'] = $gcivics['officials'][$placeholder[2]]['photoUrl'];
-					query("UPDATE representatives SET photourl = ? WHERE govtrackid = ?", $gcivics['officials'][$placeholder[2]]['photoUrl'], $row[0]['govtrackid']);
+				//update seql database and insert photourl
+				query("UPDATE representatives SET photourl = ? WHERE govtrackid = ?", $gcivics['officials'][$placeholder[2]]['photoUrl'], $row[0]['govtrackid']);
 
 			}
 			else
 			{
 				//if there isn't a photoUrl given, show a picture of cat instead
-				//$reparray[0]['photoUrl'] = "img/cat.jpg";
 				query("UPDATE representatives SET photourl = ? WHERE govtrackid = ?", "img/cat.jpg", $row[0]['govtrackid']);
 			}
 			$reparray[$index] = $row[0]['govtrackid'];
