@@ -26,10 +26,31 @@
 
 
 <body>
+<h1> Votefeed: Green is Yea, Red is Nay</h1>
+<?php 
+$modvotes;
+  foreach($votes as $vote)
+    {
+    	if( strcmp($vote['vote']['category'], "passage") == 0)
+    	{
+       `	$modvotes = 
+    	}
+    }
+?>
 <script type="text/javascript">
+	// Put PHP array of votes into javascript variable
 	var data = <?php echo $votes ?>;
 	var datatwo = data.objects;
-	dataset = datatwo.slice(0, 300);
+	// Declare new array to put filtered votes in
+	var moddata;
+	// Put passage bills in moddata by checking category value
+	for(i=0; i<datatwo.length; i++)
+	{
+		if(datatwo[i]['vote']['category'] == ('passage'))
+		{
+			moddata.push(datatwo[i]['vote']['category']);
+		}
+	}
 	months = [];
 	months["1"] = "Jan";
 	months["2"] = "Feb";
@@ -45,7 +66,7 @@
 	months["12"] = "Dec";
 	
 	var rectContainers = d3.select("body").selectAll("svg")
-				.data(dataset)
+				.data(moddata)
 				.enter()
 				.append("svg")
 				.attr("class", "vote")
