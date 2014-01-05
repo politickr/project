@@ -47,9 +47,15 @@
 			 <li class="dropdown">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown"> <?php echo $_SESSION["user"]['username']?> <b class="caret"></b></a>
 				<ul class="dropdown-menu">
+<<<<<<< HEAD
 					<li><a href="my_reps.php">My Representatives</a></li>
 					<li><a href="display.php?id=<?php echo $_SESSION['user']['senator2id']?>">Account Settings</a></li>
 					<li><a href="display.php?id=<?php echo $_SESSION['user']['repid']?>">Votefeed</a></li>
+=======
+					<li><a href="display.php?id=<?php echo $_SESSION['user']['senator1id']?>">Senator 1 Votefeed</a></li>
+					<li><a href="display.php?id=<?php echo $_SESSION['user']['senator2id']?>">Senator 2 Votefeed</a></li>
+					<li><a href="display.php?id=<?php echo $_SESSION['user']['repid']?>">Representative Votefeed</a></li>
+>>>>>>> 12422bba39debe48ff2b911aee4176038c417191
 					<li class="divider"></li>
 					<li><a href="logout.php">Logout</a></li>
 				</ul>
