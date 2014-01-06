@@ -92,3 +92,10 @@ h1 {
         margin-bottom: 15px;
         padding: 7px 9px;
       }
+	 
+	 
+div#container {
+        height: 500px;
+        width: 720px;
+		margin-left: 25%;
+      }

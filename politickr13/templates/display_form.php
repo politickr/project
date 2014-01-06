@@ -26,7 +26,7 @@
 
 
 <body>
-<h1> Votefeed: Green is Yea, Red is Nay</h1>
+<h1 class="text-center"> Votefeed: Green is Yea, Red is Nay</h1>
 
 <script type="text/javascript">
 	// Put PHP array of votes into javascript variable
@@ -45,6 +45,8 @@
 		}
 	}
 	
+	var svgHeight = moddata.length * 105;
+	
 	months = [];
 	months["01"] = "Jan";
 	months["02"] = "Feb";
@@ -59,40 +61,47 @@
 	months["11"] = "Nov";
 	months["12"] = "Dec";
 	
-	var svg = d3.select("body").append("svg")
-				.attr("height", 3000)
-				.attr("width", 800)
-				.attr("viewBox", "0 0 2000 2000")
-				.style("margin-left", 200);
+	var container = d3.select('body').append('div')
+    .attr('id','container')
+	.style("overflow-y", "scroll");
+	
+	
+	var svg = container.append("svg")
+				.attr("width", 720)
+				.attr("height", svgHeight - 5);
 				
 	var g = svg.selectAll("g")
     		.data(moddata)
   			.enter()
   			.append("g")
-    		.attr("x", 20)
+    		.attr("x", 0)
 			.attr("y", function(d, i) {
-					return i * 305;
+					return i * 105;
 				});
 
 	
 	g.append("rect")
-				.attr("width", 1500)
-				.attr("height", 300)
+				.attr("width", 720)
+				.attr("height", 100)
 				.attr("y", function(d, i) {
-					return i * 305;
+					return i * 105;
 				})
-				.attr("x", 20)
+				.attr("x", 0)
 				.attr("fill", "#BBBBBB")
 				.on("click", function(d) {
-					window.location = "bill.php?id=" + d.vote.id;
+					window.location = "bill.php?id=" + d.vote.related_bill
+										+ "&totalplusbill=" + d.vote.total_plus
+										+ "&totalminusbill=" + d.vote.total_minus
+										+ "&totalotherbill=" + d.vote.total_other;
 				});
 				
 	g.append("rect")
-				.attr("width", 200)
-				.attr("height", 300)
-				.attr("x", 20)
+				.attr("class", "vote")
+				.attr("width", 100)
+				.attr("height", 100)
+				.attr("x", 0)
 				.attr("y", function(d, i) {
-					return i * 305;
+					return i * 105;
 				})
 				.attr("fill", function(d, i) {
 					if (d.option.value == "Yea") {
@@ -103,9 +112,9 @@
 					
 	
 	g.append("text")
-				.attr("x", 20)
+				.attr("x", 0)
 				.attr("y", function(d, i) {
-					return i * 305;
+					return i * 105;
 				})
 				.style("color", "#FFFFFF")
 				.attr("transform", "matrix(1 0 0 1 16 72.1484)")
@@ -118,20 +127,18 @@
 					
 					return months[month] + " " + day;
 					});	
-		/*			
-	rectContainers.append("foreignObject")
-				.attr("href", function(d, i) {
-					return "bill.php?bill=" + d.vote.related_bill;
-				})
-				.attr("x", 100) 
-				.attr("y", 20)
+		
+	g.append("foreignObject")
+				.attr("x", 120) 
+				.attr("y", function(d, i) {
+						return i * 105;
+					})
 				.attr("width", 600)
-				.attr("height", 80)
-				.style("font-weight", "thick")
+				.attr("height", 50)
 				.text(function(d, i) {
 					var q = d.vote.question;
 					return q;
-					});	*/
+					});	
 					
 	</script>
 </body>
