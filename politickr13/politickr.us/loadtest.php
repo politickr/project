@@ -7,8 +7,7 @@ require("../includes/config.php");
 //dump($test->getName());
 //$x=load();
 //dump($x);
-//billNews("Test");
-addRep(400034,22);
+echo billNews("Test");
 
 //load();
 ?>

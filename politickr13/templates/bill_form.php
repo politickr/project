@@ -63,22 +63,9 @@
         <div class="col-lg-6 news-feed" id="news-feed">
             <h2 class="text-center">News</h2>
     <script>
-	var data = {objects: [1,2,3,4,5]};
-	var datatwo = data.objects;
+	var data = <? echo billNews($billInfo['title']) ?>;
+	var moddata = data.results;
 	 
-	
-	// Declare new array to put filtered votes in
-	var moddata = [1,2,3,4,5,6,7,1,1,1,1,1,1,1,1,1,1,1,1,1];
-	// Put passage bills in moddata by checking category value
-	/*
-	for(i=0; i<datatwo.length; i++)
-	{
-		if(datatwo[i].vote.category == 'passage')
-		{
-			moddata.push(datatwo[i]);
-		}
-	}
-	*/
 	var svgHeight = moddata.length * 105;
 	
 	var container = d3.select('.news-feed').append('div')
@@ -119,32 +106,41 @@
 				})
 				.attr("fill", "#3CF");
 					
-	
-				
-	g.append("text")
-				.attr("x", 20)
+	g.append("foreignObject")
+				.attr("x", 5)
 				.attr("y", function(d, i) {
-					return i * 105 + 40;
-				})
-				.style("color", "#FFFFFF")
-				.text(function(d, i) {
-					var date = d.created;
-					var year = date.substring(0, 4);
-					
-					return year;
+						return i * 105;
 					})
-				.style("font-size", 24);
-				
+				.attr("width", 90)
+				.attr("height", 100)
+				.text(function(d, i) {
+						return d.Source;
+					})
+				.style("font-size", 20);	
 				
 	g.append("foreignObject")
-				.attr("x", 120) 
+				.attr("x", 120)
 				.attr("y", function(d, i) {
 						return i * 105;
 					})
 				.attr("width", 300)
-				.attr("height", 50)
-				.text("This will eventually be a news story about the bill.")
-				.style("font-size", 20);	
+				.attr("height", 20)
+				.text(function(d, i) {
+					return d.Title;
+					}
+				.style("font-size", 16);
+				
+	g.append("foreignObject")
+				.attr("x", 120)
+				.attr("y", function(d, i) {
+						return i * 105 + 25;
+					})
+				.attr("width", 300)
+				.attr("height", 70)
+				.text(function(d, i) {
+					return d.Description;
+				})
+				.style("font-size", 12);	
 								
 	</script>
         </div>
