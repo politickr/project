@@ -66,9 +66,13 @@
 				.style("margin-left", 200);
 				
 	var g = svg.selectAll("g")
-    .data(data)
-  .enter().append("g")
-    .attr("transform", function(d) { return "translate(0," + i * 10 + ")"; });
+    		.data(moddata)
+  			.enter()
+  			.append("g")
+    		.attr("x", 20)
+			.attr("y", function(d, i) {
+					return i * 305;
+				});
 
 	
 	g.append("rect")
@@ -78,7 +82,10 @@
 					return i * 305;
 				})
 				.attr("x", 20)
-				.attr("fill", "#BBBBBB");
+				.attr("fill", "#BBBBBB")
+				.on("click", function(d) {
+					window.location = "bill.php?id=" + d.vote.id;
+				});
 				
 	g.append("rect")
 				.attr("width", 200)
@@ -94,17 +101,12 @@
 					return "#F10000";
 					});
 					
-	/*
-	svg.selectAll(".date")
-				.data(moddata)
-				.enter()
-				.attr("width", 200)
-				.attr("height", 300)
+	
+	g.append("text")
 				.attr("x", 20)
 				.attr("y", function(d, i) {
 					return i * 305;
 				})
-				.append("foreignObject")
 				.style("color", "#FFFFFF")
 				.attr("transform", "matrix(1 0 0 1 16 72.1484)")
 				.text(function(d, i) {
@@ -116,7 +118,7 @@
 					
 					return months[month] + " " + day;
 					});	
-					
+		/*			
 	rectContainers.append("foreignObject")
 				.attr("href", function(d, i) {
 					return "bill.php?bill=" + d.vote.related_bill;
