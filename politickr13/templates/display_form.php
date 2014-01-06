@@ -112,12 +112,11 @@
 					
 	
 	g.append("text")
-				.attr("x", 0)
+				.attr("x", 20)
 				.attr("y", function(d, i) {
-					return i * 105;
+					return i * 105 + 15;
 				})
 				.style("color", "#FFFFFF")
-				.attr("transform", "matrix(1 0 0 1 16 72.1484)")
 				.text(function(d, i) {
 					var date = d.created;
 					var year = date.substring(0, 4);
@@ -126,7 +125,22 @@
 					var hour = parseInt(date.substring(11, 13)) % 12;
 					
 					return months[month] + " " + day;
-					});	
+					})
+				.style("font-size", 16);
+				
+	g.append("text")
+				.attr("x", 20)
+				.attr("y", function(d, i) {
+					return i * 105 + 40;
+				})
+				.style("color", "#FFFFFF")
+				.text(function(d, i) {
+					var date = d.created;
+					var year = date.substring(0, 4);
+					
+					return year;
+					})
+				.style("font-size", 24);	
 		
 	g.append("foreignObject")
 				.attr("x", 120) 
@@ -134,11 +148,12 @@
 						return i * 105;
 					})
 				.attr("width", 600)
-				.attr("height", 50)
+				.attr("height", 100)
 				.text(function(d, i) {
 					var q = d.vote.question;
 					return q;
-					});	
+					})
+				.style("font-size", 20);	
 					
 	</script>
 </body>

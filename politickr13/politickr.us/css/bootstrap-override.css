@@ -69,7 +69,6 @@ h1 {
         max-width: 300px;
 		opacity:.5;
         padding: 19px 29px 29px;
-        margin: 0 auto 10px;
         background-color: #fff;
         border: 1px solid #e5e5e5;
         -webkit-border-radius: 5px;
@@ -97,5 +96,20 @@ h1 {
 div#container {
         height: 500px;
         width: 720px;
-		margin-left: 25%;
+		margin: auto;
       }
+#main1, #main2, #main3 {
+		margin-left: 150px;
+}
+
+#main1 {
+	margin-top: 100px;	
+}
+
+#main3 {
+	margin-top: -20px;
+}
+
+#main2 {
+	margin-top: 40px;
+}
