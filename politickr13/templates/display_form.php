@@ -1,39 +1,39 @@
 
 <?php
 	
-    //prints headers
-	/*
-    print("<tr>");
-	print("<th>Date</th>");
-    print("<th>Question</th>");
-    print("<th>Ballot</th>");
-    print("</tr>");
-    
-    //prints values for each position
-    foreach($votes as $vote)
-    {
-    	if( strcmp($vote['vote']['category'], "passage") == 0)
-    	{
-        	print("<tr>");
-			print("<td>{$vote["created"]}</td>");
-        	print("<td><a href=\"bill.php?bill={$vote["vote"]["related_bill"]}&totalplusbill={$vote["vote"]["total_plus"]}&totalminusbill={$vote["vote"]["total_minus"]}&totalotherbill={$vote["vote"]["total_other"]}\">{$vote["vote"]["question"]}</a></td>");
-        	print("<td>{$vote["option"]["value"]}</td>");
-        	print("</tr>");
-    	}
-    }
-    */
 ?>
 
 
 <body>
 <h1 class="text-center"> Votefeed</h1>
 <h4 class="text-center">Green is Yea, Red is Nay</h4>
-
+<h4 class="text-center"> Note: Votefeed is currently being improved and may disappear momentarily, but we'll have it up and running soon! </h4>
 <script type="text/javascript">
+
+	//Detect browser version (different behavior for IE)
+	
+	function get_browser() {
+    	var N=navigator.appName, ua=navigator.userAgent, tem;
+    	var M=ua.match(/(opera|chrome|safari|firefox|msie)\/?\s*(\.?\d+(\.\d+)*)/i);
+    	if(M && (tem= ua.match(/version\/([\.\d]+)/i))!= null) M[2]= tem[1];
+    	M=M? [M[1], M[2]]: [N, navigator.appVersion, '-?'];
+    	return M[0];
+    }
+	
+	function get_browser_version() {
+    	var N=navigator.appName, ua=navigator.userAgent, tem;
+    	var M=ua.match(/(opera|chrome|safari|firefox|msie)\/?\s*(\.?\d+(\.\d+)*)/i);
+    	if(M && (tem= ua.match(/version\/([\.\d]+)/i))!= null) M[2]= tem[1];
+    	M=M? [M[1], M[2]]: [N, navigator.appVersion, '-?'];
+    	return M[1];
+    }
+	
+	var browser = get_browser();
+	
 	// Put PHP array of votes into javascript variable
 	var data = <?php echo $votes ?>;
 	var datatwo = data.objects;
-	 
+	
 	
 	// Declare new array to put filtered votes in
 	var moddata = [];
@@ -79,9 +79,17 @@
 			.attr("y", function(d, i) {
 					return i * 105;
 				});
+				
+	var a = g.append("a")
+			.attr("xlink:href", function(d, i) {
+					return "bill.php?id=" + d.vote.related_bill
+										+ "&totalplusbill=" + d.vote.total_plus
+										+ "&totalminusbill=" + d.vote.total_minus
+										+ "&totalotherbill=" + d.vote.total_other;
+				});
 
 	
-	g.append("rect")
+	a.append("rect")
 				.attr("width", 720)
 				.attr("height", 100)
 				.attr("y", function(d, i) {
@@ -89,14 +97,9 @@
 				})
 				.attr("x", 0)
 				.attr("fill", "#BBBBBB")
-				.on("click", function(d) {
-					window.location = "bill.php?id=" + d.vote.related_bill
-										+ "&totalplusbill=" + d.vote.total_plus
-										+ "&totalminusbill=" + d.vote.total_minus
-										+ "&totalotherbill=" + d.vote.total_other;
-				});
+				.attr("id", "rect-background");
 				
-	g.append("rect")
+	a.append("rect")
 				.attr("class", "vote")
 				.attr("width", 100)
 				.attr("height", 100)
@@ -109,19 +112,14 @@
 						return "#00F100";
 						}
 					return "#F10000";
-					})
-				.on("click", function(d) {
-					window.location = "bill.php?id=" + d.vote.related_bill
-										+ "&totalplusbill=" + d.vote.total_plus
-										+ "&totalminusbill=" + d.vote.total_minus
-										+ "&totalotherbill=" + d.vote.total_other;
-				});
+					});
 					
 	
-	g.append("text")
+	a.append("text")
+				.attr("id", "month")
 				.attr("x", 20)
 				.attr("y", function(d, i) {
-					return i * 105 + 15;
+					return i * 105 + 50;
 				})
 				.style("color", "#FFFFFF")
 				.text(function(d, i) {
@@ -133,35 +131,27 @@
 					
 					return months[month] + " " + day;
 					})
-				.style("font-size", 16)
-				.on("click", function(d) {
-					window.location = "bill.php?id=" + d.vote.related_bill
-										+ "&totalplusbill=" + d.vote.total_plus
-										+ "&totalminusbill=" + d.vote.total_minus
-										+ "&totalotherbill=" + d.vote.total_other;
-				});
+				.style("font-size", 18)
+				.style("color", "#FFFFFF");
 				
-	g.append("text")
+	a.append("text")
+				.attr("id", "year")
 				.attr("x", 20)
 				.attr("y", function(d, i) {
-					return i * 105 + 40;
+					return i * 105 + 70;
 				})
-				.style("color", "#FFFFFF")
 				.text(function(d, i) {
 					var date = d.created;
 					var year = date.substring(0, 4);
 					
 					return year;
 					})
-				.style("font-size", 24)
-				.on("click", function(d) {
-					window.location = "bill.php?id=" + d.vote.related_bill
-										+ "&totalplusbill=" + d.vote.total_plus
-										+ "&totalminusbill=" + d.vote.total_minus
-										+ "&totalotherbill=" + d.vote.total_other;
-				});	
-		
-	g.append("foreignObject")
+				.style("font-size", 20)
+				.style("color", "#FFFFFF");
+	
+	if (browser != "msie") {	
+		a.append("foreignObject")
+				.attr("id", "votefeedtitle")
 				.attr("x", 120) 
 				.attr("y", function(d, i) {
 						return i * 105;
@@ -172,8 +162,62 @@
 					var q = d.vote.question;
 					return q;
 					})
-				.style("font-size", 20);	
-					
+				.style("font-size", 20)
+				.style("color", "#000");
+				
+	} else if (browser == "msie") {
+		
+		a.append("text")
+			.attr("x", 120)
+			.attr("y", function(d, i) {
+				return i * 105 + 21;
+			})
+			.attr("width", 600)
+			.attr("height", 21)
+			.text(function(d, i) {
+				var s = d.vote.question.substring(0, 60);
+				var index = s.lastIndexOf(" ");
+				return s.substring(0, index);
+			})
+			.style("font-size", 20);
+			
+		a.append("text")
+			.attr("x", 120)
+			.attr("y", function(d, i) {
+				return i * 105 + 42;
+			})
+			.attr("width", 600)
+			.attr("height", 21)
+			.text(function(d, i) {
+				if (d.vote.question.length >= 60) {
+					var prev = d.vote.question.substring(0, 60);
+					var indexPrev = prev.lastIndexOf(" ");
+					var s = d.vote.question.substring(0, 100);
+					var index = s.lastIndexOf(" ");
+					return d.vote.question.substring(indexPrev, index);
+				} 
+				return "";
+			})
+			.style("font-size", 20);
+			
+		a.append("text")
+			.attr("x", 120)
+			.attr("y", function(d, i) {
+				return i * 105 + 63;
+			})
+			.attr("width", 600)
+			.attr("height", 21)
+			.text(function(d, i) {
+				if (d.vote.question.length >= 100) {
+					var prev = d.vote.question.substring(0, 100);
+					var index1 = prev.lastIndexOf(" ") + 1;
+					return d.vote.question.substring(index1, 160);
+				}
+				return "";
+			})
+			.style("font-size", 20);
+			
+	}
 	</script>
 </body>
 
