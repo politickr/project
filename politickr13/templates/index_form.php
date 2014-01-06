@@ -1,3 +1,4 @@
+<h1 class="text-center">My Representatives</h1>
 <?php  
 		print('<script src=/js/reps.js>');
 		print('</script>');

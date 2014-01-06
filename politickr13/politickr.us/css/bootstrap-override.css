@@ -98,6 +98,13 @@ div#container {
         width: 720px;
 		margin: auto;
       }
+	  
+div#news-container {
+        height: 575px;
+        width: 450px;
+		margin: auto;
+      }
+	  
 #main1, #main2, #main3 {
 		margin-left: 150px;
 }

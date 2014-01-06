@@ -35,14 +35,15 @@
     print("</div>");
     */
 ?>
+<body>
 <div class="container">
 	<div class="row">
-        </div>
+        
     	
         <div class="col-lg-6 text-left">
         	<h2><? echo $billinfo['title'] ?></h2>
             <br />
-            <h3>Summary</h3>
+            <h4>Summary</h4>
 			<? echo $billinfo['summary'] ?>
             <br /> <br />
             <h4>Votes</h4>
@@ -52,8 +53,6 @@
             <br /> <br />
             <h4>Current Status</h4>
             <div class="current-status">
-            	<? echo $billinfo['current_status_date'] ?><br />
-                <? echo $billinfo['current_status_label'] ?> <br />
                 <? echo $billinfo['current_status_description'] ?><br />
             </div>
             <br />
@@ -61,16 +60,17 @@
             
 		</div>
         
-        <div class="col-lg-6">
-            
+        <div class="col-lg-6 news-feed" id="news-feed">
+            <h2 class="text-center">News</h2>
     <script>
-	var data = <?php echo $votes ?>;
+	var data = {objects: [1,2,3,4,5]};
 	var datatwo = data.objects;
 	 
 	
 	// Declare new array to put filtered votes in
-	var moddata = [];
+	var moddata = [1,2,3,4,5,6,7,1,1,1,1,1,1,1,1,1,1,1,1,1];
 	// Put passage bills in moddata by checking category value
+	/*
 	for(i=0; i<datatwo.length; i++)
 	{
 		if(datatwo[i].vote.category == 'passage')
@@ -78,30 +78,16 @@
 			moddata.push(datatwo[i]);
 		}
 	}
-	
+	*/
 	var svgHeight = moddata.length * 105;
 	
-	months = [];
-	months["01"] = "Jan";
-	months["02"] = "Feb";
-	months["03"] = "Mar";
-	months["04"] = "Apr";
-	months["05"] = "May";
-	months["06"] = "Jun";
-	months["07"] = "Jul";
-	months["08"] = "Aug";
-	months["09"] = "Sep";
-	months["10"] = "Oct";
-	months["11"] = "Nov";
-	months["12"] = "Dec";
-	
-	var container = d3.select('body').append('div')
-    .attr('id','container')
+	var container = d3.select('.news-feed').append('div')
+    .attr('id','news-container')
 	.style("overflow-y", "scroll");
 	
 	
 	var svg = container.append("svg")
-				.attr("width", 720)
+				.attr("width", 450)
 				.attr("height", svgHeight - 5);
 				
 	var g = svg.selectAll("g")
@@ -115,19 +101,13 @@
 
 	
 	g.append("rect")
-				.attr("width", 720)
+				.attr("width", 450)
 				.attr("height", 100)
 				.attr("y", function(d, i) {
 					return i * 105;
 				})
 				.attr("x", 0)
-				.attr("fill", "#BBBBBB")
-				.on("click", function(d) {
-					window.location = "bill.php?id=" + d.vote.related_bill
-										+ "&totalplusbill=" + d.vote.total_plus
-										+ "&totalminusbill=" + d.vote.total_minus
-										+ "&totalotherbill=" + d.vote.total_other;
-				});
+				.attr("fill", "#BBBBBB");
 				
 	g.append("rect")
 				.attr("class", "vote")
@@ -137,30 +117,9 @@
 				.attr("y", function(d, i) {
 					return i * 105;
 				})
-				.attr("fill", function(d, i) {
-					if (d.option.value == "Yea") {
-						return "#00F100";
-						}
-					return "#F10000";
-					});
+				.attr("fill", "#3CF");
 					
 	
-	g.append("text")
-				.attr("x", 20)
-				.attr("y", function(d, i) {
-					return i * 105 + 15;
-				})
-				.style("color", "#FFFFFF")
-				.text(function(d, i) {
-					var date = d.created;
-					var year = date.substring(0, 4);
-					var month = date.substring(5, 7);
-					var day = date.substring(8, 10);
-					var hour = parseInt(date.substring(11, 13)) % 12;
-					
-					return months[month] + " " + day;
-					})
-				.style("font-size", 16);
 				
 	g.append("text")
 				.attr("x", 20)
@@ -174,21 +133,19 @@
 					
 					return year;
 					})
-				.style("font-size", 24);	
-		
+				.style("font-size", 24);
+				
+				
 	g.append("foreignObject")
 				.attr("x", 120) 
 				.attr("y", function(d, i) {
 						return i * 105;
 					})
-				.attr("width", 600)
-				.attr("height", 100)
-				.text(function(d, i) {
-					var q = d.vote.question;
-					return q;
-					})
+				.attr("width", 300)
+				.attr("height", 50)
+				.text("This will eventually be a news story about the bill.")
 				.style("font-size", 20);	
-					
+								
 	</script>
         </div>
         </div>

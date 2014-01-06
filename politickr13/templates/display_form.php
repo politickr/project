@@ -26,7 +26,8 @@
 
 
 <body>
-<h1 class="text-center"> Votefeed: Green is Yea, Red is Nay</h1>
+<h1 class="text-center"> Votefeed</h1>
+<h4 class="text-center">Green is Yea, Red is Nay</h4>
 
 <script type="text/javascript">
 	// Put PHP array of votes into javascript variable
@@ -108,7 +109,13 @@
 						return "#00F100";
 						}
 					return "#F10000";
-					});
+					})
+				.on("click", function(d) {
+					window.location = "bill.php?id=" + d.vote.related_bill
+										+ "&totalplusbill=" + d.vote.total_plus
+										+ "&totalminusbill=" + d.vote.total_minus
+										+ "&totalotherbill=" + d.vote.total_other;
+				});
 					
 	
 	g.append("text")
@@ -126,7 +133,13 @@
 					
 					return months[month] + " " + day;
 					})
-				.style("font-size", 16);
+				.style("font-size", 16)
+				.on("click", function(d) {
+					window.location = "bill.php?id=" + d.vote.related_bill
+										+ "&totalplusbill=" + d.vote.total_plus
+										+ "&totalminusbill=" + d.vote.total_minus
+										+ "&totalotherbill=" + d.vote.total_other;
+				});
 				
 	g.append("text")
 				.attr("x", 20)
@@ -140,7 +153,13 @@
 					
 					return year;
 					})
-				.style("font-size", 24);	
+				.style("font-size", 24)
+				.on("click", function(d) {
+					window.location = "bill.php?id=" + d.vote.related_bill
+										+ "&totalplusbill=" + d.vote.total_plus
+										+ "&totalminusbill=" + d.vote.total_minus
+										+ "&totalotherbill=" + d.vote.total_other;
+				});	
 		
 	g.append("foreignObject")
 				.attr("x", 120) 
