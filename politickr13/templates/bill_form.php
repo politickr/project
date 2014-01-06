@@ -63,8 +63,8 @@
         <div class="col-lg-6 news-feed" id="news-feed">
             <h2 class="text-center">News</h2>
     <script>
-	var data = <? echo billNews($billInfo['title']) ?>;
-	var moddata = data.results;
+	var data = <? echo billNews($billinfo['title']) ?>;
+	var moddata = data.d.results;
 	 
 	var svgHeight = moddata.length * 105;
 	
@@ -86,7 +86,7 @@
 					return i * 105;
 				});
 
-	
+				
 	g.append("rect")
 				.attr("width", 450)
 				.attr("height", 100)
@@ -107,6 +107,7 @@
 				.attr("fill", "#3CF");
 					
 	g.append("foreignObject")
+				.attr("class", "newsfeed-source")
 				.attr("x", 5)
 				.attr("y", function(d, i) {
 						return i * 105;
@@ -116,8 +117,8 @@
 				.text(function(d, i) {
 						return d.Source;
 					})
-				.style("font-size", 20);	
-				
+				.style("font-size", 16);
+	
 	g.append("foreignObject")
 				.attr("x", 120)
 				.attr("y", function(d, i) {
@@ -127,8 +128,10 @@
 				.attr("height", 20)
 				.text(function(d, i) {
 					return d.Title;
-					}
-				.style("font-size", 16);
+					})
+				.style("font-size", 12)
+				.style("text-align", "left")
+				.style("font-weight", "bold");
 				
 	g.append("foreignObject")
 				.attr("x", 120)
@@ -140,8 +143,11 @@
 				.text(function(d, i) {
 					return d.Description;
 				})
-				.style("font-size", 12);	
-								
+				.style("font-size", 12)
+				.style("text-align", "left")
+				.style("overflow-y", "scroll");
+				
+		
 	</script>
         </div>
         </div>
