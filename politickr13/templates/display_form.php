@@ -1,6 +1,9 @@
-<?php $reps = query("SELECT firstname AND lastname AND photourl FROM representatives WHERE govtrackid = ?", $_GET['id']);?>
+<?php $reps = query("SELECT firstname,lastname, photourl FROM representatives WHERE govtrackid = ?", $_GET['id']);?>
 <body>
 <h1 class="text-center"><?php echo ($reps[0]['firstname']." ".$reps[0]['lastname']."'s ");?>Votefeed</h1>
+<div class="col-lg-12 text-center rep">
+<img src="<?php echo $reps[0]['photourl']?> "width='150px'> 
+</div>
 <h4 class="text-center">Green is Yea, Red is Nay</h4>
 <h4 class="text-center"> Note: Votefeed is currently being improved and may disappear momentarily, but we'll have it up and running soon! </h4>
 <script type="text/javascript">
