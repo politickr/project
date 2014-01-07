@@ -80,13 +80,13 @@
 					return i * 105;
 				});
 				
-	var a = g.append("a")
-			.attr("xlink:href", function(d, i) {
+	var a = g.append("a");
+			/*.attr("xlink:href", function(d, i) {
 					return "bill.php?id=" + d.vote.related_bill
 										+ "&totalplusbill=" + d.vote.total_plus
 										+ "&totalminusbill=" + d.vote.total_minus
 										+ "&totalotherbill=" + d.vote.total_other;
-				});
+				});*/
 
 	
 	a.append("rect")

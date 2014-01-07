@@ -3,8 +3,8 @@
     require("../includes/config.php");
     
     //renders display HTML form
-    $billinfo = getBillInfo($_GET['bill']);
-   
+    $billinfo = getBillInfo($_GET['id']);
+   	
     $totalplusbill = $_GET['totalplusbill'];
     $totalminusbill = $_GET['totalminusbill'];
     $totalotherbill = $_GET['totalotherbill'];

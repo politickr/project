@@ -27,6 +27,7 @@
         <div class="col-lg-6 news-feed" id="news-feed">
             <h2 class="text-center">News</h2>
     <script>
+	
 	function get_browser() {
     	var N=navigator.appName, ua=navigator.userAgent, tem;
     	var M=ua.match(/(opera|chrome|safari|firefox|msie)\/?\s*(\.?\d+(\.\d+)*)/i);

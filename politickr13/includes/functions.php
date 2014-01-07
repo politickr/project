@@ -244,6 +244,7 @@
 	function getBillInfo ($id)
 	{
  		$billjson = file_get_contents('http://www.govtrack.us/api/v2/bill/'.$id.'/?fields=id,bill_type,current_status,current_status_date, current_status_description, is_alive,sponsor,title,thomas_link,titles');
+		
  		$billdata=json_decode($billjson,true);
  		$index = count($billdata['titles'])-1;
  		// add summary key
