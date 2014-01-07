@@ -14,7 +14,7 @@
         
 		<div class="col-lg-6 text-center">
         		<div class="something text-center v-center" style="position:relative; min-height:300px; width:40%">
-        					<img id="main0" src="img/main.svg" style="position:absolute;"/>
+        					<img id="main0" src="img/main.svg" style="position:absolute; display:inline-block"/>
                             <form action="search.php" method="post" class="form-signin" id="main1" style="position:absolute; display:none">
         						<input type="text" name="address" class="input-block-level" placeholder="Street Address">
         						<button class="btn btn-large btn-primary" type="submit">Find Representatives</button>

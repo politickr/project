@@ -102,7 +102,7 @@ div#container {
 	  
 div#news-container {
         height: 575px;
-        width: 450px;
+        width: 465px;
 		margin: auto;
 		overflow-y: scroll;
       }
@@ -110,6 +110,7 @@ div#news-container {
 #main1, #main2, #main3 {
 		margin-left: 150px;
 }
+
 
 #main1 {
 	margin-top: 100px;	
@@ -127,8 +128,16 @@ a {
     text-decoration: none !important;
 }
 
-foreignObject#votefeedtitle{
+a:hover #rect-background {
+	fill: #CCC;
+}
+
+#votefeedtitle{
 	font-size: 20px;
+}
+
+#votefeedtitle: hover{
+	color: #FFF;
 }
 
 #month, #year {
@@ -136,13 +145,19 @@ foreignObject#votefeedtitle{
 	font-weight:bold;
 	color: #FFFFFF;
 }
+
 #rect-background {
-	fill: #FFF
-}
-#rect-background:hover {
-	fill: #CCC;
+	fill: #FFF;
 }
 
 #vote-title {
 	font-size: 20px !important;	
+}
+
+#news-source {
+	font-size: 16px;	
+}
+
+#news-title {
+	font-size: 20px;
 }
