@@ -4,6 +4,7 @@
     
     //renders display HTML form
     $billinfo = getBillInfo($_GET['bill']);
+	dump($billinfo);
    
     $totalplusbill = $_GET['totalplusbill'];
     $totalminusbill = $_GET['totalminusbill'];
