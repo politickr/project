@@ -136,7 +136,13 @@ foreignObject#votefeedtitle{
 	font-weight:bold;
 	color: #FFFFFF;
 }
-
+#rect-background {
+	fill: #FFF
+}
 #rect-background:hover {
-	background-color: #666;
+	fill: #CCC;
+}
+
+#vote-title {
+	font-size: 20px !important;	
 }

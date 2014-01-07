@@ -27,6 +27,7 @@ if( !empty($_SESSION["user"]["senator1id"]) || !empty($_SESSION["user"]["senator
         {
             apologize("You must provide an address.");
         }
+		 $_SESSION["address"] = $_POST["address"];
 
         $ids = getReps($_POST["address"]);
 
@@ -44,6 +45,24 @@ if( !empty($_SESSION["user"]["senator1id"]) || !empty($_SESSION["user"]["senator
             render("index_form.php", ["repinformation" => $repinformation]);
         }            
     }
+	else if (!empty($_SESSION["address"]))
+	{
+		 $ids = getReps($_SESSION['address']);
+
+        if($ids === NULL)
+        {
+            apologize("Congressmen NOT FOUND");
+        }
+        else
+        {
+			$repinformation;
+			foreach($ids as $id)
+			{
+				$repinformation[$id] = query("SELECT * FROM representatives WHERE govtrackid = ?", $id);
+			}
+            render("index_form.php", ["repinformation" => $repinformation]);
+        }            
+	}
     else
     {
         // else render form

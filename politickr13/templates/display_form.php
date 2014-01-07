@@ -29,7 +29,6 @@
     }
 	
 	var browser = get_browser();
-	
 	// Put PHP array of votes into javascript variable
 	var data = <?php echo $votes ?>;
 	var datatwo = data.objects;
@@ -67,6 +66,7 @@
 	.style("overflow-y", "scroll");
 	
 	
+	
 	var svg = container.append("svg")
 				.attr("width", 720)
 				.attr("height", svgHeight - 5);
@@ -96,7 +96,6 @@
 					return i * 105;
 				})
 				.attr("x", 0)
-				.attr("fill", "#BBBBBB")
 				.attr("id", "rect-background");
 				
 	a.append("rect")
@@ -149,7 +148,7 @@
 				.style("font-size", 20)
 				.style("color", "#FFFFFF");
 	
-	if (browser != "msie") {	
+	if (browser != "msie" && browser != "Netscape") {	
 		a.append("foreignObject")
 				.attr("id", "votefeedtitle")
 				.attr("x", 120) 
@@ -165,9 +164,10 @@
 				.style("font-size", 20)
 				.style("color", "#000");
 				
-	} else if (browser == "msie") {
+	} else if (browser == "Netscape") {
 		
 		a.append("text")
+			.attr("id", "vote-title")
 			.attr("x", 120)
 			.attr("y", function(d, i) {
 				return i * 105 + 21;
@@ -175,13 +175,20 @@
 			.attr("width", 600)
 			.attr("height", 21)
 			.text(function(d, i) {
-				var s = d.vote.question.substring(0, 60);
-				var index = s.lastIndexOf(" ");
-				return s.substring(0, index);
+				var l = d.vote.question.length;
+				
+				if (l < 60) {
+					return d.vote.question;
+				} else {
+					var s = d.vote.question.substring(0, 60);
+					var index = s.lastIndexOf(" ");
+					return s.substring(0, index);
+				}
 			})
 			.style("font-size", 20);
 			
 		a.append("text")
+			.attr("id", "vote-title")
 			.attr("x", 120)
 			.attr("y", function(d, i) {
 				return i * 105 + 42;
@@ -189,18 +196,25 @@
 			.attr("width", 600)
 			.attr("height", 21)
 			.text(function(d, i) {
-				if (d.vote.question.length >= 60) {
+				var l = d.vote.question.length;
+				
+				if (l >= 60) {
 					var prev = d.vote.question.substring(0, 60);
 					var indexPrev = prev.lastIndexOf(" ");
-					var s = d.vote.question.substring(0, 100);
-					var index = s.lastIndexOf(" ");
-					return d.vote.question.substring(indexPrev, index);
+					if (l < 100) {
+						return d.vote.question.substring(indexPrev, 100);
+					} else {
+						var s = d.vote.question.substring(0, 100);
+						var index = s.lastIndexOf(" ");
+						return d.vote.question.substring(indexPrev, index);
+					}
 				} 
 				return "";
 			})
 			.style("font-size", 20);
 			
 		a.append("text")
+			.attr("id", "vote-title")
 			.attr("x", 120)
 			.attr("y", function(d, i) {
 				return i * 105 + 63;
