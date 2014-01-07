@@ -7,7 +7,4 @@ require("../includes/config.php");
 //dump($test->getName());
 //$x=load();
 //dump($x);
-echo billNews("Test");
-
-//load();
 ?>

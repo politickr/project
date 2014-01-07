@@ -1,6 +1,5 @@
 <?php
 require("../includes/config.php"); 
-
 if( !empty($_SESSION["user"]["senator1id"]) || !empty($_SESSION["user"]["senator2id"]) || !empty($_SESSION["user"]["repid"]))
 	{
 		 $order = array( 0 => $_SESSION["user"]["senator1id"],

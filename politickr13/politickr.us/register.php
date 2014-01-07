@@ -42,13 +42,13 @@
 				foreach($RepProfiles as $govtrackid)
 				{
 					$result = query("SELECT object FROM representatives WHERE govtrackid = ?", $govtrackid);
-					$repobjects[$index] = unserialize($result[0]['object']);
+					$repobjects[$index] = $result[0]['object'];
 					$index++;
 				}
 					
-				$temp = new User($_POST['username'], $_POST['email'], $repobjects[0],$repobjects[1], $repobjects[2], 0);
-				$x = query("INSERT INTO users (username, hash, email, senator1id, senator2id, repid, votethreshold, object) VALUES(?, ?, ?, ?, ?, ?, ?, ?)", $temp->getName(), crypt($_POST["password"]), $temp->getEmail(), $RepProfiles[0], $RepProfiles[1], $RepProfiles[2], 0, serialize($temp));
-						
+				$temp = array($RepProfiles[0], $RepProfiles[1], $RepProfiles[2]);
+				$x = query("INSERT INTO users (username, hash, email, senator1id, senator2id, repid, votethreshold, object) VALUES(?, ?, ?, ?, ?, ?, ?, ?)", $_POST["username"], crypt($_POST["password"]), $_POST["email"], $RepProfiles[0], $RepProfiles[1], $RepProfiles[2], 0, serialize($temp));
+			$_SESSION["user_obj"] = $temp; 
 			}
 			
              if ($x === false)
@@ -58,6 +58,7 @@
            	}
 			 $rows = query("SELECT * FROM users WHERE username = ?", $_POST["username"]);
              $_SESSION["user"] = $rows[0];
+			 
              notify('Registration successful! You are now logged in!');
              //redirect("/");                                  
                

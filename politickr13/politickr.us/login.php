@@ -37,6 +37,8 @@ if( !isset($_SESSION['last_access']) || (time() - $_SESSION['last_access']) > 60
             {
                 // remember that user's now logged in by storing user's ID in session
                 $_SESSION["user"] = $row;
+				$_SESSION["user_obj"] = unserialize($row["object"]);
+				
                 // redirect to portfolio
                 redirect("/my_reps.php");
             }

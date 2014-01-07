@@ -8,6 +8,10 @@
      * Helper functions.
      */
 	 
+	 function updateRepObjects() {
+		 
+	 }
+	 
 	 /**
      * Adds a rep. 
      */
@@ -400,10 +404,12 @@
 			//if( !empty($reps['person']['namemod']) && !empty($reps['person']['nickname']) && !empty($reps['district']))
 			//{
 			$str = $reps['person']['id'];
-			$b = new Legislator($str);
-			$blob = serialize($b);
+			$followers = array();
+			$votes = array();
+			$followersblob = serialize($followers);
+			$votesblob = serialize($votes);
 			
-			$x = query("INSERT INTO representatives (lastname, firstname, namemod, nickname, description, party, startdate, enddate, phone, website, title, birthday, link, govtrackid, bioguideid, cspanid, osid,pvsid,twitterid,youtubeid, district, state, object) VALUES(?, ?, ?, ?, ?, ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", $reps['person']['lastname'], $reps['person']['firstname'], $reps['person']['namemod'], $reps['person']['nickname'], $reps['description'], $reps['party'], $reps['startdate'], $reps['enddate'], $reps['phone'], $reps['website'], $reps['title'], $reps['person']['birthday'], $reps['person']['link'], $reps['person']['id'], $reps['person']['bioguideid'],$reps['person']['cspanid'],$reps['person']['osid'],$reps['person']['pvsid'],$reps['person']['twitterid'],$reps['person']['youtubeid'],$reps['district'], $reps['state'], $blob);
+			$x = query("INSERT INTO representatives (lastname, firstname, namemod, nickname, description, party, startdate, enddate, phone, website, title, birthday, link, govtrackid, bioguideid, cspanid, osid,pvsid,twitterid,youtubeid, district, state, followers, votes) VALUES(?, ?, ?, ?, ?, ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", $reps['person']['lastname'], $reps['person']['firstname'], $reps['person']['namemod'], $reps['person']['nickname'], $reps['description'], $reps['party'], $reps['startdate'], $reps['enddate'], $reps['phone'], $reps['website'], $reps['title'], $reps['person']['birthday'], $reps['person']['link'], $reps['person']['id'], $reps['person']['bioguideid'],$reps['person']['cspanid'],$reps['person']['osid'],$reps['person']['pvsid'],$reps['person']['twitterid'],$reps['person']['youtubeid'],$reps['district'], $reps['state'], $followersblob, $votesblob);
 			if($x === false){
 				apologize("There was an error loading representatives");
 				//dump($reps);
