@@ -28,18 +28,5 @@
 		print('<div class="col-lg-2">');
 		print('</div>');		
 		print('</div>');
-		
-  
-	echo '<script>';
-	echo '<svg width="5cm" height="4cm" version="1.1"';
-    echo 'xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">';
-	
-	echo '</svg>';
-	echo 'd3.selectAll(.rep).style("display", "none")';
-	echo 'd3.selectAll(.img).style("height", 150px);'; 
-	
-	echo '</script>';
-	
-	
-		
 ?>
+
