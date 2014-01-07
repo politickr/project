@@ -27,192 +27,99 @@
         <div class="col-lg-6 news-feed" id="news-feed">
             <h2 class="text-center">News</h2>
     <script>
-	function get_browser() {
-    	var N=navigator.appName, ua=navigator.userAgent, tem;
-    	var M=ua.match(/(opera|chrome|safari|firefox|msie)\/?\s*(\.?\d+(\.\d+)*)/i);
-    	if(M && (tem= ua.match(/version\/([\.\d]+)/i))!= null) M[2]= tem[1];
-    	M=M? [M[1], M[2]]: [N, navigator.appVersion, '-?'];
-    	return M[0];
-    }
-	
-	function get_browser_version() {
-    	var N=navigator.appName, ua=navigator.userAgent, tem;
-    	var M=ua.match(/(opera|chrome|safari|firefox|msie)\/?\s*(\.?\d+(\.\d+)*)/i);
-    	if(M && (tem= ua.match(/version\/([\.\d]+)/i))!= null) M[2]= tem[1];
-    	M=M? [M[1], M[2]]: [N, navigator.appVersion, '-?'];
-    	return M[1];
-    }
-	
-	var browser = get_browser();
-	
-	<? $searchStr = explode(":", $billinfo['title']); ?>
-	var data = <? echo billNews($searchStr[1]) ?>;
+	var data = <? echo billNews($billinfo['title']) ?>;
 	var moddata = data.d.results;
-	if (browser != "msie" && browser != "Netscape") {
-		
-		var svgHeight = moddata.length * 210;
-		
-		var container = d3.select('.news-feed').append('div')
-		.attr('id','news-container');
-		
-		
-		var svg = container.append("svg")
-					.attr("width", 450)
-					.attr("height", svgHeight - 5);
-					
-					
-		var g = svg.selectAll("g")
-				.data(moddata)
-				.enter()
-				.append("g")
-				.attr("x", 0)
-				.attr("y", function(d, i) {
-						return i * 210;
-					});
-					
-		var a = g.append("a")
-				.attr("xlink:href", function(d, i) {
-						return d.Url;
-					});
-
+	 
+	var svgHeight = moddata.length * 105;
 	
-		
-		a.append("rect")
-					.attr("width", 450)
-					.attr("height", 205)
-					.attr("y", function(d, i) {
-						return i * 210;
-					})
-					.attr("x", 0)
-					.attr("fill", "#CCCCCC");
-					
-		a.append("rect")
-					.attr("class", "news")
-					.attr("width", 100)
-					.attr("height", 205)
-					.attr("x", 0)
-					.attr("y", function(d, i) {
-						return i * 210;
-					})
-					.attr("fill", "#666666");
-						
-		a.append("foreignObject")
-					.attr("class", "newsfeed-source")
-					.attr("x", 5)
-					.attr("y", function(d, i) {
-							return i * 210;
-						})
-					.attr("width", 90)
-					.attr("height", 200)
-					.text(function(d, i) {
-							return d.Source;
-						})
-					.style("font-size", 16)
-					.style("font-weight", "bold")
-					.style("color", "#FFFFFF");
-		
-		a.append("foreignObject")
-					.attr("x", 110)
-					.attr("y", function(d, i) {
-							return i * 210;
-						})
-					.attr("width", 300)
-					.attr("height", 40)
-					.text(function(d, i) {
-						return d.Title;
-						})
-					.style("font-size", 16)
-					.style("text-align", "left")
-					.style("font-weight", "bold")
-					.style("color", "#666666");
-					
-		a.append("foreignObject")
-					.attr("x", 120)
-					.attr("y", function(d, i) {
-							return i * 210 + 50;
-						})
-					.attr("width", 300)
-					.attr("height", 160)
-					.text(function(d, i) {
-						return d.Description;
-					})
-					.style("font-size", 14)
-					.style("text-align", "left")
-					.style("overflow-y", "scroll");
+	var container = d3.select('.news-feed').append('div')
+    .attr('id','news-container');
+	
+	
+	var svg = container.append("svg")
+				.attr("width", 450)
+				.attr("height", svgHeight - 5);
 				
-	} else if (browser == "Netscape") {
-		
-		var svgHeight = moddata.length * 75;
-		
-		var container = d3.select('.news-feed').append('div')
-		.attr('id','news-container');
-		
-		
-		var svg = container.append("svg")
-					.attr("width", 465)
-					.attr("height", svgHeight - 5);
-					
-					
-		var g = svg.selectAll("g")
-				.data(moddata)
-				.enter()
-				.append("g")
+				
+	var g = svg.selectAll("g")
+    		.data(moddata)
+  			.enter()
+  			.append("g")
+    		.attr("x", 0)
+			.attr("y", function(d, i) {
+					return i * 105;
+				});
+				
+	var a = g.append("a")
+			.attr("xlink:href", function(d, i) {
+					return d.Url;
+				});
+
+				
+	a.append("rect")
+				.attr("width", 450)
+				.attr("height", 100)
+				.attr("y", function(d, i) {
+					return i * 105;
+				})
+				.attr("x", 0)
+				.attr("fill", "#CCCCCC");
+				
+	a.append("rect")
+				.attr("class", "vote")
+				.attr("width", 100)
+				.attr("height", 100)
 				.attr("x", 0)
 				.attr("y", function(d, i) {
-						return i * 210;
-					});
+					return i * 105;
+				})
+				.attr("fill", "#666666");
 					
-		var a = g.append("a")
-				.attr("xlink:href", function(d, i) {
-						return d.Url;
-					});
-
-		a.append("rect")
-					.attr("width", 450)
-					.attr("height", 70)
-					.attr("y", function(d, i) {
-						return i * 75;
+	a.append("foreignObject")
+				.attr("class", "newsfeed-source")
+				.attr("x", 5)
+				.attr("y", function(d, i) {
+						return i * 105;
 					})
-					.attr("x", 0)
-					.attr("fill", "#CCCCCC");
-					
-		a.append("rect")
-					.attr("class", "news")
-					.attr("width", 450)
-					.attr("height", 25)
-					.attr("x", 0)
-					.attr("y", function(d, i) {
-						return i * 75;
-					})
-					.attr("fill", "#00CCFF");
-					
-		a.append("text")
-					.attr("id", "news-source")
-					.attr("x", 20)
-					.attr("y", function(d, i) {
-						return i * 75 + 20;
-					})
-					.attr("width", 430)
-					.attr("height", 25)
-					.text(function(d, i) {
+				.attr("width", 90)
+				.attr("height", 100)
+				.text(function(d, i) {
 						return d.Source;
 					})
-					.style("font-size", 16);
-			
-		a.append("text")
-					.attr("id", "news-title")
-					.attr("x", 40)
-					.attr("y", function(d, i) {
-						return i * 75 + 50;
+				.style("font-size", 16)
+				.style("font-weight", "bold")
+				.style("color", "#FFFFFF");
+	
+	a.append("foreignObject")
+				.attr("x", 110)
+				.attr("y", function(d, i) {
+						return i * 105;
 					})
-					.attr("width", 410)
-					.attr("height", 21)
-					.text(function(d, i) {
-						return d.Title;
+				.attr("width", 300)
+				.attr("height", 20)
+				.text(function(d, i) {
+					return d.Title;
 					})
-					.style("font-size", 20);
+				.style("font-size", 12)
+				.style("text-align", "left")
+				.style("font-weight", "bold")
+				.style("color", "#666666");
+				
+	a.append("foreignObject")
+				.attr("x", 120)
+				.attr("y", function(d, i) {
+						return i * 105 + 20;
+					})
+				.attr("width", 300)
+				.attr("height", 70)
+				.text(function(d, i) {
+					return d.Description;
+				})
+				.style("font-size", 12)
+				.style("text-align", "left")
+				.style("overflow-y", "scroll");
+				
 		
-	}
 	</script>
         </div>
         </div>
