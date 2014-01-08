@@ -20,7 +20,7 @@
                 <? echo $billinfo['current_status_description'] ?><br />
             </div>
             <br />
-            <a href = <? $billinfo['thomas_link']?>><h4>Link</h4></a>
+            <a href = <? echo $billinfo['thomas_link']?>><h4>Go to the bill's Library of Congress page</h4></a>
             
 		</div>
         
