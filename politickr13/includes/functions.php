@@ -105,14 +105,23 @@
 	/**
      * Emails someone using php mail(). 
      */
-    function email($email, $subject, $body)
+    function emailRep($voteid, $repid, $email, $subject, $body, $save)
     {
         //$to = "recipient@example.com";
 		//$subject = "Hi!";
 		//$body = "Hi,\n\nHow are you?";
-		if (mail($to, $subject, $body)) 
+		$username = $_SESSION['user']['username'];
+		if (mail($email, $subject, $body,'From: '.$username. '@ politickr.us')) 
 		{
 			return("<p>Email successfully sent!</p>");
+			if($save == TRUE)
+			{
+				$response = query("INSERT INTO email (user,representative,body,vote) VALUES(?,?,?,?)", $_SESSION['user']['username'],$repid, $body, $voteid);
+				if( $response === FALSE)
+				{
+					apologize("There was an error loading representatives");
+				}
+			}
 		} 
 		else 
 		{
