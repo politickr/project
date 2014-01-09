@@ -115,7 +115,7 @@
 		{
 			if($save == TRUE)
 			{
-				$response = query("INSERT INTO email (user,representative,body,vote) VALUES(?,?,?,?)", $_SESSION['user']['username'],$repid, $body, $voteid);
+				$response = query("INSERT INTO mail (user,representative,body,vote) VALUES(?,?,?,?)", $_SESSION['user']['username'],$repid, $body, $voteid);
 				if( $response === FALSE)
 				{
 					apologize("There was an error, sorry!");

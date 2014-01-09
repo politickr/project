@@ -1,6 +1,6 @@
 <?php
 require("../includes/config.php");
- $x = email(566,4555,'heiscody@gmail.com','test','test body', true);
+ $x = emailRep(566,4555,'heiscody@gmail.com','test','test body', true);
  dump($x);
 //$rows = query("SELECT firstname FROM representatives WHERE id = ?", 1);
 //dump($rows);
