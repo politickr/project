@@ -111,17 +111,17 @@
 		//$subject = "Hi!";
 		//$body = "Hi,\n\nHow are you?";
 		$username = $_SESSION['user']['username'];
-		if (mail($email, $subject, $body,'From: '.$username. '@ politickr.us')) 
+		if (mail($email, $subject, $body,'From: '.$username. '@politickr.us')) 
 		{
-			return("<p>Email successfully sent!</p>");
 			if($save == TRUE)
 			{
 				$response = query("INSERT INTO email (user,representative,body,vote) VALUES(?,?,?,?)", $_SESSION['user']['username'],$repid, $body, $voteid);
 				if( $response === FALSE)
 				{
-					apologize("There was an error loading representatives");
+					apologize("There was an error, sorry!");
 				}
 			}
+			return("<p>Email successfully sent!</p>");
 		} 
 		else 
 		{
@@ -130,7 +130,26 @@
         exit;
     }
 	
-    
+    function emailUser($username, $useremail, $messagetype, $subject, $body)
+    {
+        //$to = "recipient@example.com";
+		//$subject = "Hi!";
+		//$body = "Hi,\n\nHow are you?";
+		if (mail($useremail, $subject, $body,'From: admin@politickr.us')) 
+		{
+			$response = query("INSERT INTO useremail (user, messagetype) VALUES(?,?)", $username,  $messagetype);
+			if($response === FALSE)
+			{
+				apologize("There was an error, sorry!");
+			}
+			return("<p>Email successfully sent!</p>");
+		} 
+		else 
+		{
+			return("<p>Email delivery failed…</p>");
+		}
+        exit;
+    }
      /**
      * Takes in address and returns array the govtrack ids of the representatives at that address.
      */
