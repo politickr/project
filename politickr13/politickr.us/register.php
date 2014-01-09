@@ -37,7 +37,7 @@
 				{
 					apologize("Invalid Address");
 				}
-				$repobjects;
+				/*$repobjects;
 				$index= 0;
 				foreach($RepProfiles as $govtrackid)
 				{
@@ -45,6 +45,7 @@
 					$repobjects[$index] = $result[0]['object'];
 					$index++;
 				}
+        */
 					
 				$temp = array($RepProfiles[0], $RepProfiles[1], $RepProfiles[2]);
 				$x = query("INSERT INTO users (username, hash, email, senator1id, senator2id, repid, votethreshold, object) VALUES(?, ?, ?, ?, ?, ?, ?, ?)", $_POST["username"], crypt($_POST["password"]), $_POST["email"], $RepProfiles[0], $RepProfiles[1], $RepProfiles[2], 0, serialize($temp));
