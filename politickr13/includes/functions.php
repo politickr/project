@@ -192,7 +192,14 @@
 						);
 		foreach($order as $placeholder)
 		{
+
 			$row= query("SELECT govtrackid FROM representatives WHERE (firstname = ? OR nickname = ?) AND (lastname = ? OR namemod= ?) AND state = ?", $placeholder[0], $placeholder[0], $placeholder[1], $placeholder[1], $gcivics['normalizedInput']['state'] );
+			if(isset($gcivics['officials'][$placeholder[2]]['emails'][0]))
+			{
+				//update seql database and insert photourl
+				query("UPDATE representatives SET email = ? WHERE govtrackid = ?", $gcivics['officials'][$placeholder[2]]['emails'][0], $row[0]['govtrackid']);
+
+			}
 			if(isset($gcivics['officials'][$placeholder[2]]['photoUrl']))
 			{
 				//update seql database and insert photourl
