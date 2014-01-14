@@ -25,19 +25,28 @@ if( !isset($_SESSION['last_access']) || (time() - $_SESSION['last_access']) > 60
  
         // query database for user
         $rows = query("SELECT * FROM users WHERE username = ?", $_POST["username"]);
- 
+ 		
+		
+		
         // if we found user, check password
         if (count($rows) == 1)
         {
             // first (and only) row
             $row = $rows[0];
- 
+			
+ 			if ($row["votes"] == null) {
+				$temp = array("#000000" => "T", "#000001" => "T");
+				query("UPDATE users SET votes = ? WHERE username = ?", serialize($temp), $_POST["username"]);
+				$row["votes"] = serialize($temp);
+			}
             // compare hash of user's input against hash that's in database
             if (crypt($_POST["password"], $row["hash"]) == $row["hash"])
             {
                 // remember that user's now logged in by storing user's ID in session
                 $_SESSION["user"] = $row;
+				$_SESSION["username"] = $_POST["username"];
 				$_SESSION["user_obj"] = unserialize($row["object"]);
+				$_SESSION["user_votes"] = unserialize($row["votes"]);
 				
                 // redirect to portfolio
                 redirect("/my_reps.php");

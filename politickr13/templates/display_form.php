@@ -59,6 +59,8 @@
 	months["11"] = "Nov";
 	months["12"] = "Dec";
 	
+	//creates a giant SVG of the rep voting record
+	
 	var container = d3.select('body').append('div')
     .attr('id','container')
 	.style("overflow-y", "scroll");
@@ -66,7 +68,7 @@
 	
 	
 	var svg = container.append("svg")
-				.attr("width", 720)
+				.attr("width", 900)
 				.attr("height", svgHeight - 5);
 				
 	var g = svg.selectAll("g")
@@ -79,16 +81,17 @@
 				});
 				
 	var a = g.append("a")
+			.attr("class", "vote-anchor")
 			.attr("xlink:href", function(d, i) {
 					return "bill.php?id=" + d.vote.related_bill
 										+ "&totalplusbill=" + d.vote.total_plus
 										+ "&totalminusbill=" + d.vote.total_minus
 										+ "&totalotherbill=" + d.vote.total_other;
 				});
-
+				
 	
 	a.append("rect")
-				.attr("width", 720)
+				.attr("width", 900)
 				.attr("height", 100)
 				.attr("y", function(d, i) {
 					return i * 105;
@@ -110,6 +113,7 @@
 						}
 					return "#F10000";
 					});
+	
 					
 	
 	a.append("text")
@@ -145,6 +149,34 @@
 					})
 				.style("font-size", 20)
 				.style("color", "#FFFFFF");
+				
+	var aUpvote = g.append("a")
+					.on("click", function(d, i) {
+						$.get("uservote.php", { id: d.vote.id, userOpinion: "Y" } );	
+					});
+				
+	aUpvote.append("circle")
+				.attr("class", "support-vote")
+				.attr("cx", 750)
+				.attr("r", 20)
+				.attr("cy", function(d, i) {
+					return i * 105 + 50;
+				})
+				.attr("fill", "#00F100");
+	
+	var aDownvote = g.append("a")
+					.on("click", function(d, i) {
+						$.get( "uservote.php", { id: d.vote.id, userOpinion: "N" } );	
+					});
+				
+	aDownvote.append("circle")
+				.attr("class", "oppose-vote")
+				.attr("cx", 810)
+				.attr("r", 20)
+				.attr("cy", function(d, i) {
+					return i * 105 + 50;
+				})
+				.attr("fill", "#F10000");
 	
 	if (browser != "msie" && browser != "Netscape") {	
 		a.append("foreignObject")

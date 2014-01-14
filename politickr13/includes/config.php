@@ -17,7 +17,7 @@
     require("functions.php");
 	require("user.php");
 	require("legislator.php");
-	require("vote.php");
+	require("uservote.php");
 	
 
     // enable sessions

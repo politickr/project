@@ -95,7 +95,7 @@ h1 {
 	 
 div#container {
         height: 500px;
-        width: 720px;
+		width: 900px;
 		margin: auto;
 		overflow-y: scroll;
       }
@@ -161,3 +161,23 @@ a:hover #rect-background {
 #news-title {
 	font-size: 20px;
 }
+
+.support-vote, .oppose-vote {
+	opacity:.5;
+	-webkit-transition: opacity .25s ease-in-out;
+  	-moz-transition: opacity .25s ease-in-out;
+  	-ms-transition: opacity .25s ease-in-out;
+  	-o-transition: opacity .25s ease-in-out;
+  	transition: opacity .25s ease-in-out;	
+}
+
+.support-vote:hover, .oppose-vote:hover {
+	opacity: 1;
+  -webkit-transition: opacity .25s ease-in-out;
+  	-moz-transition: opacity .25s ease-in-out;
+  	-ms-transition: opacity .25s ease-in-out;
+  	-o-transition: opacity .25s ease-in-out;
+  	transition: opacity .25s ease-in-out;
+}
+
+
