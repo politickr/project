@@ -163,7 +163,7 @@ a:hover #rect-background {
 }
 
 .support-vote, .oppose-vote {
-	opacity:.5;
+	opacity:.25;
 	-webkit-transition: opacity .25s ease-in-out;
   	-moz-transition: opacity .25s ease-in-out;
   	-ms-transition: opacity .25s ease-in-out;

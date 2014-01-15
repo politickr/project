@@ -62,7 +62,6 @@
            	}
 			 $rows = query("SELECT * FROM users WHERE username = ?", $_POST["username"]);
              $_SESSION["user"] = $rows[0];
-			 
              notify('Registration successful! You are now logged in!');
              //redirect("/");                                  
                

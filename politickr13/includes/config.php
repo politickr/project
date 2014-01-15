@@ -17,11 +17,11 @@
     require("functions.php");
 	require("user.php");
 	require("legislator.php");
-	require("uservote.php");
 	
 
     // enable sessions
     session_start();
+	
 
     // require authentication for most pages
   /*  if (!preg_match("{(?:login|logout|register)\.php$}", $_SERVER["PHP_SELF"]))
