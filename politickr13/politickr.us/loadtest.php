@@ -1,5 +1,4 @@
 <?php
 require("../includes/config.php");
-$x = $_SESSION["user_votes"];
-dump($x);
+dump(getVotes(400342));
 ?>

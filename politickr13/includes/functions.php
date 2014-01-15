@@ -271,7 +271,7 @@
     {
     	$limit = 600;
     	//get last 600 votes of representative in JSON format, get various fields including id of related bill
-       	$votejson = file_get_contents('http://www.govtrack.us/api/v2/vote_voter/?person='.$id.'&limit='.$limit.'&order_by=-created&fields=vote__id,created,option__value,vote__category,vote__chamber,vote__question,vote__number,vote__related_bill,vote__total_minus,vote__total_plus,vote__total_other,vote__link');
+       	$votejson = file_get_contents('http://www.govtrack.us/api/v2/vote_voter/?person='.$id.'&limit='.$limit.'&order_by=-created&fields=id,vote__id,created,option__value,vote__category,vote__chamber,vote__question,vote__number,vote__related_bill,vote__total_minus,vote__total_plus,vote__total_other,vote__link');
  		$data = json_decode($votejson, true);
 		return $votejson;
  		exit; 
