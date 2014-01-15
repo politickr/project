@@ -185,21 +185,21 @@
 					
 	var aUpvote = g.append("a")
 				.on("click", function(d, i) {
-					d3.text("uservote.php?id=" + d.vote.id + "&op=Y", function() {
-						console.log("upvote for " + d.vote.id);
+					d3.text("uservote.php?id=" + d.id + "&op=Y", function() {
+						console.log("upvote for " + d.id);
 						});
 						
-					d3.select("#up" + d.vote.id)
+					d3.select("#up" + d.id)
 						.style("opacity", 1);
 						
-					d3.select("#down" + d.vote.id)
+					d3.select("#down" + d.id)
 						.style("opacity", .25);
 				});
 					
 				
 	aUpvote.append("circle")
 				.attr("id", function(d, i) {
-					return "up" + d.vote.id;
+					return "up" + d.id;
 				})
 				.attr("class", "support-vote")
 				.attr("cx", 780)
@@ -211,21 +211,21 @@
 	
 	var aDownvote = g.append("a")
 				.on("click", function(d, i) {
-					d3.text("uservote.php?id=" + d.vote.id + "&op=N", function() {
-						console.log("downvote for " + d.vote.id);
+					d3.text("uservote.php?id=" + d.id + "&op=N", function() {
+						console.log("downvote for " + d.id);
 						});
 						
-					d3.select("#down" + d.vote.id)
+					d3.select("#down" + d.id)
 						.style("opacity", 1);
 						
-					d3.select("#up" + d.vote.id)
+					d3.select("#up" + d.id)
 						.style("opacity", .25);
 				});
 				
 	aDownvote.append("circle")
 				.attr("class", "oppose-vote")
 				.attr("id", function(d, i) {
-					return "down" + d.vote.id;
+					return "down" + d.id;
 				})
 				.attr("cx", 840)
 				.attr("r", 20)
