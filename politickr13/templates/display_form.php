@@ -32,7 +32,7 @@
 	var userVotes = <?php 
 		if (isset($_SESSION["user_split_votes"])) {
 			echo json_encode($_SESSION["user_split_votes"]);
-		} else {
+		} else if (isset($_SESSION["user"])) {
 			$tempsplitVotes = array("Y" => array(), "N" => array());
 	  
 	  
@@ -46,6 +46,8 @@
 			
 			$_SESSION["user_split_votes"] = $tempsplitVotes;
 			echo json_encode($tempsplitVotes);
+		} else {
+			echo json_encode(array("Y" => array(), "N" => array()));
 		}
 		?>;
 	
