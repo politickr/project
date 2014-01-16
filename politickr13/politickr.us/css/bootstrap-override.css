@@ -95,8 +95,8 @@ h1 {
 	 
 	 
 div#container {
-        height: 500px;
-		width: 900px;
+        height: 40%;
+		width: 660px;
 		margin: auto;
 		overflow-y: scroll;
 		border: solid;
@@ -107,7 +107,7 @@ div#container {
 	  
 div#news-container {
         height: 575px;
-        width: 465px;
+        width: 450px;
 		margin: auto;
 		overflow-y: scroll;
       }
@@ -156,7 +156,7 @@ a:hover #rect-background {
 }
 
 #vote-title {
-	font-size: 20px !important;	
+	font-size: 16px;	
 }
 
 #news-source {

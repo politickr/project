@@ -35,7 +35,8 @@
 ?>
 
 <div class="row" style="top-margin: 20px">
-	<div class="col-lg-12 text-center">
+	<div class="col-lg-2 text-center"></div>
+    	<div class="col-lg-6 text-left">
 	
 <script type="text/javascript">
 
@@ -64,7 +65,7 @@
     					.attr('id','container')
 						.style("overflow-y", "scroll");
 	
-	var splitVotes = [{"Y":[], "N":[]}, {"Y":[], "N":[]}, {"Y":[], "N":[]}];
+	
 	var temp = <?php echo json_encode($allVotes) ?>;
 	var userVotes = <?php 
 		if (isset($_SESSION["user_split_votes"])) {
@@ -90,25 +91,21 @@
 		
 		?>;
 		
+		
 </script>
     
 <script type="text/javascript">
 
+var userY = userVotes.Y;
+var userN = userVotes.N;
+		
+		
 function update(num) {
 		
 	// Put PHP array of votes into javascript variable
 	
 	var data = temp[num];
 	var datatwo = data.objects;
-	
-	
-	
-	
-	var userY = userVotes.Y;
-	var userN = userVotes.N;	
-	console.log(userY.length);
-	console.log(userN.length);
-	
 	
 	// Declare new array to put filtered votes in
 	var moddata = [];
@@ -141,7 +138,7 @@ function update(num) {
 				.remove();
 	
 	var svg = container.append("svg")
-				.attr("width", 900)
+				.attr("width", 650)
 				.attr("height", svgHeight - 5);
 				
 
@@ -165,7 +162,7 @@ function update(num) {
 				
 	
 	a.append("rect")
-				.attr("width", 900)
+				.attr("width", 650)
 				.attr("height", 100)
 				.attr("y", function(d, i) {
 					return i * 105;
@@ -175,7 +172,7 @@ function update(num) {
 				
 	a.append("rect")
 				.attr("class", "vote")
-				.attr("width", 100)
+				.attr("width", 60)
 				.attr("height", 100)
 				.attr("x", 0)
 				.attr("y", function(d, i) {
@@ -192,7 +189,7 @@ function update(num) {
 	
 	a.append("text")
 				.attr("id", "month")
-				.attr("x", 20)
+				.attr("x", 5)
 				.attr("y", function(d, i) {
 					return i * 105 + 50;
 				})
@@ -206,12 +203,11 @@ function update(num) {
 					
 					return months[month] + " " + day;
 					})
-				.style("font-size", 18)
 				.style("color", "#FFFFFF");
 				
 	a.append("text")
 				.attr("id", "year")
-				.attr("x", 20)
+				.attr("x", 5)
 				.attr("y", function(d, i) {
 					return i * 105 + 70;
 				})
@@ -221,13 +217,12 @@ function update(num) {
 					
 					return year;
 					})
-				.style("font-size", 20)
 				.style("color", "#FFFFFF");
 				
 	a.append("rect")
-				.attr("width", 180)
+				.attr("width", 50)
 				.attr("height", 100)
-				.attr("x", 720)
+				.attr("x", 580)
 				.attr("y", function(d, i) {
 					return i * 105;
 				})
@@ -242,6 +237,13 @@ function update(num) {
 						
 					d3.select("#up" + d.id)
 						.style("opacity", 1);
+					
+					userY.push("#" + d.id);
+					
+					var index = userN.indexOf("#" + d.id);
+					if (index >= 0) {
+						userN.splice(index, 1);
+					}
 						
 					d3.select("#down" + d.id)
 						.style("opacity", .25);
@@ -253,12 +255,12 @@ function update(num) {
 				})
     	.attr("xlink:href","/img/smiley-face.svg")
 		.attr("class", "support-vote")
-		.attr("x", 760)
+		.attr("x", 590)
 		.attr("y", function(d, i) {
-			return 105 * i + 30
+			return 105 * i + 20;
 		})
-    	.attr("width", 40)
-    	.attr("height", 40);
+    	.attr("width", 30)
+    	.attr("height", 30);
 			
 	var aDownvote = g.append("a")
 				.on("click", function(d, i) {
@@ -268,6 +270,13 @@ function update(num) {
 						
 					d3.select("#down" + d.id)
 						.style("opacity", 1);
+						
+					userN.push("#" + d.id);
+					
+					var index = userY.indexOf("#" + d.id);
+					if (index >= 0) {
+						userY.splice(index, 1);
+					}
 						
 					d3.select("#up" + d.id)
 						.style("opacity", .25);
@@ -279,12 +288,12 @@ function update(num) {
 				})
     	.attr("xlink:href","/img/frown-face.svg")
 		.attr("class", "oppose-vote")
-		.attr("x", 820)
+		.attr("x", 590)
 		.attr("y", function(d, i) {
-			return 105 * i + 30
+			return 105 * i + 50;
 		})
-    	.attr("width", 40)
-    	.attr("height", 40);
+    	.attr("width", 30)
+    	.attr("height", 30);
 					
 				
 	for (var i = 0; i < userY.length; i++) {
@@ -303,17 +312,17 @@ function update(num) {
 	if (browser != "msie" && browser != "Netscape") {	
 		a.append("foreignObject")
 				.attr("id", "votefeedtitle")
-				.attr("x", 120) 
+				.attr("x", 70) 
 				.attr("y", function(d, i) {
 						return i * 105;
 					})
-				.attr("width", 600)
+				.attr("width", 510)
 				.attr("height", 100)
 				.text(function(d, i) {
 					var q = d.vote.question;
 					return q;
 					})
-				.style("font-size", 20)
+				.style("font-size", 16)
 				.style("color", "#000");
 				
 				
@@ -323,50 +332,50 @@ function update(num) {
 		
 		a.append("text")
 			.attr("id", "vote-title")
-			.attr("x", 120)
+			.attr("x", 70)
 			.attr("y", function(d, i) {
 				return i * 105 + 21;
 			})
-			.attr("width", 600)
+			.attr("width", 510)
 			.attr("height", 21)
 			.text(function(d, i) {
 				var l = d.vote.question.length;
 				
-				if (l < 60) {
+				if (l < 40) {
 					return d.vote.question;
 				} else {
-					var s = d.vote.question.substring(0, 60);
+					var s = d.vote.question.substring(0, 40);
 					var index = s.lastIndexOf(" ");
 					return s.substring(0, index);
 				}
 			})
-			.style("font-size", 20);
+			.style("font-size", 16);
 			
 		a.append("text")
 			.attr("id", "vote-title")
-			.attr("x", 120)
+			.attr("x", 70)
 			.attr("y", function(d, i) {
 				return i * 105 + 42;
 			})
-			.attr("width", 600)
+			.attr("width", 510)
 			.attr("height", 21)
 			.text(function(d, i) {
 				var l = d.vote.question.length;
 				
-				if (l >= 60) {
-					var prev = d.vote.question.substring(0, 60);
+				if (l >= 40) {
+					var prev = d.vote.question.substring(0, 40);
 					var indexPrev = prev.lastIndexOf(" ");
-					if (l < 100) {
-						return d.vote.question.substring(indexPrev, 100);
+					if (l < 80) {
+						return d.vote.question.substring(indexPrev, 80);
 					} else {
-						var s = d.vote.question.substring(0, 100);
+						var s = d.vote.question.substring(0, 80);
 						var index = s.lastIndexOf(" ");
 						return d.vote.question.substring(indexPrev, index);
 					}
 				} 
 				return "";
 			})
-			.style("font-size", 20);
+			.style("font-size", 16);
 			
 		a.append("text")
 			.attr("id", "vote-title")
@@ -377,14 +386,14 @@ function update(num) {
 			.attr("width", 600)
 			.attr("height", 21)
 			.text(function(d, i) {
-				if (d.vote.question.length >= 100) {
-					var prev = d.vote.question.substring(0, 100);
+				if (d.vote.question.length >= 80) {
+					var prev = d.vote.question.substring(0, 80);
 					var index1 = prev.lastIndexOf(" ") + 1;
-					return d.vote.question.substring(index1, 160);
+					return d.vote.question.substring(index1, 120) + "...";
 				}
 				return "";
 			})
-			.style("font-size", 20);
+			.style("font-size", 16);
 			
 	}
 }
