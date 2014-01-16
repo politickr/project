@@ -1,11 +1,42 @@
 <body>
-<?php $reps = query("SELECT firstname,lastname, photourl FROM representatives WHERE govtrackid = ?", $_GET['id']);?>
-<h1 class="text-center"><?php echo ($reps[0]['firstname']." ".$reps[0]['lastname']."'s ");?>Votefeed</h1>
-	<div class="col-lg-12 text-center rep">
-		<img src="<?php echo $reps[0]['photourl']?> "width='150px'> 
-	</div>
-<h4 class="text-center">Green is Yea, Red is Nay</h4>
+<h1 class="text-center">My Representatives</h1>
+<?php  
+		
+        print('<div class="row">');
+		print('<div class="col-lg-2">');
+		print('</div>');
+		print('<div class="col-lg-8">');
+		
+		
+		$i = 0;
+		$allVotes = array();
+		
+		foreach ( $repinformation as $reps)
+		{
+			array_push($allVotes, json_decode(getVotes($reps[0]['govtrackid'])));
+			
+			print('<div class="col-lg-4 text-center rep">');
+			print("<a onclick=\"update(".$i.")\"><img src=".$reps[0]['photourl']." width='120px' height='150px'> </a><br />");
+			
+			print("<a onclick=\"update(".$i.")\">".$reps[0]['firstname']." ".$reps[0]['lastname']."</a><br />");
+			print("{$reps[0]["party"]}<br />");
+			print("{$reps[0]["description"]}<br />");
+			print("</div>");  
+			$i = $i + 1;
+		}
+		
+		
+		print('</div>');
+		print('<div class="col-lg-2">');
+		print('</div>');		
+		print('</div>');
+		
+		
+?>
 
+<div class="row" style="top-margin: 20px">
+	<div class="col-lg-12 text-center">
+	
 <script type="text/javascript">
 
 	//Detect browser version (different behavior for IE)
@@ -25,35 +56,58 @@
     	M=M? [M[1], M[2]]: [N, navigator.appVersion, '-?'];
     	return M[1];
     }
-	
+
 	var browser = get_browser();
-	// Put PHP array of votes into javascript variable
-	var data = <?php echo $votes ?>;
+	var allVotes = <?php echo json_encode($allVotes); ?>;
+	//creates a giant SVG of the rep voting record
+	var container = d3.select('body').append('div')
+    					.attr('id','container')
+						.style("overflow-y", "scroll");
+	
+	var splitVotes = [{"Y":[], "N":[]}, {"Y":[], "N":[]}, {"Y":[], "N":[]}];
+	var temp = <?php echo json_encode($allVotes) ?>;
 	var userVotes = <?php 
 		if (isset($_SESSION["user_split_votes"])) {
 			echo json_encode($_SESSION["user_split_votes"]);
-		} else if (isset($_SESSION["user"])) {
+			
+		} else if (!isset($_SESSION["user_split_votes"]) && isset($_SESSION["user"])) {
 			$tempsplitVotes = array("Y" => array(), "N" => array());
 	  
 	  
-	  		foreach($_SESSION["user_votes"] as $key => $val) {
-		  		if (strcmp($val, "Y") == 0) {
-		  			array_push($tempsplitVotes["Y"], $key);
-		  		} else {
+			foreach($_SESSION["user_votes"] as $key => $val) {
+				if (strcmp($val, "Y") == 0) {
+					array_push($tempsplitVotes["Y"], $key);
+				} else {
 					array_push($tempsplitVotes["N"], $key);
-		  		}
-	  		}
+				}
+			}
 			
 			$_SESSION["user_split_votes"] = $tempsplitVotes;
 			echo json_encode($tempsplitVotes);
 		} else {
 			echo json_encode(array("Y" => array(), "N" => array()));
 		}
+		
 		?>;
+		
+</script>
+    
+<script type="text/javascript">
+
+function update(num) {
+		
+	// Put PHP array of votes into javascript variable
+	
+	var data = temp[num];
+	var datatwo = data.objects;
+	
+	
+	
 	
 	var userY = userVotes.Y;
 	var userN = userVotes.N;	
-	var datatwo = data.objects;
+	console.log(userY.length);
+	console.log(userN.length);
 	
 	
 	// Declare new array to put filtered votes in
@@ -83,17 +137,14 @@
 	months["11"] = "Nov";
 	months["12"] = "Dec";
 	
-	//creates a giant SVG of the rep voting record
-	var container = d3.select('body').append('div')
-    .attr('id','container')
-	.style("overflow-y", "scroll");
-	
-	
+	container.select("svg")
+				.remove();
 	
 	var svg = container.append("svg")
 				.attr("width", 900)
 				.attr("height", svgHeight - 5);
 				
+
 	var g = svg.selectAll("g")
     		.data(moddata)
   			.enter()
@@ -196,19 +247,19 @@
 						.style("opacity", .25);
 				});
 					
-				
-	aUpvote.append("circle")
-				.attr("id", function(d, i) {
+	aUpvote.append("image")
+		.attr("id", function(d, i) {
 					return "up" + d.id;
 				})
-				.attr("class", "support-vote")
-				.attr("cx", 780)
-				.attr("r", 20)
-				.attr("cy", function(d, i) {
-					return i * 105 + 50;
-				})
-				.attr("fill", "#00F100");
-	
+    	.attr("xlink:href","/img/smiley-face.svg")
+		.attr("class", "support-vote")
+		.attr("x", 760)
+		.attr("y", function(d, i) {
+			return 105 * i + 30
+		})
+    	.attr("width", 40)
+    	.attr("height", 40);
+			
 	var aDownvote = g.append("a")
 				.on("click", function(d, i) {
 					d3.text("uservote.php?id=" + d.id + "&op=N", function() {
@@ -222,17 +273,19 @@
 						.style("opacity", .25);
 				});
 				
-	aDownvote.append("circle")
-				.attr("class", "oppose-vote")
-				.attr("id", function(d, i) {
+	aDownvote.append("image")
+		.attr("id", function(d, i) {
 					return "down" + d.id;
 				})
-				.attr("cx", 840)
-				.attr("r", 20)
-				.attr("cy", function(d, i) {
-					return i * 105 + 50;
-				})
-				.attr("fill", "#F10000");
+    	.attr("xlink:href","/img/frown-face.svg")
+		.attr("class", "oppose-vote")
+		.attr("x", 820)
+		.attr("y", function(d, i) {
+			return 105 * i + 30
+		})
+    	.attr("width", 40)
+    	.attr("height", 40);
+					
 				
 	for (var i = 0; i < userY.length; i++) {
 			var s = userY[i];
@@ -334,6 +387,15 @@
 			.style("font-size", 20);
 			
 	}
+}
+
+$(document).ready(function() {
+		update(0);	
+	});
+	
+	
 	</script>
+    	</div>
+    </div>
 </body>
 

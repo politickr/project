@@ -28,7 +28,6 @@ if (isset($_SESSION["user"])) {
 	  $_SESSION["user_split_votes"] = $tempsplitVotes;
 	  query("UPDATE users SET votes = ? WHERE username = ?", serialize($votes), $_SESSION["username"]);
 	  
-	  echo "success";
 	  
 } else {
 	echo "failure";

@@ -22,6 +22,7 @@ h1 {
   min-height:50%;
   color:#FFFFFF;
   overflow:hidden;
+  
 }
 
 .container-full a {
@@ -98,6 +99,10 @@ div#container {
 		width: 900px;
 		margin: auto;
 		overflow-y: scroll;
+		border: solid;
+		border-color: #CCC;
+		border-width: 5px;
+		margin-top: 20px;
       }
 	  
 div#news-container {
@@ -171,13 +176,19 @@ a:hover #rect-background {
   	transition: opacity .25s ease-in-out;	
 }
 
-.support-vote:hover, .oppose-vote:hover {
+a:hover .support-vote, a:hover .oppose-vote {
 	opacity: 1;
   -webkit-transition: opacity .25s ease-in-out;
   	-moz-transition: opacity .25s ease-in-out;
   	-ms-transition: opacity .25s ease-in-out;
   	-o-transition: opacity .25s ease-in-out;
   	transition: opacity .25s ease-in-out;
+}
+
+div#my-reps-container {
+        height: 350px;
+		width: 735px;
+		margin: auto;
 }
 
 

@@ -15,7 +15,7 @@ if( !empty($_SESSION["user"]["senator1id"]) || !empty($_SESSION["user"]["senator
         }
         else
         {
-            render("index_form.php",  ["repinformation" => $repinformation]);
+            render("display_form.php",  ["repinformation" => $repinformation]);
         }            
 		
 	}
