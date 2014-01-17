@@ -48,7 +48,18 @@
 				</ul>
 			</li>
 			<?php else:?>
-				
+			  	<ul class="nav pull-right">
+          			<li class="dropdown" id="menuLogin">
+            			<a class="navbar-brand" "dropdown-toggle" href="#" data-toggle="dropdown" id="navLogin">Login</a>
+            			<div class="dropdown-menu" style="padding:17px;">
+              			<form action="login.php" method="post"> 
+                			<input name="username" id="username" type="text" placeholder="Username"> 
+                			<input name="password" id="password" type="password" placeholder="Password"><br>
+                			<button type="submit" id="btnLogin" class="btn btn-large btn-primary">Login</button>
+              			</form>
+            			</div>
+          			</li>
+        		</ul>
 			<?php endif ?>
 		</ul>
 		</div>
