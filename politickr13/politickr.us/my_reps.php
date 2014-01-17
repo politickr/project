@@ -42,7 +42,7 @@ if( !empty($_SESSION["user"]["senator1id"]) || !empty($_SESSION["user"]["senator
 			{
 				$repinformation[$id] = query("SELECT * FROM representatives WHERE govtrackid = ?", $id);
 			}
-            render("index_form.php", ["repinformation" => $repinformation]);
+            render("display_form.php", ["repinformation" => $repinformation]);
         }            
     }
 	else if (!empty($_SESSION["address"]))
@@ -60,7 +60,7 @@ if( !empty($_SESSION["user"]["senator1id"]) || !empty($_SESSION["user"]["senator
 			{
 				$repinformation[$id] = query("SELECT * FROM representatives WHERE govtrackid = ?", $id);
 			}
-            render("index_form.php", ["repinformation" => $repinformation]);
+            render("display_form.php", ["repinformation" => $repinformation]);
         }            
 	}
     else

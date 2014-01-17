@@ -34,9 +34,9 @@
 		
 ?>
 
-<div class="row" style="top-margin: 20px">
-	<div class="col-lg-2 text-center"></div>
-    	<div class="col-lg-6 text-left">
+<div class="row" id="voteinfo-row">
+	<div class="col-lg-1"></div>
+	<div class="col-lg-6 text-right" id="votefeed-column">
 	
 <script type="text/javascript">
 
@@ -61,7 +61,7 @@
 	var browser = get_browser();
 	var allVotes = <?php echo json_encode($allVotes); ?>;
 	//creates a giant SVG of the rep voting record
-	var container = d3.select('body').append('div')
+	var container = d3.select('#votefeed-column').append('div')
     					.attr('id','container')
 						.style("overflow-y", "scroll");
 	
@@ -92,6 +92,153 @@
 		?>;
 		
 		
+</script>
+
+<script>
+		
+			var data = <?php 
+				$temp = array();
+				foreach($repinformation as $reps) {
+					array_push($temp, $reps[0]);
+			}
+				echo json_encode($temp);
+			?>;
+			
+			var container = d3.select('body').append('div')
+    			.attr('id','my-reps-container');
+	
+			var svg = container.append("svg")
+				.attr("width", 735)
+				.attr("height", 300);
+			
+			var g = svg.selectAll("g")
+    			.data(data)
+  				.enter()
+  				.append("g")
+    			.attr("x", function(d, i) {
+					return i * 245;
+				})
+				.attr("y", 0);
+			
+			var a = g.append("a")
+				.attr("class", "rep-anchor")
+				.attr("xlink:href", function(d, i) {
+					return "display.php?id=" + d.govtrackid;
+				});
+				
+				
+			a.append("rect")
+				.attr("width", 200)
+				.attr("height", 350)
+				.attr("x", function(d, i) {
+					return i * 245;
+				})
+				.attr("y", 0)
+				.attr("fill", "#CCC");
+				
+				
+			g.append("image")
+				.attr("class", "rep-img")
+				.attr("xlink:href", function(d, i) {
+					return d.photourl;	
+				})
+				.attr("height", 150)
+				.attr("width", 100)
+				.attr("x", function(d, i) {
+					return i * 245 + 50;
+				})
+				.attr("y", 10);
+			
+			
+			a.append("text")
+				.attr("y", 170)
+				.attr("x", function(d, i) {
+					return i * 245 + 20;
+				})
+				.attr("width", 150)
+				.attr("height", 21)
+				.text(function(d, i) {
+					return d.firstname + " " + d.lastname;
+				})
+				.style("font-size", 20);
+				
+			a.append("text")
+				.attr("y", 191)
+				.attr("x", function(d, i) {
+					return i * 245 + 20;
+				})
+				.attr("width", 150)
+				.attr("height", 21)
+				.text(function(d, i) {
+					return d.party;
+				})
+				.style("font-size", 20);
+				
+			a.append("text")
+				.attr("y", 212)
+				.attr("x", function(d, i) {
+					return i * 245 + 20;
+				})
+				.attr("width", 100)
+				.attr("height", 21)
+				.text(function(d, i) {
+					var l = d.description.length;
+					
+					if (l < 30) {
+						return d.description;
+					} else {
+						var s = d.description.substring(0, 30);
+						var index = s.lastIndexOf(" ");
+						return s.substring(0, index);
+					}
+				})
+				.style("font-size", 20);
+			
+			
+			a.append("text")
+				.attr("y", 233)
+				.attr("x", function(d, i) {
+					return i * 245 + 20;
+				})
+				.attr("width", 100)
+				.attr("height", 21)
+				.text(function(d, i) {
+					var l = d.description.length;
+					
+					if (l >= 30) {
+						var prev = d.description.substring(0, 30);
+						var indexPrev = prev.lastIndexOf(" ");
+						if (l < 60) {
+							return d.description.substring(indexPrev, 60);
+						} else {
+							var s = d.description.substring(0, 60);
+							var index = s.lastIndexOf(" ");
+							return d.description.substring(indexPrev, index);
+						}
+					} 
+					return "";
+				})
+				.style("font-size", 20);
+				
+				
+			a.append("text")
+				.attr("y", 254)
+				.attr("x", function(d, i) {
+					return i * 245 + 20;
+				})
+				.attr("width", 100)
+				.attr("height", 21)
+				.text(function(d, i) {
+					if (d.description.length >= 60) {
+						var prev = d.description.substring(0, 60);
+						var index1 = prev.lastIndexOf(" ") + 1;
+						return d.description.substring(index1, 100);
+					}
+					return "";
+				})
+				.style("font-size", 20);
+			*/
+				
 </script>
     
 <script type="text/javascript">
@@ -222,7 +369,7 @@ function update(num) {
 	a.append("rect")
 				.attr("width", 50)
 				.attr("height", 100)
-				.attr("x", 580)
+				.attr("x", 60)
 				.attr("y", function(d, i) {
 					return i * 105;
 				})
@@ -255,9 +402,9 @@ function update(num) {
 				})
     	.attr("xlink:href","/img/smiley-face.svg")
 		.attr("class", "support-vote")
-		.attr("x", 590)
+		.attr("x", 70)
 		.attr("y", function(d, i) {
-			return 105 * i + 20;
+			return 105 * i + 10;
 		})
     	.attr("width", 30)
     	.attr("height", 30);
@@ -288,9 +435,9 @@ function update(num) {
 				})
     	.attr("xlink:href","/img/frown-face.svg")
 		.attr("class", "oppose-vote")
-		.attr("x", 590)
+		.attr("x", 70)
 		.attr("y", function(d, i) {
-			return 105 * i + 50;
+			return 105 * i + 60;
 		})
     	.attr("width", 30)
     	.attr("height", 30);
@@ -312,7 +459,7 @@ function update(num) {
 	if (browser != "msie" && browser != "Netscape") {	
 		a.append("foreignObject")
 				.attr("id", "votefeedtitle")
-				.attr("x", 70) 
+				.attr("x", 120) 
 				.attr("y", function(d, i) {
 						return i * 105;
 					})
@@ -332,7 +479,7 @@ function update(num) {
 		
 		a.append("text")
 			.attr("id", "vote-title")
-			.attr("x", 70)
+			.attr("x", 120)
 			.attr("y", function(d, i) {
 				return i * 105 + 21;
 			})
@@ -353,7 +500,7 @@ function update(num) {
 			
 		a.append("text")
 			.attr("id", "vote-title")
-			.attr("x", 70)
+			.attr("x", 120)
 			.attr("y", function(d, i) {
 				return i * 105 + 42;
 			})
@@ -383,7 +530,7 @@ function update(num) {
 			.attr("y", function(d, i) {
 				return i * 105 + 63;
 			})
-			.attr("width", 600)
+			.attr("width", 510)
 			.attr("height", 21)
 			.text(function(d, i) {
 				if (d.vote.question.length >= 80) {

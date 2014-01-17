@@ -95,7 +95,7 @@ h1 {
 	 
 	 
 div#container {
-        height: 40%;
+        height: 100%;
 		width: 660px;
 		margin: auto;
 		overflow-y: scroll;
@@ -191,4 +191,12 @@ div#my-reps-container {
 		margin: auto;
 }
 
+#voteinfo-row {
+	top-margin:20px;
+	height:40%;
+}
+
+#votefeed-column {
+	height:100%;	
+}
 
