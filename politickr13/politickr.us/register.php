@@ -50,12 +50,12 @@
 				$temp = array($RepProfiles[0], $RepProfiles[1], $RepProfiles[2]);
 				$temp2 = array("#000000" => "T", "#000001" => "T");
 				
-				$x = query("INSERT INTO users (username, hash, email, senator1id, senator2id, repid, votethreshold, object, votes) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)", $_POST["username"], crypt($_POST["password"]), $_POST["email"], $RepProfiles[0], $RepProfiles[1], $RepProfiles[2], 0, serialize($temp), serialize($temp2));
+				$x = query("INSERT INTO users (username, hash, email, senator1id, senator2id, repid, votethreshold, object, votes, createdts) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?,?)", $_POST["username"], crypt($_POST["password"]), $_POST["email"], $RepProfiles[0], $RepProfiles[1], $RepProfiles[2], 0, serialize($temp), serialize($temp2), time());
 			$_SESSION["user_obj"] = $temp; 
 			$_SESSION["user_votes"] = $temp2; 
 			}
 			
-             if ($x === false)
+      if ($x === false)
 			{
 				//reject input
                 apologize("Sorry, input failed.");

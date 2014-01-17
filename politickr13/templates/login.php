@@ -36,7 +36,7 @@ if( !isset($_SESSION['last_access']) || (time() - $_SESSION['last_access']) > 60
             if (crypt($_POST["password"], $row["hash"]) == $row["hash"])
             {
                 //update timestamp in sql database
-                query("UPDATE users SET ts = ? WHERE username = ?", NOW(), $row['username']);
+                query("UPDATE users SET updatets = ? WHERE username = ?", NOW(), $row['username']);
                 // remember that user's now logged in by storing user's ID in session
                 $_SESSION["user"] = $row;
                 // redirect to portfolio
