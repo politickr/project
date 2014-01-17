@@ -45,7 +45,6 @@ else if( !empty($_SESSION["user"]["senator1id"]) || !empty($_SESSION["user"]["se
         }            
 		
 	}
-    }
 	else if (!empty($_SESSION["address"]))
 	{
 		 $ids = getReps($_SESSION['address']);
