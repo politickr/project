@@ -466,15 +466,7 @@
     		if($line_num > 1) 
     		{
        			$arr = explode("\t", $line);
-       			$sql = query("UPDATE representatives SET fax = ?, contactform = ? WHERE (firstname = ? OR nickname = ?) AND (lastname = ? OR namemod= ?) AND state = ?", trim($arr[7]), trim($arr[8]), trim($arr[3]), trim($arr[3]), trim($arr[4]),trim($arr[4]), substr(trim($arr[1]), 0, 2);
-       			if($sql === TRUE)
-       			{
-       				return TRUE;
-       			}
-       			else
-       			{
-       				return FALSE;
-       			}
+       			$sql = query("UPDATE representatives SET fax = ?, contactform = ? WHERE (firstname = ? OR nickname = ?) AND (lastname = ? OR namemod= ?) AND state = ?", trim($arr[7]), trim($arr[8]), trim($arr[3]), trim($arr[3]), trim($arr[4]),trim($arr[4]), substr(trim($arr[1]), 0, 2));
        			//echo $arr[7]." ".$arr[3]." ".$arr[4]." ".$arr[8].'/n';
        			//echo substr(trim($arr[1]), 0, 2);
     		}
