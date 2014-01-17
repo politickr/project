@@ -105,8 +105,18 @@ div#container {
 		margin-top: 20px;
       }
 	  
+#bill-container {
+	  height: 100%;
+	  width: 450px;
+	  overflow-y: scroll;
+	  border: solid;
+	  border-color: #CCC;
+	  border-width: 5px;
+	  margin-top: 20px;
+}
+	  
 div#news-container {
-        height: 575px;
+        height: 100%;
         width: 450px;
 		margin: auto;
 		overflow-y: scroll;
@@ -135,6 +145,10 @@ a {
 
 a:hover #rect-background {
 	fill: #CCC;
+}
+
+a:hover {
+	cursor:pointer;	
 }
 
 #votefeedtitle{
@@ -186,17 +200,19 @@ a:hover .support-vote, a:hover .oppose-vote {
 }
 
 div#my-reps-container {
-        height: 350px;
-		width: 735px;
-		margin: auto;
+        height: 720px;
+		width: 200px;
+		float:right;
 }
 
 #voteinfo-row {
 	top-margin:20px;
-	height:40%;
+	height: 80%;
 }
 
 #votefeed-column {
-	height:100%;	
+	height:100%;
+	
 }
+
 

@@ -1,43 +1,143 @@
 <body>
-<h1 class="text-center">My Representatives</h1>
+<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+
 <?php  
-		
-        print('<div class="row">');
-		print('<div class="col-lg-2">');
-		print('</div>');
-		print('<div class="col-lg-8">');
-		
-		
 		$i = 0;
 		$allVotes = array();
 		
 		foreach ( $repinformation as $reps)
 		{
 			array_push($allVotes, json_decode(getVotes($reps[0]['govtrackid'])));
-			
-			print('<div class="col-lg-4 text-center rep">');
-			print("<a onclick=\"update(".$i.")\"><img src=".$reps[0]['photourl']." width='120px' height='150px'> </a><br />");
-			
-			print("<a onclick=\"update(".$i.")\">".$reps[0]['firstname']." ".$reps[0]['lastname']."</a><br />");
-			print("{$reps[0]["party"]}<br />");
-			print("{$reps[0]["description"]}<br />");
-			print("</div>");  
 			$i = $i + 1;
 		}
-		
-		
-		print('</div>');
-		print('<div class="col-lg-2">');
-		print('</div>');		
-		print('</div>');
 		
 		
 ?>
 
 <div class="row" id="voteinfo-row">
 	<div class="col-lg-1"></div>
-	<div class="col-lg-6 text-right" id="votefeed-column">
+		<div class="col-lg-1" id="rep-column">
+
+<script>
+		
+			var data = <?php 
+				$temp = array();
+				foreach($repinformation as $reps) {
+					array_push($temp, $reps[0]);
+			}
+				echo json_encode($temp);
+			?>;
+			
+			var container = d3.select('#rep-column').append('div')
+    			.attr('id','my-reps-container');
 	
+			var svg = container.append("svg")
+				.attr("width", 200)
+				.attr("height", 735);
+			
+			var g = svg.selectAll("g")
+    			.data(data)
+  				.enter()
+  				.append("g")
+    			.attr("y", function(d, i) {
+					return i * 245;
+				})
+				.attr("x", 0);
+			
+			var a = g.append("a")
+				.attr("class", "rep-anchor")
+				.on("click", function(d, i) {
+					update(i);
+				});
+				
+				
+			a.append("rect")
+				.attr("width", 150)
+				.attr("height", 220)
+				.attr("y", function(d, i) {
+					return i * 245 + 10;
+				})
+				.attr("x", 10)
+				.attr("fill", "transparent")
+				.style("stroke", function(d, i) {
+					if (d.party == "Democrat") {
+						return "#0064FF";
+					} else if (d.party == "Republican") {
+						return "#C00";	
+					} 
+					return "#CCC";
+				})
+				.style("stroke-linejoin", "round")
+				.style("stroke-width", "5px");
+				
+				
+			g.append("image")
+				.attr("class", "rep-img")
+				.attr("xlink:href", function(d, i) {
+					return d.photourl;	
+				})
+				.attr("height", 100)
+				.attr("width", 120)
+				.attr("y", function(d, i) {
+					return i * 245 + 30;
+				})
+				.attr("x", 25);
+			
+			
+			a.append("text")
+				.attr("x", 30)
+				.attr("y", function(d, i) {
+					return i * 245 + 150;
+				})
+				.attr("width", 150)
+				.attr("height", 21)
+				.text(function(d, i) {
+					return d.firstname + " " + d.lastname;
+				})
+				.style("font-weight", "bold");
+				
+				
+			a.append("text")
+				.attr("x", 30)
+				.attr("y", function(d, i) {
+					return i * 245 + 181;
+				})
+				.attr("width", 150)
+				.attr("height", 21)
+				.text(function(d, i) {
+					if (d.district != "0") {
+						return "Representative for";
+					}
+					var level = d.description.substring(0, 
+									d.description.indexOf(" "));
+					return level + " " + "Senator";
+				})
+				.style("font-size", 12);
+			
+			
+			a.append("text")
+				.attr("x", 30)
+				.attr("y", function(d, i) {
+					return i * 245 + 202;
+				})
+				.attr("width", 150)
+				.attr("height", 21)
+				.text(function(d, i) {
+					if (d.district != "0") {
+						return "District " + d.district + ", " + d.state;
+					}
+					var state = d.description.substring(d.description.lastIndexOf(" "));
+					return "from " + state;
+				})
+				.style("font-size", 12);
+				
+	
+				
+</script>
+</div>
+
+<div class="col-lg-6 text-right" id="votefeed-column">
+    
 <script type="text/javascript">
 
 	//Detect browser version (different behavior for IE)
@@ -94,153 +194,6 @@
 		
 </script>
 
-<script>
-		
-			var data = <?php 
-				$temp = array();
-				foreach($repinformation as $reps) {
-					array_push($temp, $reps[0]);
-			}
-				echo json_encode($temp);
-			?>;
-			
-			var container = d3.select('body').append('div')
-    			.attr('id','my-reps-container');
-	
-			var svg = container.append("svg")
-				.attr("width", 735)
-				.attr("height", 300);
-			
-			var g = svg.selectAll("g")
-    			.data(data)
-  				.enter()
-  				.append("g")
-    			.attr("x", function(d, i) {
-					return i * 245;
-				})
-				.attr("y", 0);
-			
-			var a = g.append("a")
-				.attr("class", "rep-anchor")
-				.attr("xlink:href", function(d, i) {
-					return "display.php?id=" + d.govtrackid;
-				});
-				
-				
-			a.append("rect")
-				.attr("width", 200)
-				.attr("height", 350)
-				.attr("x", function(d, i) {
-					return i * 245;
-				})
-				.attr("y", 0)
-				.attr("fill", "#CCC");
-				
-				
-			g.append("image")
-				.attr("class", "rep-img")
-				.attr("xlink:href", function(d, i) {
-					return d.photourl;	
-				})
-				.attr("height", 150)
-				.attr("width", 100)
-				.attr("x", function(d, i) {
-					return i * 245 + 50;
-				})
-				.attr("y", 10);
-			
-			
-			a.append("text")
-				.attr("y", 170)
-				.attr("x", function(d, i) {
-					return i * 245 + 20;
-				})
-				.attr("width", 150)
-				.attr("height", 21)
-				.text(function(d, i) {
-					return d.firstname + " " + d.lastname;
-				})
-				.style("font-size", 20);
-				
-			a.append("text")
-				.attr("y", 191)
-				.attr("x", function(d, i) {
-					return i * 245 + 20;
-				})
-				.attr("width", 150)
-				.attr("height", 21)
-				.text(function(d, i) {
-					return d.party;
-				})
-				.style("font-size", 20);
-				
-			a.append("text")
-				.attr("y", 212)
-				.attr("x", function(d, i) {
-					return i * 245 + 20;
-				})
-				.attr("width", 100)
-				.attr("height", 21)
-				.text(function(d, i) {
-					var l = d.description.length;
-					
-					if (l < 30) {
-						return d.description;
-					} else {
-						var s = d.description.substring(0, 30);
-						var index = s.lastIndexOf(" ");
-						return s.substring(0, index);
-					}
-				})
-				.style("font-size", 20);
-			
-			
-			a.append("text")
-				.attr("y", 233)
-				.attr("x", function(d, i) {
-					return i * 245 + 20;
-				})
-				.attr("width", 100)
-				.attr("height", 21)
-				.text(function(d, i) {
-					var l = d.description.length;
-					
-					if (l >= 30) {
-						var prev = d.description.substring(0, 30);
-						var indexPrev = prev.lastIndexOf(" ");
-						if (l < 60) {
-							return d.description.substring(indexPrev, 60);
-						} else {
-							var s = d.description.substring(0, 60);
-							var index = s.lastIndexOf(" ");
-							return d.description.substring(indexPrev, index);
-						}
-					} 
-					return "";
-				})
-				.style("font-size", 20);
-				
-				
-			a.append("text")
-				.attr("y", 254)
-				.attr("x", function(d, i) {
-					return i * 245 + 20;
-				})
-				.attr("width", 100)
-				.attr("height", 21)
-				.text(function(d, i) {
-					if (d.description.length >= 60) {
-						var prev = d.description.substring(0, 60);
-						var index1 = prev.lastIndexOf(" ") + 1;
-						return d.description.substring(index1, 100);
-					}
-					return "";
-				})
-				.style("font-size", 20);
-			*/
-				
-</script>
-    
 <script type="text/javascript">
 
 var userY = userVotes.Y;
@@ -253,7 +206,6 @@ function update(num) {
 	
 	var data = temp[num];
 	var datatwo = data.objects;
-	
 	// Declare new array to put filtered votes in
 	var moddata = [];
 	// Put passage bills in moddata by checking category value
@@ -300,11 +252,20 @@ function update(num) {
 				
 	var a = g.append("a")
 			.attr("class", "vote-anchor")
-			.attr("xlink:href", function(d, i) {
-					return "bill.php?id=" + d.vote.related_bill
-										+ "&totalplusbill=" + d.vote.total_plus
-										+ "&totalminusbill=" + d.vote.total_minus
-										+ "&totalotherbill=" + d.vote.total_other;
+			.on("click", function(d, i) {
+					$.ajax({
+        				url: 'bill.php',
+        				type: 'GET',
+        				data: { id: d.vote.related_bill,
+								 totalplusbill: d.vote.total_plus,
+								 totalminusbill: d.vote.total_minus,
+								 totalotherbill: d.vote.total_other },
+        				success: function (data) {
+							console.log(data);
+							updateBillInfo(data);
+                		}
+        			});
+					console.log("ajax called");
 				});
 				
 	
@@ -552,6 +513,113 @@ $(document).ready(function() {
 	
 	</script>
     	</div>
+        
+    <div class="col-lg-4" id="news-column">
+    
+    <script>
+
+		var billcontainer = d3.select('#news-column').append('div')
+    					.attr('id','bill-container')
+						.style("overflow-y", "scroll");
+						
+		
+		var svgBill = billcontainer.append("svg")
+				.attr("width", 450)
+				.attr("height", 650);		
+
+function updateBillInfo(i) {
+	
+	
+	var info = [$.parseJSON(i)];
+	console.log(info);
+	
+	billcontainer.select("svg").remove();
+	
+	svgBill = billcontainer.append("svg")
+				.data(info)
+				.attr("width", 450)
+				.attr("height", 500);			
+	
+	svgBill.append("foreignObject")
+				.attr("class", "bill-info")
+				.attr("id", "title")
+				.attr("x", 10) 
+				.attr("y", 10)
+				.attr("width", 400)
+				.attr("height", 100)
+				.text(function(d, i) {
+					return d.title;
+					})
+				.style("font-size", 24)
+				.style("color", "#000");
+	
+	svgBill.append("text")
+				.attr("class", "bill-info")
+				.attr("id", "summary-title")
+				.attr("x", 10) 
+				.attr("y", 120)
+				.attr("width", 400)
+				.attr("height", 21)
+				.text("Summary")
+				.style("font-size", 20)
+				.style("font-weight", "bold");
+				
+	svgBill.append("foreignObject")
+				.attr("class", "bill-info")
+				.attr("id", "summary")
+				.attr("x", 30) 
+				.attr("y", 145)
+				.attr("width", 400)
+				.attr("height", 120)
+				.text(function(d, i) {
+					return d.summary;
+					})
+				.style("font-size", 16)
+				.style("color", "#000");
+	
+	svgBill.append("text")
+				.attr("class", "bill-info")
+				.attr("id", "votes")
+				.attr("x", 10) 
+				.attr("y", 280)
+				.attr("width", 400)
+				.attr("height", 45)
+				.text(function(d, i) {
+					return "In Favor: " + d.vote.total_plus
+							+ "\nOpposed: " + d.vote.total_minus
+							+ "\nOther: " + d.vote.total_other;
+				})
+				.style("font-size", 16);
+	
+	svgBill.append("text")
+				.attr("class", "bill-info")
+				.attr("id", "status-title")
+				.attr("x", 10) 
+				.attr("y", 330)
+				.attr("width", 400)
+				.attr("height", 21)
+				.text("Current Status")
+				.style("font-size", 20)
+				.style("font-weight", "bold");
+				
+	svgBill.append("foreignObject")
+				.attr("class", "bill-info")
+				.attr("id", "summary")
+				.attr("x", 30) 
+				.attr("y", 355)
+				.attr("width", 400)
+				.attr("height", 120)
+				.text(function(d, i) {
+					return d.current_status_description;
+					})
+				.style("font-size", 16)
+				.style("color", "#000");
+}
+	
+	</script>
+    
+    
+    </div>
     </div>
 </body>
 
