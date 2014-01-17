@@ -92,7 +92,20 @@ h1 {
         margin-bottom: 15px;
         padding: 7px 9px;
       }
-	 
+
+.left-arrow {
+	left: 10px;
+	border-top: 30px solid transparent;
+	border-bottom: 30px solid transparent;
+	border-right:30px solid #CCC; 
+	position: absolute;
+	-webkit-transition: margin-top 2s ease;  
+    -moz-transition: margin-top 2s ease;  
+    -o-transition: margin-top 2s ease;  
+    transition: margin-top 2s ease;  
+}
+
+
 	 
 div#container {
         height: 100%;
@@ -213,6 +226,10 @@ div#my-reps-container {
 #votefeed-column {
 	height:100%;
 	
+}
+
+.bill-info {
+	padding:10px;	
 }
 
 

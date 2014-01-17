@@ -48,6 +48,16 @@
 				.attr("class", "rep-anchor")
 				.on("click", function(d, i) {
 					update(i);
+					
+					d3.select(".left-arrow")
+  					.style("margin-top", function() {
+						if (i == 0) {
+							return '10%';
+						} else if (i == 1) {
+							return '40%';	
+						} 
+						return '75%';
+					});
 				});
 				
 				
@@ -134,9 +144,11 @@
 	
 				
 </script>
+
 </div>
 
 <div class="col-lg-6 text-right" id="votefeed-column">
+    <div class="left-arrow" style="margin-top: 5%;"></div>
     
 <script type="text/javascript">
 
@@ -199,8 +211,11 @@
 var userY = userVotes.Y;
 var userN = userVotes.N;
 		
-		
+var curPos = 0;	
 function update(num) {
+	
+	
+	curPos = num; 
 		
 	// Put PHP array of votes into javascript variable
 	
@@ -520,12 +535,11 @@ $(document).ready(function() {
 
 		var billcontainer = d3.select('#news-column').append('div')
     					.attr('id','bill-container')
-						.style("overflow-y", "scroll");
+						.style("overflow-y", "scroll")
+						.style("max-height", "70%");
 						
-		
-		var svgBill = billcontainer.append("svg")
-				.attr("width", 450)
-				.attr("height", 650);		
+		var billdiv = billcontainer.append("div")
+							.attr("id", "billdiv");
 
 function updateBillInfo(i) {
 	
@@ -533,90 +547,65 @@ function updateBillInfo(i) {
 	var info = [$.parseJSON(i)];
 	console.log(info);
 	
-	billcontainer.select("svg").remove();
+	billcontainer.select("div").remove();
 	
-	svgBill = billcontainer.append("svg")
-				.data(info)
-				.attr("width", 450)
-				.attr("height", 500);			
+	billdiv = billcontainer.append("div")
+							.data(info);
 	
-	svgBill.append("foreignObject")
+										
+	
+	billdiv.append("h3")
 				.attr("class", "bill-info")
 				.attr("id", "title")
-				.attr("x", 10) 
-				.attr("y", 10)
-				.attr("width", 400)
-				.attr("height", 100)
+				.append("text")
 				.text(function(d, i) {
 					return d.title;
-					})
-				.style("font-size", 24)
-				.style("color", "#000");
+					});
 	
-	svgBill.append("text")
+	billdiv.append("br");
+	
+	billdiv.append("h4")
 				.attr("class", "bill-info")
 				.attr("id", "summary-title")
-				.attr("x", 10) 
-				.attr("y", 120)
 				.attr("width", 400)
-				.attr("height", 21)
-				.text("Summary")
-				.style("font-size", 20)
-				.style("font-weight", "bold");
+				.text("Summary");
 				
-	svgBill.append("foreignObject")
+	billdiv.append("h5")
 				.attr("class", "bill-info")
 				.attr("id", "summary")
-				.attr("x", 30) 
-				.attr("y", 145)
 				.attr("width", 400)
-				.attr("height", 120)
 				.text(function(d, i) {
 					return d.summary;
-					})
-				.style("font-size", 16)
-				.style("color", "#000");
+					});
+					
+	billdiv.append("br");
 	
-	svgBill.append("text")
+	billdiv.append("h4")
 				.attr("class", "bill-info")
 				.attr("id", "votes")
-				.attr("x", 10) 
-				.attr("y", 280)
 				.attr("width", 400)
-				.attr("height", 45)
 				.text(function(d, i) {
 					return "In Favor: " + d.vote.total_plus
 							+ "\nOpposed: " + d.vote.total_minus
 							+ "\nOther: " + d.vote.total_other;
-				})
-				.style("font-size", 16);
+				});
 	
-	svgBill.append("text")
+	billdiv.append("h4")
 				.attr("class", "bill-info")
 				.attr("id", "status-title")
-				.attr("x", 10) 
-				.attr("y", 330)
 				.attr("width", 400)
-				.attr("height", 21)
-				.text("Current Status")
-				.style("font-size", 20)
-				.style("font-weight", "bold");
+				.text("Current Status");
 				
-	svgBill.append("foreignObject")
+	billdiv.append("h5")
 				.attr("class", "bill-info")
 				.attr("id", "summary")
-				.attr("x", 30) 
-				.attr("y", 355)
 				.attr("width", 400)
-				.attr("height", 120)
 				.text(function(d, i) {
 					return d.current_status_description;
-					})
-				.style("font-size", 16)
-				.style("color", "#000");
+					});
+				
 }
-	
-	</script>
+</script>
     
     
     </div>

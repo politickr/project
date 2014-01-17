@@ -2,15 +2,17 @@
     //configuration
     require("../includes/config.php");
 	
-	$billblob = query("SELECT object FROM bills WHERE id = ?", $_GET['id']);
+	$b = query("SELECT object FROM bills WHERE id = ?", $_GET['id']);
 	
-	if ($billblob === false) {
+	if ($b == false) {
 		$billinfo = getBillInfo($_GET['id']);
-    	query("INSERT INTO bills (id, object) VALUES(?, ?)", $_GET['id'], serialize(json_encode($billinfo)));
+    	query("INSERT INTO bills (id, object) VALUES(?, ?)", $_GET['id'], serialize($billinfo));
 		echo json_encode($billinfo);
+		
 	} else {
-		$billinfo = unserialize($billblob[0]);
-		echo $billinfo;
+		$billblob = $b[0]['object'];
+		$billinfo = unserialize($billblob);
+		echo json_encode($billinfo);
 	}
     //renders display HTML form
     
