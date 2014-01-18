@@ -1,19 +1,4 @@
-/**
- * scripts.js
- *
- * Computer Science 50
- * Problem Set 7
- *
- * Global JavaScript, if any.
- */
-		
-			var data = <?php 
-				$temp = array();
-				foreach($repinformation as $reps) {
-					array_push($temp, $reps[0]);
-			}
-				echo json_encode($temp);
-			?>;
+
 			
 			var container = d3.select('#rep-column').append('div')
     			.attr('id','my-reps-container');
@@ -129,3 +114,4 @@
 				.style("font-size", 12);
 				
 	
+				

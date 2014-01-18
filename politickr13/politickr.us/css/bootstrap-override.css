@@ -92,7 +92,20 @@ h1 {
         margin-bottom: 15px;
         padding: 7px 9px;
       }
-	 
+
+.left-arrow {
+	left: 10px;
+	border-top: 30px solid transparent;
+	border-bottom: 30px solid transparent;
+	border-right:30px solid #CCC; 
+	position: absolute;
+	-webkit-transition: margin-top 2s ease;  
+    -moz-transition: margin-top 2s ease;  
+    -o-transition: margin-top 2s ease;  
+    transition: margin-top 2s ease;  
+}
+
+
 	 
 div#container {
         height: 100%;
@@ -105,8 +118,18 @@ div#container {
 		margin-top: 20px;
       }
 	  
+#bill-container {
+	  height: 100%;
+	  width: 450px;
+	  overflow-y: scroll;
+	  border: solid;
+	  border-color: #CCC;
+	  border-width: 5px;
+	  margin-top: 20px;
+}
+	  
 div#news-container {
-        height: 575px;
+        height: 100%;
         width: 450px;
 		margin: auto;
 		overflow-y: scroll;
@@ -135,6 +158,10 @@ a {
 
 a:hover #rect-background {
 	fill: #CCC;
+}
+
+a:hover {
+	cursor:pointer;	
 }
 
 #votefeedtitle{
@@ -186,17 +213,23 @@ a:hover .support-vote, a:hover .oppose-vote {
 }
 
 div#my-reps-container {
-        height: 350px;
-		width: 735px;
-		margin: auto;
+        height: 720px;
+		width: 200px;
+		float:right;
 }
 
 #voteinfo-row {
 	top-margin:20px;
-	height:40%;
+	height: 80%;
 }
 
 #votefeed-column {
-	height:100%;	
+	height:100%;
+	
 }
+
+.bill-info {
+	padding:10px;	
+}
+
 
