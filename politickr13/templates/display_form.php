@@ -1,3 +1,5 @@
+
+
 <body>
 <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 
@@ -98,6 +100,8 @@
     	</div>
         
     	<div class="col-lg-4" id="news-column">
+        	
+            
     		<script src="js/billinfo.js"></script>
     	</div>
     </div>
