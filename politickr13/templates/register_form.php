@@ -1,10 +1,10 @@
 
  <div class="container">
  	<div class="row">
-         <div class="col-lg-12 text-center v-center">
- 		<div class="col-md-3">
+         <div class="col-xs-12 text-center v-center">
+ 		<div class="col-xs-3">
          </div>
-         	<div class="col-md-6">
+         	<div class="col-xs-6">
                <form action="register.php" method="post">
                    <fieldset>
                        <div class="form-group" style="color:blue;">
@@ -38,7 +38,7 @@
                    </fieldset>
                </form>
          	</div>
-             <div class="col-md-3">
+             <div class="col-xs-3">
              </div>
          </div>
      </div>

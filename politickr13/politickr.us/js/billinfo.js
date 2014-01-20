@@ -1,17 +1,32 @@
 // JavaScript Document<script>
 
-var billcontainer = d3.select('#news-column').append('div')
-    					.attr('id','bill-container')
-						.style("overflow-y", "scroll")
-						.style("max-height", "70%");
+var contentContainer = d3.select('#news-column').append('div')
+						.attr("class", "content-container");
 						
-var billdiv = billcontainer.append("div")
-							.attr("id", "billdiv");
+var menu = contentContainer.append("div")
+						.attr("class", "row menu-margin")
+						.attr("id", "bill-menu")
+						.style("background-color", "#CCC")
+						.style("height", "50px")
+						.style("width", "100%");
+
+						
+var billcontainer = contentContainer.append("div")
+						.attr("class", "bill-container")
+						.attr("id", "bill-container")
+						.style("overflow-y", "scroll")
+						.style("max-height", "600px");
+						
+
+var newsdiv = billcontainer.append("div")
+							.attr("class", "newsdiv")
+							.style("display", "none")
+							.data(info);
 							
 					
-var newsdiv = billcontainer.append("div")
-							.attr("id", "newsdiv")
-							.style("display", "none");
+var billdiv = billcontainer.append("div")
+							.attr("class", "billdiv")
+							.data(info);
 						
 function updateBillInfo(i) {
 	
@@ -19,21 +34,51 @@ function updateBillInfo(i) {
 	var info = [$.parseJSON(i)];
 	console.log(info);
 	
-	billcontainer.selectAll("div").remove();
+	billcontainer.remove();
+	menu.remove();
+	
+	menu = contentContainer.append("div")
+						.attr("class", "row menu-margin")
+						.attr("id", "bill-menu")
+						.style("background-color", "#CCC")
+						.style("height", "25px")
+						.data(info);
+	
+	billcontainer = contentContainer.append("div")
+						.attr("class", "bill-container")
+						.attr("id", "bill-container")
+						.style("overflow-y", "scroll")
+						.style("max-height", "600px");
+						
+	billcontainer.style("opacity", 1);
 	
 	newsdiv = billcontainer.append("div")
-							.attr("id", "newsdiv")
-							.style("display", "none");
+							.attr("class", "newsdiv")
+							.style("display", "none")
+							.data(info);
 	
 	billdiv = billcontainer.append("div")
 							.attr("class", "billdiv")
 							.data(info);
+							
+	var infobutton = menu.append("button")
+						.attr("class", "col-xs-2 infobutton")
+						.on("click", function(d, i) {
+							
+							$(".newsdiv").fadeTo("fast", 0);
+							$(".newsdiv").css({"display": "none"});
+							$(".billdiv").css({"display": "block"});
+							$(".billdiv").fadeTo("fast", 1);
+							$(".newsbutton").fadeTo("fast", .5);
+							$(".infobutton").fadeTo("fast", 1);
+							
+						})
+						.style("background-color", "transparent")
+						.style("border", "none")
+						.text("INFO");		
 	
-	var newsbutton = billdiv.append("button")
-						.attr("x", 0)
-						.attr("y", 0)
-						.attr("width", 100)
-						.attr("height", 50)
+	var newsbutton = menu.append("button")
+						.attr("class", "col-xs-2 newsbutton")
 						.on("click", function(d, i) {
 							  $.ajax({
 								  url: 'bill_news.php',
@@ -49,9 +94,18 @@ function updateBillInfo(i) {
 								  }
 						  		});
 								
+								$(".billdiv").fadeTo("fast", 0);
+								$(".billdiv").css({"display": "none"});
+								$(".newsdiv").css({"display": "block"});
+								$(".newsdiv").fadeTo("fast", 1);
+								$(".infobutton").fadeTo("fast", .5);
+								$(".newsbutton").fadeTo("fast", 1);
+								
 								console.log("news ajax called");
 						})
-						.text("Show News");					
+						.style("background-color", "transparent")
+						.style("border", "none")
+						.text("NEWS");					
 	
 	billdiv.append("h3")
 				.attr("class", "bill-info")
@@ -59,49 +113,46 @@ function updateBillInfo(i) {
 				.append("text")
 				.text(function(d, i) {
 					return d.title;
-					});
-	
-	billdiv.append("br");
+					})
+				.style("padding", "10px");
 	
 	billdiv.append("h4")
 				.attr("class", "bill-info")
 				.attr("id", "summary-title")
-				.attr("width", 400)
-				.text("Summary");
+				.text("Summary")
+				.style("padding", "10px");
 				
 	billdiv.append("h5")
 				.attr("class", "bill-info")
 				.attr("id", "summary")
-				.attr("width", 400)
 				.text(function(d, i) {
 					return d.summary;
 					});
 					
-	billdiv.append("br");
 	
 	billdiv.append("h4")
 				.attr("class", "bill-info")
 				.attr("id", "votes")
-				.attr("width", 400)
 				.text(function(d, i) {
 					return "In Favor: " + d.vote.total_plus
 							+ "\nOpposed: " + d.vote.total_minus
 							+ "\nOther: " + d.vote.total_other;
-				});
+				})
+				.style("padding", "10px");
 	
 	billdiv.append("h4")
 				.attr("class", "bill-info")
 				.attr("id", "status-title")
-				.attr("width", 400)
-				.text("Current Status");
+				.text("Current Status")
+				.style("padding", "10px");
 				
 	billdiv.append("h5")
 				.attr("class", "bill-info")
 				.attr("id", "summary")
-				.attr("width", 400)
 				.text(function(d, i) {
 					return d.current_status_description;
-					});
+					})
+				.style("padding", "10px");
 					
 				
 }
@@ -112,7 +163,8 @@ function showNews(i) {
 		billdiv.style("display", "none");
 		
 		newsdiv = billcontainer.append("div")
-							.attr("class", "newsdiv");
+							.attr("class", "newsdiv")
+							.style("overflow-y", "scroll");
 		
 		var moddata = info.d.results;
 		
@@ -125,39 +177,20 @@ function showNews(i) {
 				.append("div");
 					
 		var a = d.append("a")
-				.attr("xlink:href", function(d, i) {
+				.attr("href", function(d, i) {
 						return d.Url;
 					});
 
-	
-		/*
-		a.append("rect")
-					.attr("width", 450)
-					.attr("height", 205)
-					.attr("y", function(d, i) {
-						return i * 210;
-					})
-					.attr("x", 0)
-					.attr("fill", "#CCCCCC");
-					
-		a.append("rect")
-					.attr("class", "news")
-					.attr("width", 100)
-					.attr("height", 205)
-					.attr("x", 0)
-					.attr("y", function(d, i) {
-						return i * 210;
-					})
-					.attr("fill", "#666666");
-					*/
-						
+		
 		a.append("h4")
-					.attr("class", "newsfeed-source")
 					.text(function(d, i) {
+							console.log(d.Source);
 							return d.Source;
 						})
 					.style("font-weight", "bold")
-					.style("color", "#FFFFFF");
+					.style("padding", "10px")
+					.style("padding-top", "12px")
+					.style("background-color", "#CCC");
 		
 		a.append("h3")
 					.text(function(d, i) {
@@ -165,16 +198,17 @@ function showNews(i) {
 						})
 					.style("text-align", "left")
 					.style("font-weight", "bold")
-					.style("color", "#666666");
+					.style("color", "#666666")
+					.style("padding", "7px");
 					
 		a.append("h5")
 					.text(function(d, i) {
 						return d.Description;
 					})
 					.style("text-align", "left")
-					.style("overflow-y", "scroll");
+					.style("overflow-y", "scroll")
+					.style("padding", "7px");
 					
-		d.append("br");
 				
 	} else if (browser == "Netscape") {
 		

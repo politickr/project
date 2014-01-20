@@ -4,7 +4,7 @@
 	<div class="row">
         
     	
-        <div class="col-lg-6 text-left">
+        <div class="col-xs-6 text-left">
         	<h2><? echo $billinfo['title'] ?></h2>
             <br />
             <h4>Summary</h4>
@@ -24,7 +24,7 @@
             
 		</div>
         
-        <div class="col-lg-6 news-feed" id="news-feed">
+        <div class="col-xs-6 news-feed" id="news-feed">
             <h2 class="text-center">News</h2>
     <script>
 	

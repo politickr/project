@@ -1,8 +1,11 @@
 
 
 <body>
-<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+<script src="js/d3.v3.min.js" charset="utf-8"></script>
+<script>
 
+
+</script>
 <?php  
 		$i = 0;
 		$allVotes = array();
@@ -15,10 +18,9 @@
 		
 		
 ?>
-
+<div class="container" style="height:100%">
 <div class="row" id="voteinfo-row">
-	<div class="col-lg-1"></div>
-	<div class="col-lg-1" id="rep-column">
+	<div class="col-xs-2" id="rep-column">
     
           <script> var data = <?php 
                   $temp = array();
@@ -30,11 +32,10 @@
           </script>
   
           <script src="js/rep-column.js"></script>
-
+	
 	</div>
-
-<div class="col-lg-6 text-right" id="votefeed-column">
-    <div class="left-arrow" style="margin-top: 5%;"></div>
+	<div class="col-xs-6" id="votefeed-column">
+    	
     
 <script type="text/javascript">
 
@@ -97,13 +98,12 @@
 			  });
 </script>
 
-    	</div>
+		</div>
         
-    	<div class="col-lg-4" id="news-column">
-        	
-            
+    	<div class="col-xs-4" id="news-column">
     		<script src="js/billinfo.js"></script>
     	</div>
     </div>
+</div>
 </body>
 
