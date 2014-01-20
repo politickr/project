@@ -247,7 +247,7 @@
     }
      /**
      * 
-    /* Gets representatives if the user has representatives stored in the SQL database.
+    * Gets representatives if the user has representatives stored in the SQL database.
 	* Takes in array of govtrack ids $ids interates through and returns stored representative information.
 	*/
 	function getSavedReps( $ids)

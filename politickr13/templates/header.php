@@ -40,14 +40,29 @@
 					<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-22">
                     	<a href="my_reps.php">My Representatives</a></li>
 					<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-22">
-                    	<a href="display.php?id=<?php echo $_SESSION['user']['senator2id']?>">Account Settings</a></li>
-					<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-22">
-                    	<a href="display.php?id=<?php echo $_SESSION['user']['repid']?>">Votefeed</a></li>
+                    	<a>Account Settings</a></li>
 					<li class="divider"></li>
 					<li><a href="logout.php">Logout</a></li>
 				</ul>
 			</li>
+<<<<<<< HEAD
 			
+=======
+			<?php elseif(!empty($_POST['address'])):?>
+			  	<ul class="nav pull-right">
+          			<li class="dropdown" id="menuLogin">
+            			<a class="navbar-brand" href="#" data-toggle="dropdown" id="navLogin">Login</a>
+            			<div class="dropdown-menu" style="padding:17px;">
+              			<form action="login.php" method="post"> 
+                			<input name="username" id="username" type="text" placeholder="Username"> 
+                			<input name="password" id="password" type="password" placeholder="Password"><br>
+                			<br></br>
+                			<button type="submit" id="btnLogin" class="btn btn-large btn-primary">Login</button>
+              			</form>
+            			</div>
+          			</li>
+        		</ul>
+>>>>>>> origin/Cody
 			<?php endif ?>
 		</ul>
 		</div>
